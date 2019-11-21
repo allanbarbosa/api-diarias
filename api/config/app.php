@@ -179,6 +179,7 @@ return [
          * Packages Projeto
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 

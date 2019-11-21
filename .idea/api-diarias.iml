@@ -2,6 +2,8 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/asm89/stack-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/barryvdh/laravel-cors" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/beyondcode/laravel-dump-server" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/dnoegel/php-xdg-base-dir" />
@@ -13,6 +15,7 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/erusev/parsedown" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/fideloper/proxy" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/jakub-onderka/php-console-color" />

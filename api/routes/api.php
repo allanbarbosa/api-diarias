@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('autenticar', '\Diarias\Http\Controllers\AutenticacaoController@store');
+
+Route::group(['middleware' => 'token.validation'], function () {
+
+    Route::get('teste', function () {
+        phpinfo();
+    });
 });
