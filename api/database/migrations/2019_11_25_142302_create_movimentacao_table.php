@@ -15,8 +15,8 @@ class CreateMovimentacaoTable extends Migration
     {
         Schema::create('movimentacao', function (Blueprint $table) {
             $table->bigIncrements('movi_id');
-            $table->string('movi_nome', 255)->default('text');
-            $table->string('movi_slug', 255)->default('text');
+            $table->string('movi_nome', 255);
+            $table->string('movi_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,8 +15,8 @@ class CreateParticularidadeTable extends Migration
     {
         Schema::create('particularidade', function (Blueprint $table) {
             $table->bigIncrements('part_id');
-            $table->string('part_descricao', 255)->default('text');
-            $table->string('part_slug', 255)->default('text');
+            $table->string('part_descricao', 255);
+            $table->string('part_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

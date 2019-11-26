@@ -15,8 +15,8 @@ class CreateStatusTable extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->bigIncrements('stat_id');
-            $table->string('stat_nome', 255)->default('text');
-            $table->string('stat_slug', 255)->default('text');
+            $table->string('stat_nome', 255);
+            $table->string('stat_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

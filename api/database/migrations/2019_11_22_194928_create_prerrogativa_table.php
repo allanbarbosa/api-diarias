@@ -15,8 +15,8 @@ class CreatePrerrogativaTable extends Migration
     {
         Schema::create('prerrogativa', function (Blueprint $table) {
             $table->bigIncrements('prer_id');
-            $table->string('prer_descricao', 255)->default('text');
-            $table->string('prer_slug', 255)->default('text');
+            $table->string('prer_descricao', 255);
+            $table->string('prer_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

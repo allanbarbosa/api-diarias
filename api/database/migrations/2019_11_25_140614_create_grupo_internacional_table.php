@@ -15,7 +15,7 @@ class CreateGrupoInternacionalTable extends Migration
     {
         Schema::create('grupo_internacional', function (Blueprint $table) {
             $table->bigIncrements('grup_int_id');
-            $table->string('grup_int_codigo', 5)->default('text');
+            $table->string('grup_int_codigo', 5);
             $table->timestamps();
             $table->softDeletes();
         });

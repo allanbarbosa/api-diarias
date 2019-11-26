@@ -16,8 +16,8 @@ class CreateEmpresaTable extends Migration
     {
         Schema::create('empresa', function (Blueprint $table) {
             $table->bigIncrements('empr_id');
-            $table->string('empr_nome', 255)->default('text');
-            $table->string('empr_sigla', 255)->nullable()->default('text');
+            $table->string('empr_nome', 255);
+            $table->string('empr_sigla', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

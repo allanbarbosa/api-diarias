@@ -15,8 +15,8 @@ class CreateProfissaoTable extends Migration
     {
         Schema::create('profissao', function (Blueprint $table) {
             $table->bigIncrements('prof_id');
-            $table->string('prof_nome', 255)->default('text');
-            $table->string('prof_slug', 255)->default('text');
+            $table->string('prof_nome', 255);
+            $table->string('prof_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

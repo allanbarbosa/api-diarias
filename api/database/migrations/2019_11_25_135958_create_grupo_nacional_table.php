@@ -15,8 +15,8 @@ class CreateGrupoNacionalTable extends Migration
     {
         Schema::create('grupo_nacional', function (Blueprint $table) {
             $table->bigIncrements('grup_nac_id');
-            $table->string('grup_nac_codigo', 5)->default('text');
-            $table->string('grup_nac_descricao', 500)->nullable()->default('text');
+            $table->string('grup_nac_codigo', 5);
+            $table->string('grup_nac_descricao', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

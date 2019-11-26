@@ -15,8 +15,8 @@ class CreateTipoComprovanteTable extends Migration
     {
         Schema::create('tipo_comprovante', function (Blueprint $table) {
             $table->bigIncrements('tipo_com_id');
-            $table->string('tipo_com_nome', 255)->default('text');
-            $table->string('tipo_com_slug', 255)->default('text');
+            $table->string('tipo_com_nome', 255);
+            $table->string('tipo_com_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

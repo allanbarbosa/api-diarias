@@ -15,8 +15,8 @@ class CreatePapelFluxogramaTable extends Migration
     {
         Schema::create('papel_fluxograma', function (Blueprint $table) {
             $table->bigIncrements('pape_flu_id');
-            $table->string('pape_flu_slug', 255)->default('text');
-            $table->string('pape_flu_descricao', 255)->default('text');
+            $table->string('pape_flu_slug', 255);
+            $table->string('pape_flu_descricao', 255);
             $table->timestamps();
             $table->softDeletes();
         });

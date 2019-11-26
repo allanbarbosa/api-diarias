@@ -15,7 +15,7 @@ class CreateUnidadeTable extends Migration
     {
         Schema::create('unidade', function (Blueprint $table) {
             $table->bigIncrements('unid_id');
-            $table->string('unid_nome', 100)->default('text');
+            $table->string('unid_nome', 100);
             $table->string('unid_sigla', 45)->unique();
             $table->timestamps();
             $table->softDeletes();

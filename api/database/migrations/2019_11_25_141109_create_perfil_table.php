@@ -15,8 +15,8 @@ class CreatePerfilTable extends Migration
     {
         Schema::create('perfil', function (Blueprint $table) {
             $table->bigIncrements('perf_id');
-            $table->string('perf_descricao', 255)->default('text');
-            $table->string('perf_slug', 255)->default('text');
+            $table->string('perf_descricao', 255);
+            $table->string('perf_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

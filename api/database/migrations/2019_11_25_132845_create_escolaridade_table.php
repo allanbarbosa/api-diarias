@@ -15,8 +15,8 @@ class CreateEscolaridadeTable extends Migration
     {
         Schema::create('escolaridade', function (Blueprint $table) {
             $table->bigIncrements('esco_id');
-            $table->string('esco_nome', 255)->default('text');
-            $table->string('esco_slug', 255)->default('text');
+            $table->string('esco_nome', 255);
+            $table->string('esco_slug', 255);
             $table->timestamps();
             $table->softDeletes();
         });

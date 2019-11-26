@@ -15,7 +15,7 @@ class CreateOrganogramaTable extends Migration
     {
         Schema::create('organograma', function (Blueprint $table) {
             $table->bigIncrements('orga_id');
-            $table->string('orga_codigo', 45)->unique()->default('text');
+            $table->string('orga_codigo', 45)->unique();
             $table->dateTime('orga_data_inicio');
             $table->dateTime('orga_data_fim');
             $table->timestamps();
