@@ -1,32 +1,35 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Empresa\Repositorios;
+namespace Diarias\Unidade\Repositorios;
 
-use Diarias\Empresa\Models\EmpresaModel;
+use Diarias\Unidade\Models\UnidadeModel;
 use Exception;
 
-class EmpresaRepositorio
+class UnidadeRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'empr_nome',
-        'empr_sigla',
+        'unid_nome',
+        'unid_sigla',
+
     ];
 
-    public function __construct(EmpresaModel $empresaModel)
+    public function __construct(UnidadeModel $unidadeModel)
     {
-        $this->model = $empresaModel;
+        $this->model = $unidadeModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('empr_id', '=', $id)->first();
+        $model = $this->model->where('unid_id', '=', $id)->first();
 
-        if (!$model) {
-            throw new Exception('Empresa não encontrada');
+        if ($model)
+        {
+            throw new Exception('Unidade não encontrada.');
         }
+
         return $model;
     }
 
@@ -39,14 +42,15 @@ class EmpresaRepositorio
     {
         foreach ($this->fields as $field)
         {
-            if (isset($input[$field])) 
+            if (isset($input[$field]))
             {
-                $this->model->{$field} = $input[$field];
+                $this->model[$field] = $input[$field];
             }
-        }
-        $this->model->save();
+            
+            $this->model->save();
 
-        return $this->model;
+            return $this->model;
+        }
     }
 
     public function update(array $input, int $id)
@@ -70,16 +74,21 @@ class EmpresaRepositorio
     {
         $model = $this->find($id);
 
-        return $model->delete();
+        return $model->delete($id);
     }
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('empr_nome', 'ASC');
+        $model = $this->model->orderBy('unid_nome', 'unid_sigla', 'ASC');
 
-        if (isset($input['empr_nome']))
+        if (isset($input['unid_nome']))
         {
-            $model = $model->where('empr_nome', 'ilike', '%'.$input['empr_nome'].'%');
+            $model = $model->where('unid_nome', 'ilike', '%'.$input['unid_nome'].'%');
+        }
+
+        if (isset($input['unid_sigla']))
+        {
+            $model = $model->where('unid_sigla', 'ilike', '%'.$input['unid_sigla'].'%');
         }
 
         if (isset($input['count']))
@@ -89,6 +98,4 @@ class EmpresaRepositorio
 
         return $model->get();
     }
-
-
 }

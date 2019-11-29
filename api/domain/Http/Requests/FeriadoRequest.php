@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProfissaoResquest extends FormRequest
+class FeriadoRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,23 +17,25 @@ class ProfissaoResquest extends FormRequest
     public function rules()
     {
         return [
-            'prof_nome' => ['required'],
+            'feri_dia' => ['required'],
+            'feri_mes' => ['required'],
+            'feri_nome' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'prof_nome.required' => 'Campo Nome é requerido',
+            'feri_dia.required' => 'Campo dia do feriado é obrigatório',
+            'feri_mes.required' => 'Campo mês do feriado é obrigatório',
+            'feri_nome.required' => 'Campo nome do feriado é obrigatório',
         ];
     }
 
-    protected function FailedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException
-        (
+        throw new HttpResponseException(
             response()->json(['mensagem' => $validator->errors()->first()], 422)
         );
-        
     }
 }

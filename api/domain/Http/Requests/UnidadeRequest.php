@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ProfissaoResquest extends FormRequest
+class UnidadeRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,23 +17,24 @@ class ProfissaoResquest extends FormRequest
     public function rules()
     {
         return [
-            'prof_nome' => ['required'],
+            'unid_nome' => ['required'],
+            'unid_sigla' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'prof_nome.required' => 'Campo Nome é requerido',
+            'unid_nome.requerid' => 'Campo descrição é obrigatório.',
+            'unid_sigla.required' => 'Campo sigla é obrigatório.',
         ];
     }
 
-    protected function FailedValidation(Validator $validator)
+    public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException
         (
-            response()->json(['mensagem' => $validator->errors()->first()], 422)
+            response()->json(['mensagem' => $validator->errors()->firts()], 422)
         );
-        
     }
 }

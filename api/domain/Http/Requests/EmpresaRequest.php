@@ -32,7 +32,8 @@ class EmpresaRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(
+        throw new HttpResponseException
+        (
             response()->json(['mensagem' => $validator->errors()->first(), 422])
         );
     }
