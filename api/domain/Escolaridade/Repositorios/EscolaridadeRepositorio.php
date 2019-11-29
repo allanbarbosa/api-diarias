@@ -1,35 +1,34 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Unidade\Repositorios;
+namespace Diarias\Escolaridade\Repositorios;
 
-use Diarias\Unidade\Models\UnidadeModel;
+use Diarias\Escolaridade\Models\EscolaridadeModel;
 use Exception;
 
-class UnidadeRepositorio
+
+class EscolaridadeRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'unid_nome',
-        'unid_sigla',
-
+        'esco_nome',
+        'esco_slug',
     ];
 
-    public function __construct(UnidadeModel $unidadeModel)
+    protected function __construct(EscolaridadeModel $escolaridadeModel)
     {
-        $this->model = $unidadeModel;
+        $this->model = $escolaridadeModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('unid_id', '=', $id)->first();
+        $model = $this->model->where('esco_id', '=', $id)->first($id);
 
         if ($model)
         {
-            throw new Exception('Unidade não encontrada.');
+            throw new Exception('Escolaridade não encontrada.');
         }
-
         return $model;
     }
 
@@ -44,27 +43,24 @@ class UnidadeRepositorio
         {
             if (isset($input[$field]))
             {
-                $this->model[$field] = $input[$field];
+                $this->model{$field} = $input[$field];
             }
-            
-            $this->model->save();
-
-            return $this->model;
         }
+        $this->model->save();
+        return $this->model;
     }
 
     public function update(array $input, int $id)
     {
-        $model = $this->find($id);
+        $model = $this->model->find($id);
 
         foreach ($this->fields as $field)
         {
             if (isset($input[$field]))
             {
-                $model->{$field} = $input[$field];
+               $model->{$field} = $input[$field];
             }
         }
-
         $model->save();
 
         return $model;
@@ -74,21 +70,16 @@ class UnidadeRepositorio
     {
         $model = $this->find($id);
 
-        return $model->delete($id);
+        return $model->delete();
     }
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('unid_nome', 'unid_sigla', 'ASC');
+        $model = $this->model->orderBy('esco_nome', 'ASC');
 
-        if (isset($input['unid_nome']))
+        if (Isset($input['esco_nome']))
         {
-            $model = $model->where('unid_nome', 'ilike', '%'.$input['unid_nome'].'%');
-        }
-
-        if (isset($input['unid_sigla']))
-        {
-            $model = $model->where('unid_sigla', 'ilike', '%'.$input['unid_sigla'].'%');
+            $model = $model->where('esco_nome', 'ilike', '%'.$input['esco_nome'].'%');
         }
 
         if (isset($input['count']))

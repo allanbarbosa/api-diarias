@@ -75,16 +75,11 @@ class EmpresaRepositorio
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('empr_nome', 'empr_sigla', ASC);
+        $model = $this->model->orderBy('empr_nome', 'ASC');
 
         if (isset($input['empr_nome']))
         {
             $model = $model->where('empr_nome', 'ilike', '%'.$input['empr_nome'].'%');
-        }
-
-        if (isset($input['empr_sigla']))
-        {
-            $model = $model->where('empr_sigla', 'ilike', '%'.$input['empr_sigla'].'%');
         }
 
         if (isset($input['count']))
