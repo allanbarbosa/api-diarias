@@ -66,7 +66,7 @@ class PrerrogativaRepositorio
 
     public function delete(int $id)
     {
-        $model = $this->find($id);
+        $model = $this->field($id);
 
         return $model->delete();
     }
