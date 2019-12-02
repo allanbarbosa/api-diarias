@@ -13,6 +13,8 @@ class PrerrogativaRepositorio
     protected $fields = [
         'prer_descricao',
         'prer_slug',
+        'created_by',
+        'updated_by'
     ];
 
     public function __construct(PrerrogativaModel $prerrotivaModel)
@@ -64,9 +66,12 @@ class PrerrogativaRepositorio
         return $model;
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
         $model = $this->field($id);
+
+        $model->deleted_by = $usuario;
+        $model->save();
 
         return $model->delete();
     }

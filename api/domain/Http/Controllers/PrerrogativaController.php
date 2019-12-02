@@ -69,7 +69,9 @@ class PrerrogativaController extends Controller
     {
         try {
 
-            $this->servico->delete($id);
+            $usuario = request()->get('usuario');
+
+            $this->servico->delete($id, (int)$usuario);
 
             return response()->json('Registro excluído com sucesso', 200);
 

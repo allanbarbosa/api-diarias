@@ -21,7 +21,8 @@ Route::group(['middleware' => 'token.validation'], function () {
         phpinfo();
     });
 
+
+    Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
     
 });
 
-Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
