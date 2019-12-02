@@ -25,7 +25,7 @@ class ClasseRepositorio
     {
         $model = $this->model->where('clas_id', '=', $id)->first();
         
-        if ($model){
+        if (!$model){
             throw new Exception ('Classe não encontrada.');
         }
 
