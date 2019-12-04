@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Diarias\Prerrogativa;
@@ -26,6 +27,7 @@ class PrerrogativaServico
     public function all(array $input)
     {
         $prerrogativas = $this->repositorio->getWhere($input);
+        
         $dados = [
             'itens' => [],
             'total' => 0

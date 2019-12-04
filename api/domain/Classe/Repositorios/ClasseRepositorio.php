@@ -14,6 +14,8 @@ class ClasseRepositorio
 
     protected $fields = [
         'clas_nome',
+        'created_by',
+        'updated_by'
     ];
 
     public function __construct(ClasseModel $classeModel)
