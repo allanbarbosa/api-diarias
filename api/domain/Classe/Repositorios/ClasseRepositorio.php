@@ -40,9 +40,9 @@ class ClasseRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fields as $fields) {
-            if (isset(input[$fields])) {
-                $this->model->{$fields} = $input[$fields];
+        foreach ($this->fields as $field) {
+            if (isset(input[$field])) {
+                $this->model->{$field} = $input[$field];
             }
         }
 

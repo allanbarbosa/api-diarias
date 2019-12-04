@@ -74,9 +74,9 @@ class FuncionarioServico
     protected function tratarInput(array $input)
     {
         return [
-            'func_cpf' => $input['func_cpf'],
-            'func_nome' => $input['func_nome'],
-            'func_telefone' => $input['func_telefone'],
+            'func_cpf' => $input['cpf'],
+            'func_nome' => $input['nome'],
+            'func_telefone' => $input['telefone'],
         ];
     }
 
@@ -84,9 +84,9 @@ class FuncionarioServico
     {
         return [
             'id' => $funcionarioModel->func_id,
-            'func_cpf' => $funcionarioModel->func_cpf,
-            'func_nome' => $funcionarioModel->func_nome,
-            'func_telefone' => $funcionarioModel->func_telefone,
+            'cpf' => $funcionarioModel->func_cpf,
+            'nome' => $funcionarioModel->func_nome,
+            'telefone' => $funcionarioModel->func_telefone,
 
         ];
     }

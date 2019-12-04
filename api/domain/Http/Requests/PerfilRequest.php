@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class FuncionarioRequest extends FormRequest
+class PerfilRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,18 +17,14 @@ class FuncionarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'cpf' => ['required'],
-            'nome' => ['required'],
-            'telefone' => ['required'],
+            'descricao' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'cpf.required' => 'O campo CPF é obrigatório',
-            'nome.required' => 'O campo nome é obrigatório',
-            'telefone.required' => 'O campo telefone é obrigatório',
+            'descricao.required' => 'Campo descrição é obrigatório',
         ];
     }
 

@@ -47,7 +47,7 @@ class FuncionarioRepositorio
         {
             if (isset($input[$field]))
             {
-                $this->model{$field} = $input[$input];
+                $this->model->{$field} = $input[$field];
             }
         }
         $this->model->save();
@@ -62,7 +62,7 @@ class FuncionarioRepositorio
         {
             if (isset($field))
             {
-                $this->model{$field} = $input[$field];
+                $this->model->{$field} = $input[$field];
             }
         }
         $model->save();
@@ -98,7 +98,7 @@ class FuncionarioRepositorio
         {
             $model = $model->where('func_telefone', 'ilike', '%'.$input['func_telefone'].'%');
         }
-
+        
         if (isset($input['count']))
         {
            return $model->paginate($input['count']);

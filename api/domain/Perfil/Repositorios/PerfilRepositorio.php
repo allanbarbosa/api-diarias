@@ -1,33 +1,34 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Prerrogativa\Repositorios;
+namespace Diarias\Perfil\Repositorios;
 
-use Diarias\Prerrogativa\Models\PrerrogativaModel;
+use Diarias\Perfil\Models\PerfilModel;
 use Exception;
 
-class PrerrogativaRepositorio
+class PerfilRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'prer_descricao',
-        'prer_slug',
+        'perf_descricao',
+        'perf_slug',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'deleted_at',
     ];
 
-    public function __construct(PrerrogativaModel $prerrotivaModel)
+    public function __construct(PerfilModel $perfilModel)
     {
-        $this->model = $prerrotivaModel;
+        $this->model = $$perfilModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('prer_id', '=', $id)->first();
+        $model = $this->model->where('perf_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Prerrogativa não encontrada.');
+            throw new Exception('Perfil não encontrada.');
         }
 
         return $model;
@@ -78,10 +79,10 @@ class PrerrogativaRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('prer_descricao', 'ASC');
+        $model = $this->model->orderBy('perf_descricao', 'ASC');
 
-        if (isset($input['prer_descricao'])) {
-            $model = $model->where('prer_descricao', 'ilike', '%'.$input['prer_descricao'].'%');
+        if (isset($input['perf_descricao'])) {
+            $model = $model->where('perf_descricao', 'ilike', '%'.$input['perf_descricao'].'%');
         }
 
         if (isset($input['count'])) {
