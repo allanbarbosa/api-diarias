@@ -1,34 +1,33 @@
 <?php
-
 declare(strict_types=1);
 
-namespace Diarias\Prerrogativa\Repositorios;
+namespace Diarias\GrupoInternacional\Repositorios;
 
-use Diarias\Prerrogativa\Models\PrerrogativaModel;
+use Diarias\GrupoInternacional\Models\GrupoInternacionalModel;
 use Exception;
 
-class PrerrogativaRepositorio
+class GrupoInternacionalRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'prer_descricao',
-        'prer_slug',
+        'grup_int_codigo',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'deleted_by',
     ];
 
-    public function __construct(PrerrogativaModel $prerrotivaModel)
+    public function __construct(GrupoInternacionalModel $grupointernacionalModel)
     {
-        $this->model = $prerrotivaModel;
+        $this->model = $grupointernacionalModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('prer_id', '=', $id)->first();
+        $model = $this->model->where('grup_int_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Prerrogativa não encontrada.');
+            throw new Exception('Grupo Internacional não encontrada.');
         }
 
         return $model;
@@ -79,10 +78,10 @@ class PrerrogativaRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('prer_descricao', 'ASC');
+        $model = $this->model->orderBy('grup_int_codigo', 'ASC');
 
-        if (isset($input['prer_descricao'])) {
-            $model = $model->where('prer_descricao', 'ilike', '%'.$input['prer_descricao'].'%');
+        if (isset($input['grup_int_codigo'])) {
+            $model = $model->where('grup_int_codigo', 'ilike', '%'.$input['grup_int_codigo'].'%');
         }
 
         if (isset($input['count'])) {
