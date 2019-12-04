@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Classe\Moldes;
+namespace Diarias\Classe\Models;
 
-use Illuminete\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ClasseModel extends Model
@@ -14,7 +14,7 @@ class ClasseModel extends Model
         protected $primaryKey = 'clas_id';
 
         protected $fillable = [
-            'clas_nome',
+            'clas_nome'
         ];
 
         use SoftDeletes;

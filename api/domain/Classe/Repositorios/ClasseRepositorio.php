@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Diarias\Classe\Repositorios;
 
-use Diarias\Classe\Models\ClasseMoldes;
+use Diarias\Classe\Models\ClasseModel;
 use Exception;
 
 class ClasseRepositorio
@@ -13,7 +13,7 @@ class ClasseRepositorio
     protected $model;
 
     protected $fields = [
-        'clas_nome',
+        'clas_nome'
     ];
 
     public function __construct(ClasseModel $classeModel)
@@ -25,7 +25,8 @@ class ClasseRepositorio
     {
         $model = $this->model->where('clas_id', '=', $id)->first();
         
-        if (!$model){
+        if (!$model)
+        {
             throw new Exception ('Classe não encontrada.');
         }
 
@@ -40,8 +41,10 @@ class ClasseRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fields as $field) {
-            if (isset(input[$field])) {
+        foreach ($this->fields as $field)
+        {
+            if (isset($input[$field]))
+            {
                 $this->model->{$field} = $input[$field];
             }
         }
@@ -53,11 +56,11 @@ class ClasseRepositorio
 
     public function update(array $input, int $id)
     {
-        $model = $this->fild($id);
+        $model = $this->find($id);
 
         foreach($this->fields as $field) {
             if (isset($input[$field])) {
-                $model->{field} = $input[$field];
+                $model->{$field} = $input[$field];
             }
         }
 
@@ -76,10 +79,10 @@ class ClasseRepositorio
 
     public function getwhere(array $input)
     {   
-        $model = $this->model->orderBy('clas_nome','ASC');
+        $model = $this->model->orderBy('clas_nome', 'ASC');
         
         if (isset($input['clas_nome'])) {
-            $model = $model->where('clas_nome', 'like', '%'.$input[clas_nome].'%');
+            $model = $model->where('clas_nome', 'ilike', '%'.$input['clas_nome'].'%');
         }
 
         if (isset($input['count'])) {

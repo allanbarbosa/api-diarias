@@ -10,11 +10,11 @@ use Diarias\Classe\Repositorios\ClasseRepositorio;
 
 class ClasseServico
 {
-    protected $classe;
+    protected $repositorio;
 
-    public function __construct(ClasseRepositorio $ClasseRepositorio)
+    public function __construct(ClasseRepositorio $classeRepositorio)
     {
-        $this->repositorio = $ClasseRepositorio;
+        $this->repositorio = $classeRepositorio;
     }
 
     public function find(int $id)
@@ -26,13 +26,13 @@ class ClasseServico
 
     public function all(array $input)
     {
-        $classe = $this->repositorio->getwhere($input);
+        $classes = $this->repositorio->getwhere($input);
         $dados = [
             'itens' => [],
             'total'=> 0
         ];
 
-        foreach ($classe as $classe) {
+        foreach ($classes as $classe) {
             $dados['itens'][] = $this->tratarOutput($classe);
         }
 
@@ -75,7 +75,7 @@ class ClasseServico
         ];
     }
 
-    protected function tratarOutput(classeModel $classeModel)
+    protected function tratarOutput(ClasseModel $classeModel)
     {
         return [
             'id' => $classeModel->clas_id,
