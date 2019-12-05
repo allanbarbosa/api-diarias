@@ -25,7 +25,7 @@ class UnidadeRepositorio
     {
         $model = $this->model->where('unid_id', '=', $id)->first();
 
-        if ($model)
+        if (!$model)
         {
             throw new Exception('Unidade não encontrada.');
         }

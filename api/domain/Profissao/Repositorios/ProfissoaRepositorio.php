@@ -43,7 +43,7 @@ class ProfissaoRepositorio
         {
             if (isset($input[$filde]))
             {
-                $this->model{$filde} = $input[$filde];
+                $this->model->{$filde} = $input[$filde];
             }
         }
 
@@ -60,7 +60,7 @@ class ProfissaoRepositorio
         {
             if (isset($input[$filde]))
             {
-                $model{$filde} = $input[$filde];
+                $model->{$filde} = $input[$filde];
             }    
         }
         $model->save();

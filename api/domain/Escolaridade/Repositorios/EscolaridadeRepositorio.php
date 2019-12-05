@@ -23,9 +23,9 @@ class EscolaridadeRepositorio
 
     public function find(int $id)
     {
-        $model = $this->model->where('esco_id', '=', $id)->first($id);
+        $model = $this->model->where('esco_id', '=', $id)->first();
 
-        if ($model)
+        if (!$model)
         {
             throw new Exception('Escolaridade não encontrada.');
         }

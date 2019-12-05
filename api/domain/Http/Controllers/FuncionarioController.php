@@ -3,23 +3,25 @@ declare(strict_types=1);
 
 namespace Diarias\Http\Controllers;
 
+
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\FuncionarioRequest;
+use Diarias\Funcionario\FuncionarioServico;
 use Exception;
 
-class PrerrogativaController extends Controller
+class FuncionarioController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(FuncionarioServico $funcionarioServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $funcionarioServico;
     }
 
     public function index()
     {
         $input = request()->all();
+
         $resposta = $this->servico->all($input);
 
         return response()->json($resposta, 200);
@@ -29,9 +31,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $funcionario = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($funcionario, 200);
 
         } catch (Exception $e) {
             
@@ -40,24 +42,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(FuncionarioRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $funcionario = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($funcionario, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(FuncionarioRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $funcionario = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($funcionario, 200);
 
         } catch (Exception $e) {
 

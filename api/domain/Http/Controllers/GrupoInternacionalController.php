@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\GrupoInternacionalRequest;
+use Diarias\GrupoInternacional\GrupoInternacionalServico;
 use Exception;
 
-class PrerrogativaController extends Controller
+class GrupoInternacionalController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(GrupoInternacionalServico $grupointernacionalServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $grupointernacionalServico;
     }
 
     public function index()
@@ -29,9 +29,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $grupointernacional = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($grupointernacional, 200);
 
         } catch (Exception $e) {
             
@@ -40,24 +40,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(GrupoInternacionalRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $grupointernacional = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($grupointernacional, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(GrupoInternacionalRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $grupointernacional = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($grupointernacional, 200);
 
         } catch (Exception $e) {
 
