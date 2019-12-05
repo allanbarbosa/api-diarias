@@ -91,6 +91,21 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'diariasProducao' => [
+            'driver' => 'pgsql',
+            'url' => '',
+            'host' => 'diarias-pgsql.conder.intranet',
+            'port' => '5432',
+            'database' => 'diarias',
+            'username' => 'seden',
+            'password' => 's3d3n@c0nd3r',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
     ],
 
     /*
