@@ -13,13 +13,10 @@ class ClasseRepositorio
     protected $model;
 
     protected $fields = [
-<<<<<<< HEAD
         'clas_nome',
         'created_by',
-        'updated_by'
-=======
-        'clas_nome'
->>>>>>> 20ed3bb6c30804926b0adc476b02929a548d13df
+        'updated_by',
+        'clas_nome',
     ];
 
     public function __construct(ClasseModel $classeModel)

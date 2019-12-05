@@ -4,7 +4,7 @@ declare (strict_types=1);
 
 namespace Diarias\Organograma\Repositorio;
 
-use Diarias\Organgrama\Moldes\OrganogramaModel;
+use Diarias\Organograma\Models\OrganogramaModel;
 use Exception;
 
 class OrganogramaRepositorio
@@ -75,9 +75,9 @@ public function update(array $input, int $id)
 
 public function delete(int $id, int $usuario)
 {
-    $model = $this->field($id);
+    $model = $this->find($id);
 
-    $model->deleted_by = usuario;
+    $model->deleted_by = $usuario;
     $model->save();
 
     return $model->delete();

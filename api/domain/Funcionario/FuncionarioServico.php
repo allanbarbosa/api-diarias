@@ -87,7 +87,6 @@ class FuncionarioServico
             'cpf' => $funcionarioModel->func_cpf,
             'nome' => $funcionarioModel->func_nome,
             'telefone' => $funcionarioModel->func_telefone,
-
         ];
     }
 }
