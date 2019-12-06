@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types=1)
+declare(strict_types=1);
 
-namespace Diarias\Htpps\Requests;
+namespace Diarias\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Exceptions\HttpResponseException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class OrganogramaRequest extends FormRequest
 {
@@ -20,7 +20,7 @@ class OrganogramaRequest extends FormRequest
         return [
             'codigo' => ['required'],
             'dataInicio' => ['required'],
-            'dataFim' => ['required']
+            'dataFim' => ['required'],
         ];
     }
 
@@ -36,7 +36,7 @@ class OrganogramaRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            response()->join(['mensagem' => $validator->erros()->firist()], 422)
+            response()->join(['mensagem' => $validator->errors()->first()], 422)
         );
     }
 }

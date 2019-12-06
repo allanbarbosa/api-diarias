@@ -9,14 +9,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrganogramaModel extends Model
 {
-    protected $table = 'Organograma';
+    protected $table = 'organograma';
 
     protected $primaryKey = 'orga_id';
 
     protected $fillable = [
         'orga_codigo',
         'orga_data_inicio',
-        'orga_data_fim'
+        'orga_data_fim',
     ];
 
     use SoftDeletes;

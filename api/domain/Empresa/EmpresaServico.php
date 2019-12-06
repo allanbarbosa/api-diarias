@@ -73,7 +73,7 @@ class EmpresaServico
     protected function tratarInput(array $input)
     {
         return [
-            'empr_nome' => $input['nome_empresa'],
+            'empr_nome' => $input['empresa'],
             'empr_sigla' => $input['sigla'],
         ];
     }
@@ -82,7 +82,7 @@ class EmpresaServico
     {
         return [
             'id' => $empresaModel->empr_id,
-            'nome_empresa' => $empresaModel->empr_nome,
+            'empresa' => $empresaModel->empr_nome,
             'sigla' => $empresaModel->empr_sigla,
         ];
 
