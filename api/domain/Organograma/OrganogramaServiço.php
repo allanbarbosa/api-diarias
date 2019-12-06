@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Diarias\Organograma;
 
-use Diarias\Organograma\Moldes\OrganogramaModel;
+use Diarias\Organograma\Models\OrganogramaModel;
 use Diarias\Organograma\Repositorios\OrganogramaRepositorio;
 
 
@@ -48,13 +48,13 @@ class OrganogramaServico
         }
 
         return $dados;
-
+  
     }
 
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
-        $dados = [updated_by] = $input['usuario'];
+        $dados = [$updated_by] = $input['usuario'];
 
         $organograma = $this->repositorio->save($dados);
 
@@ -95,8 +95,4 @@ class OrganogramaServico
         ];
 
     }
-    }
-
-
-
 }

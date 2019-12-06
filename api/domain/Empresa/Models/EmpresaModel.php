@@ -10,7 +10,7 @@ class EmpresaModel extends Model
 {
     protected $table = 'empresa';
 
-    protected $primarykey = 'empr_id';
+    protected $primaryKey = 'empr_id';
 
     protected $fillable = [
         'empr_nome',

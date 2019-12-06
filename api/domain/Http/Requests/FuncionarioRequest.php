@@ -20,6 +20,9 @@ class FuncionarioRequest extends FormRequest
             'cpf' => ['required'],
             'nome' => ['required'],
             'telefone' => ['required'],
+            'empresa' => ['required'],
+            'profissao' => ['required'],
+            'escolaridade' => ['required'],
         ];
     }
 
@@ -29,6 +32,9 @@ class FuncionarioRequest extends FormRequest
             'cpf.required' => 'O campo CPF é obrigatório',
             'nome.required' => 'O campo nome é obrigatório',
             'telefone.required' => 'O campo telefone é obrigatório',
+            'empresa.required' => 'O campo empresa é obrigatório',
+            'profissao.required' => 'O campo profissao é obrigatório',
+            'escolaridade.required' => 'O campo escolaridade é obrigatório',
         ];
     }
 
