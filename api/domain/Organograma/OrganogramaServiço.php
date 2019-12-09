@@ -80,18 +80,18 @@ class OrganogramaServico
     {
         return [
             'orga_codigo' => $input['codigo'],
-            'orga_data_inicio' => $input['codigo'],
-            'orga_data_fim' => $input['codigo']
+            'orga_data_inicio' => $input['dataInicio'],
+            'orga_data_fim' => $input['dataFim']
         ];
     }
     protected function tratarOutput(OrganogramaModel $organogramaModel)
     {
 
         return [
-             'id' => $organogramaModel->org_id,
-             'codigo' => $organogramaModel->org_codigo,   
-             'data' => $organogramaModel->org_data_inicio,
-             'data' => $organogramaModel->org_data_fim,   
+             'id' => $organogramaModel->orgaId,
+             'codigo' => $organogramaModel->orgaCodigo,   
+             'data' => $organogramaModel->dataInicio,
+             'data' => $organogramaModel->dataFim,   
         ];
 
     }
