@@ -92,3 +92,4 @@ class TipoComprovanteRepositorio
 
         return $model->get();
     }
+}

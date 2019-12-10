@@ -92,3 +92,4 @@ class ParticularidadeRepositorio
 
         return $model->get();
     }
+}
