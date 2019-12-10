@@ -85,26 +85,17 @@ class FuncionarioRepositorio
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('func_cpf', 'func_nome', 'func_telefone', 'ASC');
-
-        if (isset($input['func_cpf']))
-        {
-            $model = $model->where('func_cpf', 'ilike', '%'.$input['func_cpf'].'%');
-        }
+        $model = $this->model->orderBy('func_nome', 'ASC');
 
         if (isset($input['func_nome']))
         {
             $model = $model->where('func_nome', 'ilike', '%'.$input['func_nome'].'%');
         }
 
-        if (isset($input['func_telefone']))
-        {
-            $model = $model->where('func_telefone', 'ilike', '%'.$input['func_telefone'].'%');
-        }
-        
         if (isset($input['count']))
         {
            return $model->paginate($input['count']);
         }
+        return $model->get();
     }
 }

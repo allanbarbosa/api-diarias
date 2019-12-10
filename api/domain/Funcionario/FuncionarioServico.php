@@ -90,9 +90,21 @@ class FuncionarioServico
             'cpf' => $funcionarioModel->func_cpf,
             'nome' => $funcionarioModel->func_nome,
             'telefone' => $funcionarioModel->func_telefone,
-            'empresa' => $funcionarioModel->id_empresa,
-            'profissao' => $funcionarioModel->id_profissao,
-            'escolaridade' => $funcionarioModel->id_escolaridade,
+            'empresa' =>
+            [
+                'id' => $funcionarioModel->id_empresa,
+                'descricao' => $funcionarioModel->empresa->empr_nome,
+            ],
+            'profissao' =>
+            [
+                'id' => $funcionarioModel->id_profissao,
+                'descricao' => $funcionarioModel->profissao->prof_nome,
+            ],
+            'escolaridade' =>
+            [
+                'id' => $funcionarioModel->id_escolaridade,
+                'descricao' => $funcionarioModel->escolaridade->esco_nome,
+            ],
         ];
     }
 }
