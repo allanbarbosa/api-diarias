@@ -15,7 +15,7 @@ class FuncionarioServico
         $this->repositorio = $funcionarioRepositorio;
     }
 
-    public function find($id)
+    public function find(int $id)
     {
         $funcionario = $this->repositorio->find($id);
 

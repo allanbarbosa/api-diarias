@@ -13,4 +13,12 @@ class UsuarioModel extends Model
     protected $primaryKey = 'usua_id';
 
     use SoftDeletes;
+
+    public function perfil()
+    {
+        public function perfil()
+        {
+            return $this->belongsToMany('App\Role', 'role_user_table', 'user_id', 'role_id');
+        }
+    }
 }
