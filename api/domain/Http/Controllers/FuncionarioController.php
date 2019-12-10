@@ -30,13 +30,13 @@ class FuncionarioController extends Controller
     public function show($id)
     {
         try {
-            
-            $funcionario = $this->servico->find($id);
+
+            $funcionario = $this->servico->find((int)$id);
 
             return response()->json($funcionario, 200);
 
         } catch (Exception $e) {
-            
+
             return response()->json(['mensagem' => $e->getMessage()], 400);
 
         }
@@ -45,7 +45,7 @@ class FuncionarioController extends Controller
     public function store(FuncionarioRequest $request)
     {
         $input = $request->all();
-        
+
         $funcionario = $this->servico->save($input);
 
         return response()->json($funcionario, 200);
@@ -54,7 +54,7 @@ class FuncionarioController extends Controller
     public function update(FuncionarioRequest $request, int $id)
     {
         try {
-            
+
             $input = $request->all();
 
             $funcionario = $this->servico->update($input, $id);
