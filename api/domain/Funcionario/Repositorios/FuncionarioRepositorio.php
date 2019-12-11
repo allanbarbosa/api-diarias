@@ -63,9 +63,9 @@ class FuncionarioRepositorio
 
         foreach ($this->fields as $field)
         {
-            if (isset($field))
+            if (isset($input[$field]))
             {
-                $this->model->{$field} = $input[$field];
+                $model->{$field} = $input[$field];
             }
         }
         $model->save();

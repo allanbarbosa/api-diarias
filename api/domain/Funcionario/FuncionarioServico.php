@@ -59,7 +59,7 @@ class FuncionarioServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
-        $dados['updeted_by'] = $input['usuario'];
+        $dados['updated_by'] = $input['usuario'];
 
         $funcionario = $this->repositorio->update($dados, $id);
 

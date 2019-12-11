@@ -54,11 +54,11 @@ class FuncionarioController extends Controller
     public function update(FuncionarioRequest $request, int $id)
     {
         try {
-
+            
             $input = $request->all();
-
+        
             $funcionario = $this->servico->update($input, $id);
-
+        
             return response()->json($funcionario, 200);
 
         } catch (Exception $e) {
