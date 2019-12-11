@@ -77,7 +77,7 @@ class FuncionarioRepositorio
     {
         $model = $this->find($id);
 
-        $model->delete_by = $usuario;
+        $model->deleted_by = $usuario;
         $model->save();
 
         return $model->delete();
