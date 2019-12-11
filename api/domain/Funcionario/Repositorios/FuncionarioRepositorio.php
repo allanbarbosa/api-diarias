@@ -75,7 +75,7 @@ class FuncionarioRepositorio
 
     public function delete(int $id, int $usuario)
     {
-        $model = $this->field($id);
+        $model = $this->find($id);
 
         $model->delete_by = $usuario;
         $model->save();
