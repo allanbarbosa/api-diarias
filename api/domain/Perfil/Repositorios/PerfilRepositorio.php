@@ -20,7 +20,7 @@ class PerfilRepositorio
 
     public function __construct(PerfilModel $perfilModel)
     {
-        $this->model = $$perfilModel;
+        $this->model = $perfilModel;
     }
 
     public function find(int $id)
