@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\EstadoRequest;
 use Diarias\Estado\EstadoServico;
 use Exception;
+use Diarias\Htpp\Requests\EstadoRequest;
 
 class estadoController extends Controller
 {
@@ -40,7 +40,7 @@ class estadoController extends Controller
         }
     }
 
-    public function store(Estadorequest $request)
+    public function store(EstadoRequest $request)
     {
         $input = $request->all();
 

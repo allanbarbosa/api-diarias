@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Diarias\PapelFluxograma\Repositorios;
 
-use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 use Exception;
+use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 
 class PapelFluxogramaRepositorio
 {
@@ -27,7 +27,7 @@ class PapelFluxogramaRepositorio
         $model = $this->model->where('papel_flu_id', '=', $id)->first();
 
         if (!model) {
-            throw new Exeception('Papel Fluxograma não encontrada.');
+            throw new Exception('Papel Fluxograma não encontrada.');
         }
 
         return $model;

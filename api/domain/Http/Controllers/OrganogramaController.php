@@ -1,13 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Diarias\Https\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Request\OrganogramaRequest;
 use Diarias\Organograma\OrganogramaServico;
 use Exception;
+use Diarias\Http\Requests\OrganogramaRequest;
 
 
 class OrganogramaController extends controller
@@ -41,7 +40,7 @@ class OrganogramaController extends controller
         }
     }
 
-    public function store(OraganogramaRequest $request)
+    public function store(OrganogramaRequest $request)
     {
        $input = $request->all();
 
@@ -60,7 +59,7 @@ class OrganogramaController extends controller
 
             return response()->json($organograma, 200);
 
-        } catch (Execption $e) {
+        } catch (Exception $e) {
 
             return response()->json(['mensagem' => $e->getMessagem()], 400);
         }

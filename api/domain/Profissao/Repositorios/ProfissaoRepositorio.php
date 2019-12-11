@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Diarias\Profissao\Repositorios;
 
-use Diarias\Empresa\Models\ProfissaoModel;
 use Exception;
+use Diarias\Profissao\Models\ProfissaoModel;
 
 class ProfissaoRepositorio
 {

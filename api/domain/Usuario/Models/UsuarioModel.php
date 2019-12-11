@@ -6,6 +6,7 @@ namespace Diarias\Usuario\Models;
 use Diarias\Perfil\Models\PerfilModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Diarias\Funcionario\Models\FuncionarioModel;
 
 class UsuarioModel extends Model
 {
@@ -17,6 +18,11 @@ class UsuarioModel extends Model
 
     public function perfil()
     {
-        return $this->belongsToMany(PerfilModel::class, 'usuario_perfil', 'usua_id', 'perf_id');
+        return $this->belongsToMany(PerfilModel::class, 'usuario_perfil', 'id_usuario', 'id_perfil');
+    }
+    
+    public function funcionario()
+    {
+        return $this->belongsTo(FuncionarioModel::class, 'id_funcionario');    
     }
 }

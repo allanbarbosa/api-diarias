@@ -1,5 +1,4 @@
 <?php
-
 declare (strict_types=1);
 
 namespace Diarias\PapelFluxograma\Models;
@@ -7,7 +6,7 @@ namespace Diarias\PapelFluxograma\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PapelFluxograma extends Model
+class PapelFluxogramaModel extends Model
 {
     protected $table = 'PapelFluxograma';
 

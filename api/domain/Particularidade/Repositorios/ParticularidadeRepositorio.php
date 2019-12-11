@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Diarias\Particularidade\Repositorios;
 
-use Diarias\Particularidade\Models\ParticularidadeModel;
 use Exception;
+use Diarias\Paricularidade\Models\ParticularidadeModel;
 
 class ParticularidadeRepositorio
 {

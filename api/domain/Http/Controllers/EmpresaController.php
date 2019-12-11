@@ -6,7 +6,7 @@ namespace Diarias\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Diarias\Http\Requests\EmpresaRequest;
 use Diarias\Empresa\EmpresaServico;
-use Excepiton;
+use Exception;
 
 class EmpresaController extends Controller
 {
@@ -32,7 +32,7 @@ class EmpresaController extends Controller
             $empresa = $this->servico->find($id);
             return response()->json($empresa, 200);
         }
-        catch (Excepiton $e)
+        catch (Exception $e)
         {
             return response()->json(['mensagem' => $e->getMenssage()], 400);
         }
@@ -58,7 +58,7 @@ class EmpresaController extends Controller
             return response()->json($empresa, 200);
 
         }
-        catch (Excepiton $e)
+        catch (Exception $e)
         {
             return response()->json(['mensagem' => $e->getMenssage()], 400);
         }
@@ -72,7 +72,7 @@ class EmpresaController extends Controller
 
             return response()->json('Registro excluído com suceeso.', 200);
         }
-        catch (Excepiton $e)
+        catch (Exception $e)
         {
             return response()->json(['mensagem' => $e->getMenssage()], 400);
         }

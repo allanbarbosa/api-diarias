@@ -4,6 +4,7 @@ namespace App\Http;
 
 use Diarias\Http\Middlewares\TokenValidationMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Diarias\Http\Middlewares\CriacaoUsuarioMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -64,6 +65,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'token.validation' => TokenValidationMiddleware::class,
+        'criacao.usuario' => CriacaoUsuarioMiddleware::class,
+        
     ];
 
     /**

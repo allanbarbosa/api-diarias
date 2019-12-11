@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Diarias\Parametro;
 
-use Diarias\Parametro\Models\ParametroModel;
 use Diarias\Parametro\Repositorios\ParametroRepositorio;
+use Diarias\Parametros\Models\ParametroModel;
 
 class ParametroServico
 {

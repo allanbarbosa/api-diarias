@@ -22,7 +22,8 @@ Route::group(['middleware' => 'token.validation'], function () {
     });
     
     Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
-    Route::resource('funcionario', '\Diarias\Http\Controllers\FuncionarioController');
+    Route::middleware('criacao.usuario')->post('funcionario', '\Diarias\Http\Controllers\FuncionarioController@store');
+    Route::resource('funcionario', '\Diarias\Http\Controllers\FuncionarioController')->only(['index', 'show', 'update', 'delete']);
     
 
     Route::get('dropdown/{slug}', '\Diarias\Http\Controllers\DropdownController@index');

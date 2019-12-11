@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Diarias\Organograma;
 
 use Diarias\Organograma\Models\OrganogramaModel;
-use Diarias\Organograma\Repositorios\OrganogramaRepositorio;
+use Diarias\Organograma\Repositorio\OrganogramaRepositorio;
 
 
 class OrganogramaServico

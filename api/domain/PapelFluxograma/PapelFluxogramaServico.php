@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Diarias\PapelFluxograma;
 
-use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 use Diarias\PapelFluxograma\Repositorios\PapelFluxogramaRepositorio;
 use Illuminate\Support\Str;
+use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 
 class PapelFluxogramaServico
 {

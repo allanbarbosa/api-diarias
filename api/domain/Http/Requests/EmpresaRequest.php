@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Diarias\Http\Requests;
 
-use Illumina\Contracts\Validation\Validator;
-use Illuminate\Fundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class EmpresaRequest extends FormRequest
 {

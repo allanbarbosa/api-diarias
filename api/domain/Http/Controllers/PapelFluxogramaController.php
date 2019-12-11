@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Htpp\Requests\PapelfluxogramaRequest;
 use Diarias\PapelFluxograma\PapelFluxogramaServico;
 use Exception;
+use Diarias\Https\Requests\PapelFluxogramaRequest;
 
 class PapelFluxogramaController extends Controller
 {

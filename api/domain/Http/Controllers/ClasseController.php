@@ -1,14 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Diarias\http\Controllers;
 
-use App\http\Controllers\Controllers;
-use Diarias\http\Requests\ClasseRequest;
 use Diarias\Classe\ClasseServico;
-
-use Execption;
+use Exception;
+use App\Http\Controllers\Controller;
+use Diarias\https\Requests\ClasseRequest;
 
 class ClasseController extends Controller
 {
@@ -31,11 +29,11 @@ class ClasseController extends Controller
     {
         try {
 
-            $classe = $this->service->find($id);
+            $classe = $this->service->find((int)$id);
 
             return response()-> json($classe, 200);
 
-        }catch (Execption $e) {
+        }catch (Exception $e) {
 
             return response()->json(['mensagem' => $e->getMessage()], 400);
 
@@ -61,7 +59,7 @@ class ClasseController extends Controller
 
             return response()->json($classe, 200);
 
-        } catch (Execption $e) {
+        } catch (Exception $e) {
          
             return response()->json(['mensagem' => $e->getMessage()], 400);
         }
@@ -75,7 +73,7 @@ class ClasseController extends Controller
 
             return response()->json('Resgistro excluído com sucesso', 200);
 
-        } catch (Execption $e) {
+        } catch (Exception $e) {
 
             return response()->json(['mensagem' => $e->getMessage()], 400);
         }

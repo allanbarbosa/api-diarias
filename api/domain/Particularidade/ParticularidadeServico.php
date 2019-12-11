@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Diarias\Particularidade;
 
-use Diarias\Particularidade\Models\ParticularidadeModel;
 use Diarias\Particularidade\Repositorios\ParticularidadeRepositorio;
 use Illuminate\Support\Str;
+use Diarias\Paricularidade\Models\ParticularidadeModel;
 
 class ParticularidadeServico
 {

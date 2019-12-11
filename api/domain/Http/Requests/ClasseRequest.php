@@ -5,8 +5,7 @@ namespace Diarias\https\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\http\Exceptions\HttpResponseExceptions;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ClasseRequest extends FormRequest
 {
@@ -31,7 +30,7 @@ class ClasseRequest extends FormRequest
 
     protected function faileValidation(validator $validator)
     {
-        throw new httpReponseExeception(
+        throw new HttpResponseException(
             response()->json(['mensagem' => $validator->erros()->first()], 422)
         );
     }
