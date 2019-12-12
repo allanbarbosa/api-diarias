@@ -14,6 +14,7 @@ class FuncionarioRepositorio
         'func_cpf',
         'func_nome',
         'func_telefone',
+        'func_email',
         'id_empresa',
         'id_profissao',
         'id_escolaridade',

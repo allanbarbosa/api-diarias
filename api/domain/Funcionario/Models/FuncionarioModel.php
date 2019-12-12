@@ -19,6 +19,7 @@ class FuncionarioModel extends Model
         'func_cpf',
         'func_nome',
         'func_telefone',
+        'func_email'
     ];
 
     use SoftDeletes;

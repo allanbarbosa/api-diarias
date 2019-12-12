@@ -77,6 +77,7 @@ class FuncionarioServico
             'func_cpf' => $input['cpf'],
             'func_nome' => $input['nome'],
             'func_telefone' => $input['telefone'],
+            'func_email' => $input['email'],
             'id_empresa' => $input['empresa'],
             'id_profissao' => $input['profissao'],
             'id_escolaridade' => $input['escolaridade']
@@ -90,6 +91,7 @@ class FuncionarioServico
             'cpf' => $funcionarioModel->func_cpf,
             'nome' => $funcionarioModel->func_nome,
             'telefone' => $funcionarioModel->func_telefone,
+            'email' => $funcionarioModel->func_email,
             'empresa' =>
             [
                 'id' => $funcionarioModel->id_empresa,
