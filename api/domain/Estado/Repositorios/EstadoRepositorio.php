@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Diarias\Estado\Repositorios;
 
-use Diarias\Estado\Moldes\EstadoModel;
+use Diarias\Estado\Models\EstadoModel;
 use Exception;
 
 class EstadoRepositorio
@@ -62,9 +62,9 @@ class EstadoRepositorio
                 $model->{$field} = $input[$field];
             }
         }
-    $model->save();
-    
-    return $model;
+        $model->save();
+        
+        return $model;
 
     }
 
@@ -83,13 +83,12 @@ class EstadoRepositorio
         $model = $this->model->orderBy('esta_sigla', 'ASC');
 
         if (isset($input['esta_sigla'])) {
-            $model = $model->where('esta_sigla', 'ilike', '%'.input['esta_sigla'].'%');
+            $model = $model->where('esta_sigla', 'ilike', '%'.$input['esta_sigla'].'%');
         }
 
         if (isset($input['count'])) {
             return $model->paginate($input['count']);
         }
-
         return $model->get();
     }
 }

@@ -5,8 +5,8 @@ namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Diarias\Estado\EstadoServico;
+use Diarias\Http\Requests\EstadoRequest;
 use Exception;
-use Diarias\Htpp\Requests\EstadoRequest;
 
 class estadoController extends Controller
 {
@@ -19,13 +19,13 @@ class estadoController extends Controller
 
     public function index()
     {
-        $input = requet()->all();
+        $input = request()->all();
         $resposta = $this->servico->all($input);
 
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
 
@@ -35,7 +35,7 @@ class estadoController extends Controller
 
         } catch (Exception $e) {
 
-            return response()->json(['mesagem' => $e->getMessege()], 400);
+            return response()->json(['mesagem' => $e->getMessage()], 400);
 
         }
     }

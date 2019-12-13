@@ -1,7 +1,7 @@
 <?php
-declare(strin_types=1);
+declare(strict_types=1);
 
-namespace Diarias\Estado\Moldes;
+namespace Diarias\Estado\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,7 +14,7 @@ class EstadoModel extends Model
 
     protected $fillable = [
         'esta_sigla',
-        'esta_nome',
+        'esta_nome'
     ];
 
     use SoftDeletes;
