@@ -1,5 +1,5 @@
 <?php
-declare(strin_types=1);
+declare(strict_types=1);
 
 namespace Diarias\Estado\Models;
 
@@ -14,7 +14,7 @@ class EstadoModel extends Model
 
     protected $fillable = [
         'esta_sigla',
-        'esta_nome',
+        'esta_nome'
     ];
 
     use SoftDeletes;

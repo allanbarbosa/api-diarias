@@ -20,12 +20,13 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::get('teste', function () {
         phpinfo();
     });
-    
+    Route::resource('estado', '\Diarias\Http\Controllers\EstadoController');
     Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
     Route::middleware('criacao.usuario')->post('funcionario', '\Diarias\Http\Controllers\FuncionarioController@store');
     Route::resource('funcionario', '\Diarias\Http\Controllers\FuncionarioController')->only(['index', 'show', 'update', 'destroy']);
     
 
     Route::get('dropdown/{slug}', '\Diarias\Http\Controllers\DropdownController@index');
+
 });
 

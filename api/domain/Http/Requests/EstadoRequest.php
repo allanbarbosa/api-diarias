@@ -18,13 +18,15 @@ class EstadoRequest extends FormRequest
     {
         return [
             'sigla' => ['required'],
+            'nome' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'sigla.required' => 'Campo Descrição é obrigatório',
+            'sigla.required' => 'Campo sigla é obrigatório',
+            'nome.required' => 'Campo nome é obrigatório',
         ];
     }
 

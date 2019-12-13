@@ -6,7 +6,7 @@ namespace Diarias\Estado;
 
 use Diarias\Estado\Models\EstadoModel;
 use Diarias\Estado\Repositorios\EstadoRepositorio;
-use Illuminate\Support\Str;
+
 
 class EstadoServico
 {
@@ -26,6 +26,7 @@ class EstadoServico
 
     public function all(array $input)
     {
+        
         $estados = $this->repositorio->getWhere($input);
 
         $dados = [
@@ -34,13 +35,13 @@ class EstadoServico
         ];
 
         foreach ($estados as $estado) {
-            $dados['itens'][] =$this->tratarOutput($estado);
+            $dados['itens'][] = $this->tratarOutput($estado);
         }
 
         if (isset($input['count'])) {
             $dados['total'] = $estados->total();
         } else {
-            $dados['itens'][] = $this->tratarOutput($estados);
+            $dados['total'] = count($estados);
         }
 
         return $dados;
@@ -85,7 +86,7 @@ class EstadoServico
         return [
             'id' => $estadoModel->esta_id,
             'sigla' => $estadoModel->esta_sigla,
-            'esta_nome' => $estadoModel->esta_nome,
+            'nome' => $estadoModel->esta_nome,
         ];
     }
 
