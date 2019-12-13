@@ -28,7 +28,7 @@ class EstadoRepositorio
     {
         $model = $this->model->where('esta_id', '=', $id)->first();
 
-        if (!model) {
+        if (!$model) {
             throw new Exception('Estado não encontrado.');
         }
 
