@@ -1,7 +1,7 @@
 <?php
 declare(strin_types=1);
 
-namespace Diarias\Estado\Moldes;
+namespace Diarias\Estado\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

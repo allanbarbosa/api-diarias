@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Diarias\Estado;
 
-use Diarias\Estado\Moldes\EstadoModel;
+use Diarias\Estado\Models\EstadoModel;
 use Diarias\Estado\Repositorios\EstadoRepositorio;
 use Illuminate\Support\Str;
 
@@ -12,14 +12,14 @@ class EstadoServico
 {
     protected $repositorio;
 
-    public function __construtc(EstadoRepositorio $estadoRepositorio)
+    public function __construct(EstadoRepositorio $estadoRepositorio)
     {
         $this->repositorio = $estadoRepositorio;
     }
 
     public function find(int $id)
     {
-        $estado = $this->repossitorio->find($id);
+        $estado = $this->repositorio->find($id);
 
         return $this->tratarOutput($estado);
     }
@@ -61,7 +61,7 @@ class EstadoServico
         $dados = $this->tratarInput($input);
         $dados['update_by'] = $input[usuario];
 
-        $usuario = $this->repositorio->update($dados, $id);
+        $estado = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($estado);
     }
@@ -79,7 +79,7 @@ class EstadoServico
             'esta_nome' => $input['nome'],
         ];
 
-    }    
+    }
     protected function tratarOutput(EstadoModel $estadoModel)
     {
         return [
@@ -87,6 +87,6 @@ class EstadoServico
             'sigla' => $estadoModel->esta_sigla,
             'esta_nome' => $estadoModel->esta_nome,
         ];
-    }    
-    
+    }
+
 }

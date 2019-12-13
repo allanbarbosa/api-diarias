@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Diarias\Estado\Repositorios;
 
-use Diarias\Estado\Moldes\EstadoModel;
+use Diarias\Estado\Models\EstadoModel;
 use Exception;
 
 class EstadoRepositorio
@@ -63,7 +63,7 @@ class EstadoRepositorio
             }
         }
     $model->save();
-    
+
     return $model;
 
     }
@@ -94,4 +94,3 @@ class EstadoRepositorio
     }
 }
 
-   
