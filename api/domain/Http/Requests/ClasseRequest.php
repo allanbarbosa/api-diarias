@@ -1,7 +1,7 @@
 <?php
 declare(string_types=1);
 
-namespace Diarias\https\Requests;
+namespace Diarias\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;

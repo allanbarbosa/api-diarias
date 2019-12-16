@@ -16,7 +16,7 @@ class ClasseRepositorio
         'clas_nome',
         'created_by',
         'updated_by',
-        'clas_nome',
+        'deleted_by'
     ];
 
     public function __construct(ClasseModel $classeModel)
@@ -73,9 +73,12 @@ class ClasseRepositorio
 
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
         $model = $this->find($id);
+
+        $model->deleted_by = $usuario;
+        $model->save();
 
         return $model->delete();
     }

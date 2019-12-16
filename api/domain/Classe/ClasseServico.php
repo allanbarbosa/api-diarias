@@ -48,6 +48,7 @@ class ClasseServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $classe = $this->repositorio->save($dados);
 
@@ -57,6 +58,7 @@ class ClasseServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['update_by'] = $input['usuario'];
 
         $classe = $this->repositorio->update($dados, $id);
         
@@ -65,7 +67,7 @@ class ClasseServico
 
     public function delete(int $id)
     {
-        return $this->repositorio->delete($id);
+        return $this->repositorio->delete($id, $usuario);
     }
 
     protected function tratarInput(array $input)
