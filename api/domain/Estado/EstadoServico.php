@@ -60,7 +60,7 @@ class EstadoServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
-        $dados['update_by'] = $input[usuario];
+        $dados['update_by'] = $input['usuario'];
 
         $estado = $this->repositorio->update($dados, $id);
 

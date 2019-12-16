@@ -58,6 +58,22 @@ class UsuarioServico
         
         return $this->tratarOutput($usuario);
     }
+
+    public function update(array $input, int $id)
+    {
+        $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
+
+        $prerrogativa = $this->repositorio->update($dados, $id);
+
+        return $this->tratarOutput($prerrogativa);
+    }
+
+    public function delete(int $id, int $usuario)
+    {
+
+        return $this->repositorio->delete($id, $usuario);
+    }
     
     protected function tratarInput(array $input)
     {
@@ -89,18 +105,20 @@ class UsuarioServico
     
     protected function tratarOutput(UsuarioModel $usuarioModel)
     {
+        // if (!is_null($usuarioModel->id_funcionario) && is_null($usuarioModel->funcionario)) {
+        //     // dd($usuarioModel);
+        // }
         $dados = [
             'id' => $usuarioModel->usua_id,
             'nome' => $usuarioModel->usua_nome,
             'login' => $usuarioModel->usua_login,
             'primeiroAcesso' => $usuarioModel->usua_primeiro_acesso,
-            'funcionario' => [
-                'id' => $usuarioModel->id_funcionario,
-                'nome' => (!is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : null,
-            ],
+            // 'funcionario' => [
+            //     'id' => $usuarioModel->id_funcionario,
+            //     'nome' => (is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : null,
+            // ],
             'perfil' => []
         ];
-        
         $perfis = $usuarioModel->perfil;
         
         foreach ($perfis as $perfil) {
