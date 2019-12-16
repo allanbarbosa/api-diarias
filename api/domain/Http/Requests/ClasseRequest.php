@@ -17,7 +17,7 @@ class ClasseRequest extends FormRequest
     public function rules()
     {
         return[
-            'clas_nome' => ['required'],
+            'nome' => ['required'],
         ];
     }
 

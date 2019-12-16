@@ -21,7 +21,7 @@ class ClasseServico
     {
         $classe = $this->repositorio->find($id);
 
-        return $this->trataroutput($classe);
+        return $this->tratarOutput($classe);
     }
 
     public function all(array $input)
@@ -37,9 +37,9 @@ class ClasseServico
         }
 
         if (isset($input['count'])) {
-            $dados['total'] = $classe->total();
+            $dados['total'] = $classes->total();
         }else {
-            $dados['total'] = count($classe);
+            $dados['total'] = count($classes);
         }
 
         return $dados;
@@ -65,7 +65,7 @@ class ClasseServico
         return $this->tratarOutput($classe);
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
         return $this->repositorio->delete($id, $usuario);
     }
@@ -81,12 +81,10 @@ class ClasseServico
     {
         return [
             'id' => $classeModel->clas_id,
-            'clas_nome' =>$classeModel->clas_nome,
+            'nome' =>$classeModel->clas_nome,
         ];
     }
 
-
-    
 }
 
 
