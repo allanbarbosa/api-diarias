@@ -1,5 +1,5 @@
 <?php
-declare(string_types=1);
+declare(strict_types=1);
 
 namespace Diarias\Http\Requests;
 
@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClasseRequest extends FormRequest
+class PaisRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,22 +16,24 @@ class ClasseRequest extends FormRequest
 
     public function rules()
     {
-        return[
-            'nome' => ['required'],
+        return [
+          'codigo' => ['required'],
+          'nome' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'nome.required' => 'Campo nome é obrigatório',
+          'codigo.required' => 'Campo codigo é obrigatório',
+          'nome.required' => 'Campo nome é obrigatório',
         ];
-    }    
+    }
 
-    protected function faileValidation(validator $validator)
+    protected function faileValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            response()->json(['mensagem' => $validator->erros()->first()], 422)
+            response()->json(['mensagem' => $validator->errors()->first()], 422)
         );
     }
 }

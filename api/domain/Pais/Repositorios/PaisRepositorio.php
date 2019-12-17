@@ -2,39 +2,37 @@
 
 declare(strict_types=1);
 
-namespace Diarias\Classe\Repositorios;
+namespace Diarias\Pais\Repositorios;
 
-use Diarias\Classe\Models\ClasseModel;
+use Diarias\Pais\Models\PaisModel;
 use Exception;
 
-class ClasseRepositorio
-
+class PaisRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_nome',
+        'pais_nome',
+        'pais_codigo',
         'created_by',
         'updated_by',
         'deleted_by'
     ];
 
-    public function __construct(ClasseModel $classeModel)
+    public function __construct(PaisModel $paisModel)
     {
-        $this->model = $classeModel;
+        $this->model = $paisModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_id', '=', $id)->first();
-        
-        if (!$model)
-        {
-            throw new Exception ('Classe não encontrada.');
+        $model = $this->model->where('pais_id', '=', $id)->first();
+
+        if (!$model) {
+            throw new Exception('Pais não encontrado.');
         }
 
         return $model;
-
     }
 
     public function all()
@@ -44,10 +42,8 @@ class ClasseRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fields as $field)
-        {
-            if (isset($input[$field]))
-            {
+        foreach($this->fields as $field) {
+            if (isset($input[$field])) {
                 $this->model->{$field} = $input[$field];
             }
         }
@@ -61,7 +57,7 @@ class ClasseRepositorio
     {
         $model = $this->find($id);
 
-        foreach($this->fields as $field) {
+        foreach ($this->fields as $field) {
             if (isset($input[$field])) {
                 $model->{$field} = $input[$field];
             }
@@ -70,7 +66,6 @@ class ClasseRepositorio
         $model->save();
 
         return $model;
-
     }
 
     public function delete(int $id, int $usuario)
@@ -83,21 +78,18 @@ class ClasseRepositorio
         return $model->delete();
     }
 
-    public function getwhere(array $input)
-    {   
-        $model = $this->model->orderBy('clas_nome', 'ASC');
-        
-        if (isset($input['clas_nome'])) {
-            $model = $model->where('clas_nome', 'ilike', '%'.$input['clas_nome'].'%');
+    public function getWhere(array $input)
+    {
+        $model = $this->model->orderBy('pais_codigo', 'ASC');
+
+        if (isset($input['pais_codigo'])) {
+            $model = $model->where('pais_codigo', 'ilike', '%'.$input['pais_codigo'].'%');
         }
 
         if (isset($input['count'])) {
-            return $model->paginete($input['count']);
-
-        }   
-
-        return $model->get();    
+            return $model->paginate($input['count']);
+        }
+        return $model->get();
     }
-
-
 }
+

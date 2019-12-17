@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Classe\ClasseServico;
-use Diarias\Http\Requests\ClasseRequest;
+use Diarias\Pais\PaisServico;
+use Diarias\Http\Requests\PaisRequest;
 use Exception;
 
-class ClasseController extends Controller
+class paisController extends Controller
 {
     protected $servico;
 
-    public function __construct(classeServico $classeServico)
+    public function __construct(PaisServico $paisServico)
     {
-        $this->servico = $classeServico;
+        $this->servico = $paisServico;
     }
 
     public function index()
@@ -29,42 +29,42 @@ class ClasseController extends Controller
     {
         try {
 
-            $classe = $this->servico->find($id);
+            $pais = $this->servico->find($id);
 
-            return response()-> json($classe, 200);
+            return response()->json($pais, 200);
 
-        }catch (Exception $e) {
+        } catch (Exception $e) {
 
-            return response()->json(['mensagem' => $e->getMessage()], 400);
+            return response()->json(['mesagem' => $e->getMessage()], 400);
 
         }
     }
 
-    public function store(ClasseRequest $request)
+    public function store(PaisRequest $request)
     {
         $input = $request->all();
 
-        $classe = $this->servico->save($input);
+        $pais = $this->servico->save($input);
 
-        return response()->json($classe, 200);
+        return response()->json($pais, 200);
     }
-    
-    public function update(classeRequest $request, int $id)
+
+    public function update(PaisRequest $request, int $id)
     {
         try {
 
             $input = $request->all();
 
-            $classe = $this->servico->update($input, $id);
+            $pais = $this->servico->update($input, $id);
 
-            return response()->json($classe, 200);
+            return response()->json($pais, 200);
 
         } catch (Exception $e) {
-         
-            return response()->json(['mensagem' => $e->getMessage()], 400);
-        }
 
-    }  
+            return response()->json(['mensagem' => $e->getMessage()], 400);
+
+        }
+    }
 
     public function destroy(int $id)
     {
@@ -74,15 +74,11 @@ class ClasseController extends Controller
 
             $this->servico->delete($id, (int)$usuario);
 
-            return response()->json('Resgistro excluído com sucesso', 200);
+            return response()->json('registro excluído com sucesso', 200);
 
         } catch (Exception $e) {
 
             return response()->json(['mensagem' => $e->getMessage()], 400);
         }
-        
     }
-        
-        
 }
-
