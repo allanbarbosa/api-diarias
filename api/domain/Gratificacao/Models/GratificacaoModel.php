@@ -15,7 +15,8 @@ class GratificacaoModel extends Model
 
     protected $fillable = [
         'grat_nome',
-        'grat_valor_diaria'
+        'grat_valor_diaria',
+        'grat_slug'
     ];
 
     use SoftDeletes;
