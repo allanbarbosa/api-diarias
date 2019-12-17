@@ -28,13 +28,6 @@ class AlterTablePaisAddForeign extends Migration
             ->references('usua_id')->on('usuario');
         $table->foreign('deleted_by', 'fk_pais_deleted_by')
             ->references('usua_id')->on('usuario');
-
-        $table->unsignedBigInteger('id_grupo_internacional');
-
-        $table->index('id_grupo_internacional', 'pais_grupos_internacional1_idx');
-
-        $table->foreign('id_grupo_internacional', 'fk_pais_id_grupo_internacional')
-                ->references('grup_int_id')->on('grupo_internacional');
       });
     }
 
@@ -49,17 +42,14 @@ class AlterTablePaisAddForeign extends Migration
         $table->dropForeign('fk_pais_created_by');
         $table->dropForeign('fk_pais_updated_by');
         $table->dropForeign('fk_pais_deleted_by');
-        $table->dropForeign('fk_pais_id_grupo_internacional');
 
         $table->dropIndex('pais_created_by_idx');
         $table->dropIndex('pais_updated_by_idx');
         $table->dropIndex('pais_deleted_by_idx');
-        $table->dropIndex('pais_grupos_internacional1_idx');
 
         $table->dropColumn('created_by');
         $table->dropColumn('updated_by');
         $table->dropColumn('deleted_by');
-        $table->dropColumn('id_grupo_internacional');
       });
     }
 }

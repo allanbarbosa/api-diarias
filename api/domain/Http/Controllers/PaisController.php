@@ -61,7 +61,7 @@ class paisController extends Controller
 
         } catch (Exception $e) {
 
-            return response()->json(['mnsagem' => $e->getMessage()], 400);
+            return response()->json(['mensagem' => $e->getMessage()], 400);
 
         }
     }

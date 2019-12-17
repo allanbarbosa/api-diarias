@@ -75,8 +75,7 @@ class PaisServico
   {
     return [
       'pais_nome' => $input['nome'],
-      'pais_codigo' => $input['codigo'],
-      'id_grupo_internacional' => $input['grupoInternacional'],
+      'pais_codigo' => $input['codigo']
     ];
   }
 
@@ -85,12 +84,7 @@ class PaisServico
     return [
       'id' => $paisModel->pais_id,
       'nome' => $paisModel->pais_nome,
-      'codigo' => $paisModel->pais_codigo,
-      'grupoInternacional' =>
-      [
-          'id' => $paisModel->id_grupo_internacional,
-          'codigo' => $paisModel->grupoInternacional->grup_int_codigo,
-      ]
+      'codigo' => $paisModel->pais_codigo
     ];
   }
 }
