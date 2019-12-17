@@ -113,10 +113,13 @@ class UsuarioServico
             'nome' => $usuarioModel->usua_nome,
             'login' => $usuarioModel->usua_login,
             'primeiroAcesso' => $usuarioModel->usua_primeiro_acesso,
-            // 'funcionario' => [
-            //     'id' => $usuarioModel->id_funcionario,
-            //     'nome' => (is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : null,
-            // ],
+            'funcionario' => [
+                'id' => $usuarioModel->id_funcionario,
+                'nome' => (!is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : "inexistente",
+            ],
+
+            
+
             'perfil' => []
         ];
         $perfis = $usuarioModel->perfil;

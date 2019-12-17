@@ -38,4 +38,9 @@ class FuncionarioModel extends Model
     {
         return $this->belongsTo(EscolaridadeModel::class, 'id_escolaridade');
     }
+
+    public function usuario()
+    {
+        return $this->hasMany(UsuarioModel::class, 'id_usuario');
+    }
 }
