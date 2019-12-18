@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableGratificacao extends Migration
+class CreateTableMunicipio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTableGratificacao extends Migration
      */
     public function up()
     {
-        Schema::create('gratificacao', function (Blueprint $table) {
-            $table->bigIncrements('grat_id');
-            $table->string('grat_nome', 100);
-            $table->string('grat_slug', 100);
-            $table->decimal('grat_valor_diaria');
+        Schema::create('municipio', function (Blueprint $table) {
+            $table->bigIncrements('muni_id');
+            $table->string('muni_nome', 255);
+            $table->string('muni_codigo_ibge', 20);
+            $table->string('muni_slug', 255);
+            $table->integer('muni_porcentagem_diaria');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +31,6 @@ class CreateTableGratificacao extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gratificacao');
+        Schema::dropIfExists('municipio');
     }
 }
