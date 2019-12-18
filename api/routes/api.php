@@ -25,6 +25,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('pais', '\Diarias\Http\Controllers\PaisController');
     Route::resource('classe', '\Diarias\Http\Controllers\ClasseController');
     Route::resource('gratificacao', '\Diarias\Http\Controllers\GratificacaoController');
+    Route::resource('municipio', '\Diarias\Http\Controllers\MunicipioController');
     Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
     Route::middleware('criacao.usuario')->post('funcionario', '\Diarias\Http\Controllers\FuncionarioController@store');
     Route::resource('funcionario', '\Diarias\Http\Controllers\FuncionarioController')->only(['index', 'show', 'update']);
