@@ -29,7 +29,6 @@ class CargoSeeder extends Seeder
         $novoCargo = new \Diarias\Cargo\Models\CargoModel();
 
         $novoCargo->carg_nome = $nomeCargo;
-        $novoCargo->carg_slug = \Illuminate\Support\Str::slug($nomeCargo);
         $novoCargo->id_gratificacao = $cargo->gratificacao_id_gratificacao;
         $novoCargo->created_by = 1;
 

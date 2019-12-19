@@ -16,8 +16,7 @@ class MunicipioModel extends Model
     protected $fillable = [
         'muni_nome',
         'muni_codigo_ibge',
-        'muni_porcentagem_diaria',
-        'muni_slug'
+        'muni_porcentagem_diaria'
     ];
 
     use SoftDeletes;

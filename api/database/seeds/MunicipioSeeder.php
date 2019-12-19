@@ -30,7 +30,6 @@ class MunicipioSeeder extends Seeder
 
         $novoMunicipio->muni_nome = $nomeMunicipio;
         $novoMunicipio->muni_codigo_ibge = $municipio->codigo_ibge;
-        $novoMunicipio->muni_slug = \Illuminate\Support\Str::slug($nomeMunicipio);
         $novoMunicipio->muni_porcentagem_diaria = $municipio->porcentagem_diaria;
         $novoMunicipio->id_estado = $municipio->estado_id_estado;
         $novoMunicipio->created_by = 1;

@@ -75,7 +75,6 @@ class CargoServico
     {
         return [
             'carg_nome' => $input['nome'],
-            'carg_slug' => Str::slug($input['nome']),
             'id_gratificacao' => $input['gratificacao']
         ];
     }
@@ -85,7 +84,6 @@ class CargoServico
         return [
             'id' => $cargoModel->carg_id,
             'nome' => $cargoModel->carg_nome,
-            'slug' => $cargoModel->carg_slug,
             'gratificacao' =>
             [
                 'id' => $cargoModel->id_gratificacao,

@@ -5,7 +5,7 @@ namespace Diarias\Cargo\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Diarias\Cargo\Models\CargoModel;
+use Diarias\Gratificacao\Models\GratificacaoModel;
 
 class CargoModel extends Model
 {
@@ -14,8 +14,7 @@ class CargoModel extends Model
     protected $primaryKey = 'carg_id';
 
     protected $fillable = [
-        'carg_nome',
-        'carg_slug'
+        'carg_nome'
     ];
 
     use SoftDeletes;

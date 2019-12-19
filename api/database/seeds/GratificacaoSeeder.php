@@ -29,7 +29,6 @@ class GratificacaoSeeder extends Seeder
         $novaGratificacao = new \Diarias\Gratificacao\Models\GratificacaoModel();
 
         $novaGratificacao->grat_nome = $nomeGratificacao;
-        $novaGratificacao->grat_slug = \Illuminate\Support\Str::slug($nomeGratificacao);
         $novaGratificacao->grat_valor_diaria = $gratificacao->valor;
         $novaGratificacao->created_by = 1;
 
