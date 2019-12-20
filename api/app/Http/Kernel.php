@@ -66,7 +66,7 @@ class Kernel extends HttpKernel
 
         'token.validation' => TokenValidationMiddleware::class,
         'criacao.usuario' => CriacaoUsuarioMiddleware::class,
-        
+        'apagar.usuario' => \Diarias\Http\Middlewares\ApagarUsuarioMiddleware::class,
     ];
 
     /**
