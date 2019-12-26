@@ -12,7 +12,6 @@ class CargoRepositorio
 
     protected $fields = [
         'carg_nome',
-        'carg_slug',
         'id_gratificacao',
         'created_by',
         'updated_by',

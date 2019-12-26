@@ -75,7 +75,6 @@ class GratificacaoServico
     {
       return [
         'grat_nome' => $input['nome'],
-        'grat_slug' => Str::slug($input['nome']),
         'grat_valor_diaria' => $input['valorDiaria'],
         'id_classe' => $input['classe']
       ];
@@ -87,7 +86,6 @@ class GratificacaoServico
         'id' => $gratificacaoModel->grat_id,
         'nome' => $gratificacaoModel->grat_nome,
         'valorDiaria' => $gratificacaoModel->grat_valor_diaria,
-        'slug' => $gratificacaoModel->grat_slug,
         'classe' =>
         [
           'id' => $gratificacaoModel->id_classe,

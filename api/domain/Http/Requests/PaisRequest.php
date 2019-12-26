@@ -18,7 +18,7 @@ class PaisRequest extends FormRequest
     {
         return [
           'codigo' => ['required'],
-          'nome' => ['required'],
+          'nome' => ['required']
         ];
     }
 
@@ -26,7 +26,7 @@ class PaisRequest extends FormRequest
     {
         return [
           'codigo.required' => 'Campo codigo é obrigatório',
-          'nome.required' => 'Campo nome é obrigatório',
+          'nome.required' => 'Campo nome é obrigatório'
         ];
     }
 
