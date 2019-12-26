@@ -17,7 +17,6 @@ class PaisRequest extends FormRequest
     public function rules()
     {
         return [
-          'codigo' => ['required'],
           'nome' => ['required']
         ];
     }
@@ -25,7 +24,6 @@ class PaisRequest extends FormRequest
     public function messages()
     {
         return [
-          'codigo.required' => 'Campo codigo é obrigatório',
           'nome.required' => 'Campo nome é obrigatório'
         ];
     }

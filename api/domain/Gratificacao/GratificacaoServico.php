@@ -5,6 +5,7 @@ namespace Diarias\Gratificacao;
 
 use Diarias\Gratificacao\Models\GratificacaoModel;
 use Diarias\Gratificacao\Repositorios\GratificacaoRepositorio;
+use Illuminate\Support\Str;
 
 class GratificacaoServico
 {
@@ -75,6 +76,7 @@ class GratificacaoServico
     {
       return [
         'grat_nome' => $input['nome'],
+        'grat_slug' => Str::slug($input['nome']),
         'grat_valor_diaria' => $input['valorDiaria'],
         'id_classe' => $input['classe']
       ];
@@ -85,6 +87,7 @@ class GratificacaoServico
       return [
         'id' => $gratificacaoModel->grat_id,
         'nome' => $gratificacaoModel->grat_nome,
+        'slug' => $gratificacaoModel->grat_slug,
         'valorDiaria' => $gratificacaoModel->grat_valor_diaria,
         'classe' =>
         [

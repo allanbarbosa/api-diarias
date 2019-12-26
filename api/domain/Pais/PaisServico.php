@@ -74,8 +74,7 @@ class PaisServico
   protected function tratarInput(array $input)
   {
     return [
-      'pais_nome' => $input['nome'],
-      'pais_codigo' => $input['codigo']
+      'pais_nome' => $input['nome']
     ];
   }
 
@@ -83,8 +82,7 @@ class PaisServico
   {
     return [
       'id' => $paisModel->pais_id,
-      'nome' => $paisModel->pais_nome,
-      'codigo' => $paisModel->pais_codigo
+      'nome' => $paisModel->pais_nome
     ];
   }
 }

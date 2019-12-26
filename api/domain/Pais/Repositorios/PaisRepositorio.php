@@ -13,7 +13,6 @@ class PaisRepositorio
 
     protected $fields = [
         'pais_nome',
-        'pais_codigo',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -80,16 +79,18 @@ class PaisRepositorio
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('pais_codigo', 'ASC');
+      $model = $this->model->orderBy('pais_nome', 'ASC');
 
-        if (isset($input['pais_codigo'])) {
-            $model = $model->where('pais_codigo', 'ilike', '%'.$input['pais_codigo'].'%');
-        }
+      if (isset($input['pais_nome']))
+      {
+          $model = $model->where('pais_nome', 'ilike', '%'.$input['pais_nome'].'%');
+      }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-        return $model->get();
+      if (isset($input['count']))
+      {
+          return $model->paginate($input['count']);
+      }
+      return $model->get();
     }
 }
 

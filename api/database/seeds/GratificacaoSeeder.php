@@ -30,6 +30,7 @@ class GratificacaoSeeder extends Seeder
 
         $novaGratificacao->grat_nome = $nomeGratificacao;
         $novaGratificacao->grat_valor_diaria = $gratificacao->valor;
+        $novaGratificacao->grat_slug = \Illuminate\Support\Str::slug($gratificacao->descricao_gratificacao);
         $novaGratificacao->created_by = 1;
 
         $novaGratificacao->save();

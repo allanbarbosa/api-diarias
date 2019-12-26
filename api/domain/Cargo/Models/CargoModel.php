@@ -14,7 +14,8 @@ class CargoModel extends Model
     protected $primaryKey = 'carg_id';
 
     protected $fillable = [
-        'carg_nome'
+        'carg_nome',
+        'carg_slug'
     ];
 
     use SoftDeletes;

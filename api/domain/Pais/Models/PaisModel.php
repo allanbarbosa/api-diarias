@@ -13,8 +13,7 @@ class PaisModel extends Model
   protected $primaryKey = 'pais_id';
 
   protected $fillable = [
-      'pais_nome',
-      'pais_codigo'
+      'pais_nome'
   ];
 
   use SoftDeletes;

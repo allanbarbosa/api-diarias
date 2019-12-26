@@ -12,6 +12,7 @@ class MunicipioRepositorio
 
     protected $fields = [
         'muni_nome',
+        'muni_slug',
         'muni_codigo_ibge',
         'muni_porcentagem_diaria',
         'id_estado',

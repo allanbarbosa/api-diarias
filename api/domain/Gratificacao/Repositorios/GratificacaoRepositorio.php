@@ -12,6 +12,7 @@ class GratificacaoRepositorio
 
     protected $fields = [
         'grat_nome',
+        'grat_slug',
         'grat_valor_diaria',
         'id_classe',
         'created_by',
