@@ -16,7 +16,6 @@ class CreatePaisTable extends Migration
         Schema::create('pais', function (Blueprint $table) {
             $table->bigIncrements('pais_id');
             $table->string('pais_nome', 255);
-            $table->string('pais_codigo', 20)->unique();
             $table->timestamps();
             $table->softDeletes();
         });
