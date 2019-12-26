@@ -15,8 +15,8 @@ class CreateEstadoTable extends Migration
     {
         Schema::create('estado', function (Blueprint $table) {
             $table->bigIncrements('esta_id');
-            $table->char('esta_sigla', 2)->unique();
-            $table->string('esta_nome', 255)->unique();
+            $table->char('esta_sigla', 2);
+            $table->string('esta_nome', 255);
             $table->timestamps();
             $table->softDeletes();
         });

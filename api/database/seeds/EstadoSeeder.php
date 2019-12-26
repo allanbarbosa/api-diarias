@@ -11,55 +11,48 @@ class EstadoSeeder extends Seeder
      */
     public function run()
     {
-        $estados = \Illuminate\Support\Facades\DB::connection('diariasProducao')->table('estado')
-            ->where('flag_seq', true)
-            ->orderBy('id_estado', 'ASC')
-            ->get();
-
         $siglas = [
-            'ACRE' => 'AC',
-            'ALAGOAS' => 'AL',
-            'AMAZONAS' => 'AM',
-            'AMAPÁ' => 'AP',
-            'BAHIA' => 'BA',
-            'CEARÁ' => 'CE',
-            'DISTRITO FEDERAL' => 'DF',
-            'ESPÍRITO SANTO' => 'ES',
-            'GOIÁS' => 'GO',
-            'MARANHÃO' => 'MA',
-            'PARANÁ' => 'PA',
-            'PARAÍBA' => 'PB',
-            'PERNAMBUCO' => 'PE',
-            'PIAUÍ' => 'PI',
-            'PARÁ' => 'PR',
-            'RIO DE JANEIRO' => 'RJ',
-            'RIO GRANDE DO NORTE' => 'RN',
-            'RONDÔNIA' => 'RO',
-            'RORAIMA' => 'RR',
-            'RIO GRANDE DO SUL' => 'RS',
-            'SANTA CATARINA' => 'SC',
-            'SERGIPE' => 'SE',
-            'SÃO PAULO' => 'SP',
-            'TOCANTINS' => 'TO',
-            'MATO GROSSO' => 'MT',
-            'MATO GROSSO DO SUL' => 'MS',
-            'MINAS GERAIS' => 'MG'
+            'Acre' => 'AC',
+            'Alagoas' => 'AL',
+            'Amazonas' => 'AM',
+            'Amapá' => 'AP',
+            'Bahia' => 'BA',
+            'Ceará' => 'CE',
+            'Distrito Federal' => 'DF',
+            'Espírito Santo' => 'ES',
+            'Goiás' => 'GO',
+            'Maranhão' => 'MA',
+            'Paraná' => 'PA',
+            'Paraíba' => 'PB',
+            'Pernambuco' => 'PE',
+            'Piauí' => 'PI',
+            'Pará' => 'PR',
+            'Rio de Janeiro' => 'RJ',
+            'Rio Grande do Norte' => 'RN',
+            'Rondônia' => 'RO',
+            'Roraima' => 'RR',
+            'Rio Grande do Sul' => 'RS',
+            'Santa Catarina' => 'SC',
+            'Sergipe' => 'SE',
+            'São Paulo' => 'SP',
+            'Tocantins' => 'TO',
+            'Mato Grosso' => 'MT',
+            'Mato Grosso do Sul' => 'MS',
+            'Minas Gerais' => 'MG'
         ];
 
-        foreach ($estados as $estado) {
+        foreach ($siglas as $key => $estado) {
 
-            $nomeEstado = ucfirst(strtolower($estado->nome_estado));
-            $estadoExiste = \Diarias\Estado\Models\EstadoModel::where('esta_nome', '=', $nomeEstado)->first();
+            $estadoExiste = \Diarias\Estado\Models\EstadoModel::where('esta_nome', '=', $key)->first();
 
-            if ($estadoExiste)
-            {
+            if ($estadoExiste) {
                 continue;
             }
 
             $novoEstado = new \Diarias\Estado\Models\EstadoModel();
 
-            $novoEstado->esta_nome = $nomeEstado;
-            $novoEstado->esta_sigla = $siglas[$estado->nome_estado];
+            $novoEstado->esta_nome = $key;
+            $novoEstado->esta_sigla = $estado;
             $novoEstado->created_by = 1;
 
             $novoEstado->save();
