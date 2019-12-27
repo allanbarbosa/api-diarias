@@ -8,7 +8,7 @@ use Diarias\Http\Requests\PerfilRequest;
 use Diarias\Perfil\PerfilServico;
 use Exception;
 
-class PrerrogativaController extends Controller
+class PerfilController extends Controller
 {
     protected $servico;
 
@@ -28,13 +28,13 @@ class PrerrogativaController extends Controller
     public function show($id)
     {
         try {
-            
+
             $perfil = $this->servico->find($id);
 
             return response()->json($perfil, 200);
 
         } catch (Exception $e) {
-            
+
             return response()->json(['mensagem' => $e->getMessage()], 400);
 
         }
@@ -43,7 +43,7 @@ class PrerrogativaController extends Controller
     public function store(PerfilRequest $request)
     {
         $input = $request->all();
-        
+
         $perfil = $this->servico->save($input);
 
         return response()->json($perfil, 200);
@@ -52,7 +52,7 @@ class PrerrogativaController extends Controller
     public function update(PerfilRequest $request, int $id)
     {
         try {
-            
+
             $input = $request->all();
 
             $perfil = $this->servico->update($input, $id);

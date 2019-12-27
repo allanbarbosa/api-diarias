@@ -11,26 +11,25 @@ class ClasseSeeder extends Seeder
      */
     public function run()
     {
-      $classes = \Illuminate\Support\Facades\DB::connection('diariasProducao')->table('classe')
-      ->where('flag_seq', true)
-      ->orderBy('id_classe', 'ASC')
-      ->get();
+        $classes = \Illuminate\Support\Facades\DB::connection('diariasProducao')->table('classe')
+            ->where('flag_seq', true)
+            ->orderBy('id_classe', 'ASC')
+            ->get();
 
-      foreach ($classes as $classe) {
-        $nomeClasse = ucfirst(strtolower($classe->nome_classe));
-        $classeExiste = \Diarias\Classe\Models\ClasseModel::where('clas_nome', '=', $nomeClasse)->first();
+        foreach ($classes as $classe) {
 
-        if ($classeExiste)
-        {
-            continue;
-        }
+            $classeExiste = \Diarias\Classe\Models\ClasseModel::where('clas_nome', '=', $classe->nome_classe)->first();
 
-        $novaClasse = new \Diarias\Classe\Models\ClasseModel();
+            if ($classeExiste) {
+                continue;
+            }
 
-        $novaClasse->clas_nome = $novaClasse;
-        $novaClasse->created_by = 1;
+            $novaClasse = new \Diarias\Classe\Models\ClasseModel();
 
-        $novaClasse->save();
+            $novaClasse->clas_nome = $classe->nome_classe;
+            $novaClasse->created_by = 1;
+
+            $novaClasse->save();
       }
     }
 }

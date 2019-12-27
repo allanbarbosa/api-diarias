@@ -12,27 +12,29 @@ class MunicipioSeeder extends Seeder
     public function run()
     {
       $municipios = \Illuminate\Support\Facades\DB::connection('diariasProducao')->table('municipio')
-      ->where('flag_seq', true)
-      ->orderBy('id_municipio', 'ASC')
-      ->get();
+          ->join('estado', 'municipio.estado_id_estado', '=', 'estado.id_estado')
+          ->where('municipio.flag_seq', true)
+          ->orderBy('id_municipio', 'ASC')
+          ->get();
 
       foreach ($municipios as $municipio) {
 
-        $nomeMunicipio = ucfirst(strtolower($municipio->nome_municipio));
-        $municipioExiste = \Diarias\Municipio\Models\MunicipioModel::where('muni_nome', '=', $nomeMunicipio)->first();
+        $municipioExiste = \Diarias\Municipio\Models\MunicipioModel::where('muni_nome', '=', $municipio->nome_municipio)->first();
 
         if ($municipioExiste)
         {
             continue;
         }
 
+        $estado = \Diarias\Estado\Models\EstadoModel::where('esta_sigla', '=', $municipio->sigla)->first();
+
         $novoMunicipio = new \Diarias\Municipio\Models\MunicipioModel();
 
-        $novoMunicipio->muni_nome = $nomeMunicipio;
+        $novoMunicipio->muni_nome = $municipio->nome_municipio;
         $novoMunicipio->muni_codigo_ibge = $municipio->codigo_ibge;
+        $novoMunicipio->muni_slug = \Illuminate\Support\Str::slug($municipio->nome_municipio);
         $novoMunicipio->muni_porcentagem_diaria = $municipio->porcentagem_diaria;
-        $novoMunicipio->muni_slug = \Illuminate\Support\Str::slug($municipio->descricao_municipio);
-        $novoMunicipio->id_estado = $municipio->estado_id_estado;
+        $novoMunicipio->id_estado = $estado->esta_id;
         $novoMunicipio->created_by = 1;
 
         $novoMunicipio->save();

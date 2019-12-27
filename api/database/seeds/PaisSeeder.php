@@ -18,8 +18,7 @@ class PaisSeeder extends Seeder
 
       foreach ($paises as $pais) {
 
-        $nomePais = ucfirst(strtolower($pais->nome_pais));
-        $paisExiste = \Diarias\Pais\Models\PaisModel::where('pais_nome', '=', $nomePais)->first();
+        $paisExiste = \Diarias\Pais\Models\PaisModel::where('pais_nome', '=', $pais->nome_pais)->first();
 
         if ($paisExiste)
         {
@@ -28,11 +27,11 @@ class PaisSeeder extends Seeder
 
         $novoPais = new \Diarias\Pais\Models\PaisModel();
 
-        $novoPais->pais_nome = $nomePais;
+        $novoPais->pais_nome = $pais->nome_pais;
         $novoPais->created_by = 1;
 
         $novoPais->save();
     }
-      
+
     }
 }
