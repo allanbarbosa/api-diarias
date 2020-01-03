@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnidadeTable extends Migration
+class CreateTableVinculoEmpregaticio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateUnidadeTable extends Migration
      */
     public function up()
     {
-        Schema::create('unidade', function (Blueprint $table) {
-            $table->bigIncrements('unid_id');
-            $table->string('unid_nome', 100);
-            $table->string('unid_sigla', 45)->unique();
+        Schema::create('vinculo_empregaticio', function (Blueprint $table) {
+            $table->bigIncrements('vinc_emp_id');
+            $table->string('vinc_emp_matricula', 15)->unique();
+            $table->dateTime('vinc_emp_data_admissao');
+            $table->dateTime('vinc_emp_data_desligamento')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +30,6 @@ class CreateUnidadeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unidade');
+        Schema::dropIfExists('vinculo_empregaticio');
     }
 }

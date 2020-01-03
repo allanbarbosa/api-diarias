@@ -14,7 +14,7 @@ class UnidadeModel extends Model
 
     protected $fillable = [
         'unid_nome',
-        'unid_sigla',
+        'unid_sigla'
     ];
 
     use SoftDeletes;

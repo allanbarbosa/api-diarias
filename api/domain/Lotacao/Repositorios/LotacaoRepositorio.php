@@ -1,32 +1,35 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Unidade\Repositorios;
+namespace Diarias\Lotacao\Repositorios;
 
-use Diarias\Unidade\Models\UnidadeModel;
+use Diarias\Lotacao\Models\LotacaoModel;
 use Exception;
 
-class UnidadeRepositorio
+class LotacaoRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'unid_nome',
-        'unid_sigla'
+        'lota_data_inicio',
+        'lota_data_fim',
+        'id_cargo',
+        'id_vinculo_empregaticio',
+        'id_unidade_organograma'
     ];
 
-    public function __construct(UnidadeModel $unidadeModel)
+    public function __construct(LotacaoModel $lotacaoModel)
     {
-        $this->model = $unidadeModel;
+        $this->model = $lotacaoModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('unid_id', '=', $id)->first();
+        $model = $this->model->where('lota_id', '=', $id)->first();
 
         if (!$model)
         {
-            throw new Exception('Unidade não encontrado');
+            throw new Exception('Lotação não encontrada');
         }
 
         return $model;
@@ -77,11 +80,11 @@ class UnidadeRepositorio
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('unid_nome', 'ASC');
+        $model = $this->model->orderBy('lota_data_inicio', 'ASC');
 
-        if (isset($input['unid_nome']))
+        if (isset($input['lota_data_inicio']))
         {
-            $model = $model->where('unid_nome', 'ilike', '%'.$input['unid_nome'].'%');
+            $model = $model->where('lota_data_inicio', 'ilike', '%'.$input['lota_data_inicio'].'%');
         }
 
         if (isset($input['count']))

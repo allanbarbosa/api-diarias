@@ -6,7 +6,6 @@ namespace Diarias\Unidade;
 use Diarias\Unidade\Models\UnidadeModel;
 use Diarias\Unidade\Repositorios\UnidadeRepositorio;
 
-
 class UnidadeServico
 {
     protected $repositorio;
@@ -84,8 +83,8 @@ class UnidadeServico
     {
         return [
             'id' => $unidadeModel->unid_id,
-            'unid_nome' => $unidadeModel->unid_nome,
-            'unid_sigla'=> $unidadeModel->unid_sigla,
+            'nome' => $unidadeModel->unid_nome,
+            'sigla'=> $unidadeModel->unid_sigla,
         ];
     }
 }
