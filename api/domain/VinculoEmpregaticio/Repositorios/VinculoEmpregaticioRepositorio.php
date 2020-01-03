@@ -1,32 +1,34 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Unidade\Repositorios;
+namespace Diarias\VinculoEmpregaticio\Repositorios;
 
-use Diarias\Unidade\Models\UnidadeModel;
+use Diarias\VinculoEmpregaticio\Models\VinculoEmpregaticioModel;
 use Exception;
 
-class UnidadeRepositorio
+class VinculoEmpregaticioRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'unid_nome',
-        'unid_sigla'
+        'vinc_emp_matricula',
+        'vinc_emp_data_admissao',
+        'vinc_emp_data_desligamento',
+        'id_funcionario'
     ];
 
-    public function __construct(UnidadeModel $unidadeModel)
+    public function __construct(VinculoEmpregaticioModel $vinculoEmpregaticioModel)
     {
-        $this->model = $unidadeModel;
+        $this->model = $vinculoEmpregaticioModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('unid_id', '=', $id)->first();
+        $model = $this->model->where('vinc_emp_id', '=', $id)->first();
 
         if (!$model)
         {
-            throw new Exception('Unidade não encontrado');
+            throw new Exception('Vínculo empregatício não encontrado');
         }
 
         return $model;
@@ -77,11 +79,11 @@ class UnidadeRepositorio
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('unid_nome', 'ASC');
+        $model = $this->model->orderBy('vinc_emp_matricula', 'ASC');
 
-        if (isset($input['unid_nome']))
+        if (isset($input['vinc_emp_matricula']))
         {
-            $model = $model->where('unid_nome', 'ilike', '%'.$input['unid_nome'].'%');
+            $model = $model->where('vinc_emp_matricula', 'ilike', '%'.$input['vinc_emp_matricula'].'%');
         }
 
         if (isset($input['count']))
