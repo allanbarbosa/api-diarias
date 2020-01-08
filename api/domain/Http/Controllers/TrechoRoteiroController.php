@@ -1,21 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Http\Controllers;
+namespace Diarias\Https\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\TrechoRoteiroRequest;
+use Diarias\TrechoRoteiro\TrechoRoteiroServico;
 use Exception;
 
-
-class PrerrogativaController extends Controller
+class TrechoRoteiroController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(TrechoRoteiroServico $trechoRoteiroServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $trechoRoteiroServico;
     }
 
     public function index()
@@ -30,9 +29,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $trechoRoteiro = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($trechoRoteiro, 200);
 
         } catch (Exception $e) {
             
@@ -41,7 +40,7 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(TrechoRoteiroRequest $request)
     {
         $input = $request->all();
         
@@ -50,7 +49,7 @@ class PrerrogativaController extends Controller
         return response()->json($prerrogativa, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(TrechoRoteiroRequest $request, int $id)
     {
         try {
             
