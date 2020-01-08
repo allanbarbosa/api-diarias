@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\TipoTranaporte\Models;
+namespace Diarias\TipoTransporte\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

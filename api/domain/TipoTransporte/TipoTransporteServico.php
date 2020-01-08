@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Diarias\TipoTransporte;
 
-use Diarias\TipoTranaporte\Models\TipoTransporteModel;
+use Diarias\TipoTransporte\Models\TipoTransporteModel;
 use Diarias\TipoTransporte\Repositorios\TipoTransporteRepositorio;
 use Illuminate\Support\Str;
 
