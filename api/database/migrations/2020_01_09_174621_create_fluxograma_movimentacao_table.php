@@ -17,11 +17,11 @@ class CreateFluxogramaMovimentacaoTable extends Migration
             
             $table->bigIncrements('flux_mov_id');
             
-            $table->unsignedBigIncrements('id_movimentacao');
-            $table->unsignedBigIncrements('id_status_origem');
-            $table->unsignedBigIncrements('id_status_destino');
-            $table->unsignedBigIncrements('id_papel_fluxograma_origem');
-            $table->unsignedBigIncrements('id_papel_fluxograma_destino');
+            $table->unsignedBigInteger('id_movimentacao');
+            $table->unsignedBigInteger('id_status_origem');
+            $table->unsignedBigInteger('id_status_destino');
+            $table->unsignedBigInteger('id_papel_fluxograma_origem');
+            $table->unsignedBigInteger('id_papel_fluxograma_destino');
             
             $table->index('id_movimentacao', 'fluxograma_movimentacao_id_movimentacao_idx');
             $table->index('id_status_origem', 'fluxograma_movimentacao_id_status_origem_idx');

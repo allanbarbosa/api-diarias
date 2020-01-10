@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateClasseGrupoInternacionalTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateClasseGrupoInternacionalTable extends Migration
      */
     public function up()
     {
-        Schema::table('classe_grupo_internacional', function (Blueprint $table) {
+        Schema::create('classe_grupo_internacional', function (Blueprint $table) {
             $table->bigIncrements('clas_gru_internacional_id');
             $table->decimal('clas_gru_internacional_valor', 10,2);
             $table->timestamps();

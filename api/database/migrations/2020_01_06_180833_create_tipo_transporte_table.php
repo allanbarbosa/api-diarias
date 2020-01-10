@@ -13,7 +13,7 @@ class CreateTipoTransporteTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_transporte', function (Blueprint $table) {
+        Schema::hasTable('tipo_transporte', function (Blueprint $table) {
             $table->bigIncrements('tipo_tra_id');
             $table->string('tipo_tra_nome', 255);
             $table->string('tipo_tra_slug', 255);

@@ -13,11 +13,11 @@ class CreateGrupoInternacionalPaisTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupo_internacional_pais', function (Blueprint $table) {
+        Schema::hasTable('grupo_internacional_pais', function (Blueprint $table) {
             $table->bigIncrements('grup_int_pais_id');
 
-            $table->unsignedBigIncrements('id_pais');
-            $table->unsignedBigIncrements('id_grupo_internacional');
+            $table->unsignedBigInteger('id_pais');
+            $table->unsignedBigInteger('id_grupo_internacional');
 
             $table->index('id_pais', 'grupo_internacional_pais_id_pais_idx');
             $table->index('id_grupo_internacional', 'grupo_internacional_pais_id_grupo_internacional_idx');

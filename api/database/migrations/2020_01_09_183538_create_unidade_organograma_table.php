@@ -13,14 +13,14 @@ class CreateUnidadeOrganogramaTable extends Migration
      */
     public function up()
     {
-        Schema::create('unidade_organograma', function (Blueprint $table) {
+        Schema::hasTable('unidade_organograma', function (Blueprint $table) {
             
             $table->bigIncrements('unid_org_id');
             
-            $table->unsignedBigIncrements('id_unidade');
-            $table->unsignedBigIncrements('id_unidade_pai');
-            $table->unsignedBigIncrements('id_organograma');
-            $table->unsignedBigIncrements('id_papel_fluxograma');
+            $table->unsignedBigInteger('id_unidade');
+            $table->unsignedBigInteger('id_unidade_pai');
+            $table->unsignedBigInteger('id_organograma');
+            $table->unsignedBigInteger('id_papel_fluxograma');
 
             $table->index('id_unidade', 'unidade_organograma_id_unidade_idx');
             $table->index('id_unidade_pai', 'unidade_organograma_id_unidade_pai_idx');

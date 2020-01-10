@@ -17,8 +17,8 @@ class CreateParticularidadeTrechoTable extends Migration
             
             $table->bigIncrements('part_tre_id');
 
-            $table->unsignedBigIncrements('id_particularidade');
-            $table->unsignedBigIncrements('id_trecho_roteiro');
+            $table->unsignedBigInteger('id_particularidade');
+            $table->unsignedBigInteger('id_trecho_roteiro');
 
             $table->index('id_particularidade', 'particularidade_trecho_id_particularidade_idx');
             $table->index('id_trecho_roteiro', 'particularidade_trecho_id_trecho_roteiro_idx');
