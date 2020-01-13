@@ -1,33 +1,38 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\Viagem\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\Viagem\Models\ViagemModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+class ViagemRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'viag_objetivo',
+        'viag_justificativa_feriado_fds',
+        'viag_justificativa_reprogramacao',
+        'viag_flag_alimentacao_custeada',
+        'viag_flag_adicional_deslocamento',
+        'viag_flag_urgente',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(ViagemModel $viagemModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $viagemModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('viag_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Viagem não encontrada.');
         }
 
         return $model;
@@ -78,10 +83,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('viag_objetivo', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['viag_objetivo'])) {
+            $model = $model->where('viag_objetivo', 'ilike', '%'.$input['viag_objetivo'].'%');
         }
 
         if (isset($input['count'])) {

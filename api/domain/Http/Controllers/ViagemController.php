@@ -4,18 +4,17 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\ViagemRequest;
+use Diarias\Viagem\ViagemServico;
 use Exception;
 
-
-class PrerrogativaController extends Controller
+class ViagemController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(ViagemServico $viagemServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $viagemServico;
     }
 
     public function index()
@@ -30,9 +29,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $viagem = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($viagem, 200);
 
         } catch (Exception $e) {
             
@@ -41,24 +40,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(ViagemRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $viagem = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($viagem, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(ViagemRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $viagem = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($viagem, 200);
 
         } catch (Exception $e) {
 

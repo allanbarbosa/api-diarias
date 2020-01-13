@@ -1,0 +1,9 @@
+{
+    "namespaceResolver.sortAlphabetically": true,
+    "namespaceResolver.sortNatural": true,
+    "namespaceResolver.showMessageOnStatusBar": true,
+    "namespaceResolver.highlightOnOpen": true,
+    "namespaceResolver.highlightOnSave": true,
+    "namespaceResolver.sortOnSave": true,
+    "phpclassgen.vendor": "api/domain",
+}

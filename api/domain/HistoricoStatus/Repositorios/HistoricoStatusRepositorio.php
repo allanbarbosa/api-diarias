@@ -1,33 +1,34 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\HistoricoStatus\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\HistoricoStatus\Models\HistoricoStatusModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+class HistoricoStatusRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'hist_sta_data_tramitacao',
+        'hist_sta_observacao',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(HistoricoStatusModel $historicoStatusModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $historicoStatusModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('hist_sta_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Histórico status não encontrada.');
         }
 
         return $model;
@@ -78,10 +79,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('hist_sta_data_tramitacao', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['hist_sta_data_tramitacao'])) {
+            $model = $model->where('hist_sta_data_tramitacao', 'ilike', '%'.$input['hist_sta_data_tramitacao'].'%');
         }
 
         if (isset($input['count'])) {

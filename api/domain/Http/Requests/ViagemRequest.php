@@ -7,7 +7,8 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClasseGrupoInternacionalRequest extends FormRequest
+
+class ViagemRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,14 +18,18 @@ class ClasseGrupoInternacionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'valor' => ['required'],
+            'objetivo' => ['required'],
+            'flag_adic_desl' => ['required'],
+            'flag_urgente' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'valor.required' => 'Campo valor da Classe grupo internacional é obrigatório',
+            'objetivo.required' => 'Campo objetivo da viagem é obrigatório',
+            'flag_adic_desl.required' => 'Campo adicional de deslocamento em viagem é obrigatório',
+            'flag_urgente.required' => 'Campo viagem urgente é obrigatório',
         ];
     }
 

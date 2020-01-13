@@ -1,33 +1,36 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\TipoTransporte\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\TipoTransporte\Models\TipoTransporteModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+
+
+class TipoTransporteRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'tipo_tra_nome',
+        'tipo_tra_slug',
         'created_by',
         'updated_by',
         'deleted_by'
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(TipoTransporteModel $tipoTransporteModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $tipoTransporteModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('tipo_tra_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Tipo de transporte não encontrado.');
         }
 
         return $model;
@@ -78,10 +81,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('tipo_tra_nome', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['tipo_tra_nome'])) {
+            $model = $model->where('tipo_tra_nome', 'ilike', '%'.$input['tipo_tra_nome'].'%');
         }
 
         if (isset($input['count'])) {

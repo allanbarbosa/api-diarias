@@ -2,20 +2,19 @@
 declare(strict_types=1);
 
 namespace Diarias\Http\Controllers;
-
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\TipoTransporteRequest;
+use Diarias\TipoTransporte\TipoTransporteServico;
 use Exception;
 
 
-class PrerrogativaController extends Controller
+class TipoTransporteController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(TipoTransporteServico $tipoTransporteServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $tipoTransporteServico;
     }
 
     public function index()
@@ -30,9 +29,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $tipoTransporte = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($tipoTransporte, 200);
 
         } catch (Exception $e) {
             
@@ -41,24 +40,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(TipoTransporteRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $tipoTransporte = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($tipoTransporte, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(TipoTransporteRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $tipoTransporte = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($tipoTransporte, 200);
 
         } catch (Exception $e) {
 

@@ -4,18 +4,17 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Http\Requests\PagamentoRequest;
+use Diarias\Pagamento\PagamentoServico;
 use Exception;
 
-
-class PrerrogativaController extends Controller
+class PagamentoController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(PagamentoServico $pagamentoServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $pagamentoServico;
     }
 
     public function index()
@@ -30,9 +29,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $pagamento = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($pagamento, 200);
 
         } catch (Exception $e) {
             
@@ -41,24 +40,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(PagamentoRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $pagamento = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($pagamento, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(PagamentoRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $pagamento = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($pagamento, 200);
 
         } catch (Exception $e) {
 

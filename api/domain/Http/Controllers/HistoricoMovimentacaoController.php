@@ -4,18 +4,17 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\HistoricoMovimentacao\HistoricoMovimentacaoServico;
+use Diarias\Http\Requests\HistoricoMovimentacaoRequest;
 use Exception;
 
-
-class PrerrogativaController extends Controller
+class HistoricoMovimentacaoController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(HistoricoMovimentacaoServico $historicoMovimentacaoServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $historicoMovimentacaoServico;
     }
 
     public function index()
@@ -41,24 +40,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(HistoricoMovimentacaoRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $historicoMovimentacao = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($historicoMovimentacao, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(HistoricoMovimentacaoRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $historicoMovimentacao = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($historicoMovimentacao, 200);
 
         } catch (Exception $e) {
 

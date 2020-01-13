@@ -1,33 +1,34 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\HistoricoMovimentacao\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\HistoricoMovimentacao\Models\HistoricoMovimentacaoModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+class HistoricoMovimentacaoRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'hist_mov_data_tramitacao',
+        'hist_mov_observacao',
         'created_by',
         'updated_by',
         'deleted_by'
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(HistoricoMovimentacaoModel $historicoMovimentacaoModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $historicoMovimentacao;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('hist_mov_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Historico movimentação não encontrada.');
         }
 
         return $model;
@@ -78,10 +79,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('hist_mov_data_tramitacao', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['hist_mov_data_tramitacao'])) {
+            $model = $model->where('hist_mov_data_tramitacao', 'ilike', '%'.$input['hist_mov_data_tramitacao'].'%');
         }
 
         if (isset($input['count'])) {

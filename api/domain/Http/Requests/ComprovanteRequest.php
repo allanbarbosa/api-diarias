@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClasseGrupoInternacionalRequest extends FormRequest
+class ComprovanteRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,14 +17,16 @@ class ClasseGrupoInternacionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'valor' => ['required'],
+            'caminho' => ['required'],
+            'nome_arquivo' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'valor.required' => 'Campo valor da Classe grupo internacional é obrigatório',
+            'caminho.required' => 'Campo caminho é obrigatório',
+            'nome_arquivo.required' => 'Campo nome do arquivo é obrigatório',
         ];
     }
 

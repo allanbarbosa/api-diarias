@@ -1,33 +1,39 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\Comprovacao\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\Comprovacao\Models\ComprovacaoModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+class ComprovacaoRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'compo_diarias_utilizadas',
+        'compo_data_hora_saida_efetiva',
+        'compo_data_hora_chegada_efetiva',
+        'compo_atividades_desenvolvidas',
+        'compo_saldo_receber',
+        'compo_saldo_restituir',
+        'compo_valor_total',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(ComprovacaoModel $comprovacaoModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $comprovacaoModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('compo_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Comprovação não encontrada.');
         }
 
         return $model;
@@ -78,10 +84,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('compo_diarias_utilizadas', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['compo_diarias_utilizadas'])) {
+            $model = $model->where('compo_diarias_utilizadas', 'ilike', '%'.$input['compo_diarias_utilizadas'].'%');
         }
 
         if (isset($input['count'])) {

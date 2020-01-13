@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Diarias\ClasseGrupoInternacional;
 
 use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
-use Darias\ClasseGrupoInternacional\Repositorios\ClasseGrupoInternacionalRepositorio;
+use Diarias\ClasseGrupoInternacional\Repositorios\ClasseGrupoInternacionalRepositorio;
 
 
 class ClasseGrupoInternacionalServico

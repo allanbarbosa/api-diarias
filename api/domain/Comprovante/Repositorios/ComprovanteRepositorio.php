@@ -1,33 +1,35 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\Comprovante\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\Comprovante\Models\ComprovanteModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+
+class ComprovanteRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'compe_caminho',
+        'compe_nome_arquivo',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(ComprovanteModel $comprovanteModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $comprovanteModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('prer_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Comprovante não encontrada.');
         }
 
         return $model;
@@ -78,10 +80,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('compe_caminho', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['compe_caminho'])) {
+            $model = $model->where('compe_caminho', 'ilike', '%'.$input['compe_caminho'].'%');
         }
 
         if (isset($input['count'])) {

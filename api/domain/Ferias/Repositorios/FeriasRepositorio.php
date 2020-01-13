@@ -1,33 +1,34 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\Ferias\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\Ferias\Models\FeriasModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+class FeriasRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'feri_data_inicio',
+        'feri_data_fim',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(FeriasModel $feriasModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $feriasModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('feri_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Férias não encontrada.');
         }
 
         return $model;
@@ -78,10 +79,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('feri_data_inicio', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['feri_data_inicio'])) {
+            $model = $model->where('feri_data_inicio', 'ilike', '%'.$input['feri_data_inicio'].'%');
         }
 
         if (isset($input['count'])) {

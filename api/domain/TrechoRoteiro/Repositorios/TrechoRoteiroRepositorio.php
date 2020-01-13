@@ -1,33 +1,38 @@
 <?php
-declare(strict_type=1);
+declare(strict_types=1);
 
-namespace Diarias\ClasseGrupoInternacional\Repositorios;
+namespace Diarias\TrechoRoteiro\Repositorios;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\TrechoRoteiro\Models\TrechoRoteiroModel;
 use Exception;
 
-class ClasseGrupoInternacionalRepositorio
+
+class TrechoRoteiroRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
+        'trec_rot_data_hora_saida',
+        'trec_rot_data_hora_retorno',
+        'trec_rot_valor_unitario',
+        'trec_rot_valor_adicional',
+        'trec_rot_qtd_diarias',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
-    public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    public function __construct(TrechoRoteiroModel $trechoRoteiroModel)
     {
-        $this->model = $classeGrupoInternacionalModel;
+        $this->model = $trechoRoteiroModel;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('clas_gru_internacional_id', '=', $id)->first();
+        $model = $this->model->where('trec_rot_id', '=', $id)->first();
 
         if (!$model) {
-            throw new Exception('Classe grupo internacional não encontrada.');
+            throw new Exception('Trecho da viagem não encontrada.');
         }
 
         return $model;
@@ -78,10 +83,10 @@ class ClasseGrupoInternacionalRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
+        $model = $this->model->orderBy('trec_rot_data_hora_saida', 'ASC');
 
-        if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        if (isset($input['trec_rot_data_hora_saida'])) {
+            $model = $model->where('trec_rot_data_hora_saida', 'ilike', '%'.$input['trec_rot_data_hora_saida'].'%');
         }
 
         if (isset($input['count'])) {

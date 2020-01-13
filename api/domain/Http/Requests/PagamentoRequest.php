@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClasseGrupoInternacionalRequest extends FormRequest
+class PagamentoRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,14 +17,14 @@ class ClasseGrupoInternacionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'valor' => ['required'],
+            'numero_pagamento' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'valor.required' => 'Campo valor da Classe grupo internacional é obrigatório',
+            'numero_pagamento.required' => 'Campo número do pagamento é obrigatório',
         ];
     }
 

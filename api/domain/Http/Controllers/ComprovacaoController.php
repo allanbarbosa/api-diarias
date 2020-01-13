@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PrerrogativaRequest;
-use Diarias\Prerrogativa\PrerrogativaServico;
+use Diarias\Comprovacao\ComprovacaoServico;
+use Diarias\Http\Requests\ComprovacaoRequest;
 use Exception;
 
 
-class PrerrogativaController extends Controller
+class ComprovacaoController extends Controller
 {
     protected $servico;
 
-    public function __construct(PrerrogativaServico $prerrogativaServico)
+    public function __construct(ComprovacaoServico $comprovacaoServico)
     {
-        $this->servico = $prerrogativaServico;
+        $this->servico = $comprovacaoServico;
     }
 
     public function index()
@@ -30,9 +30,9 @@ class PrerrogativaController extends Controller
     {
         try {
             
-            $prerrogativa = $this->servico->find($id);
+            $comprovacao = $this->servico->find($id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($comprovacao, 200);
 
         } catch (Exception $e) {
             
@@ -41,24 +41,24 @@ class PrerrogativaController extends Controller
         }
     }
 
-    public function store(PrerrogativaRequest $request)
+    public function store(ComprovacaoRequest $request)
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $comprovacao = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($comprovacao, 200);
     }
 
-    public function update(PrerrogativaRequest $request, int $id)
+    public function update(ComprovacaoRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $prerrogativa = $this->servico->update($input, $id);
+            $comprovacao = $this->servico->update($input, $id);
 
-            return response()->json($prerrogativa, 200);
+            return response()->json($comprovacao, 200);
 
         } catch (Exception $e) {
 

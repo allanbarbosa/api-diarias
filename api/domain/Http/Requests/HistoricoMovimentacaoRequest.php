@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClasseGrupoInternacionalRequest extends FormRequest
+class HistoricoMovimentacaoRequest extends FormRequest
 {
     public function authorize()
     {
@@ -17,14 +17,16 @@ class ClasseGrupoInternacionalRequest extends FormRequest
     public function rules()
     {
         return [
-            'valor' => ['required'],
+            'data_tramitacao' => ['required'],
+            'mov_observacao' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'valor.required' => 'Campo valor da Classe grupo internacional é obrigatório',
+            'data_tramitacao.required' => 'Campo data tramitação é obrigatório',
+            'mov_observacao.required' => 'Campo observação é obrigatório',
         ];
     }
 
