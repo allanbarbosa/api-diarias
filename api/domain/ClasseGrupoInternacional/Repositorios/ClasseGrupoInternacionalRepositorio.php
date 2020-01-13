@@ -81,7 +81,7 @@ class ClasseGrupoInternacionalRepositorio
         $model = $this->model->orderBy('clas_gru_internacional_valor', 'ASC');
 
         if (isset($input['clas_gru_internacional_valor'])) {
-            $model = $model->where('clas_gru_internacional_valor', 'ilike', '%'.$input['clas_gru_internacional_valor'].'%');
+            $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
         }
 
         if (isset($input['count'])) {
