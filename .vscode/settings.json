@@ -5,5 +5,5 @@
     "namespaceResolver.highlightOnOpen": true,
     "namespaceResolver.highlightOnSave": true,
     "namespaceResolver.sortOnSave": true,
-    "phpclassgen.vendor": "api/domain",
+    "phpclassgen.vendor": "api/domain"
 }
