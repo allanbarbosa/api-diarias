@@ -75,22 +75,24 @@ class CargoServico
     protected function tratarInput(array $input)
     {
         return [
-            'carg_nome' => $input['nome'],
-            'carg_slug' => Str::slug($input['nome']),
-            'id_gratificacao' => $input['gratificacao']
+            'carg_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'carg_nome' => array_key_exists('nome', $input) ? $input['nome'] : null,
+            'carg_slug' => array_key_exists('slug', $input) ? $input['slug'] : Str::slug($input['nome']),
+            'id_gratificacao' => array_key_exists('idGratificacao', $input) ? $input['idGratificacao'] : null
         ];
     }
 
-    protected function tratarOutput(CargoModel $cargoModel)
+    protected function tratarOutput(CargoModel $model)
     {
         return [
-            'id' => $cargoModel->carg_id,
-            'nome' => $cargoModel->carg_nome,
-            'slug' => $cargoModel->carg_slug,
+            'id' => $model->carg_id,
+            'nome' => $model->carg_nome,
+            'slug' => $model->carg_slug,
+            'idGratificacao' => $model->id_gratificacao,
             'gratificacao' =>
             [
-                'id' => $cargoModel->id_gratificacao,
-                'nome' => $cargoModel->gratificacao->grat_nome,
+                'id' => $model->gratificacao->grat_id,
+                'nome' => $model->gratificacao->grat_nome,
             ]
         ];
     }

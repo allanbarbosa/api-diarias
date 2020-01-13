@@ -18,7 +18,7 @@ class GratificacaoRequest extends FormRequest
     {
         return [
             'nome' => ['required'],
-            'classe' => ['required'],
+            'idClasse' => ['required'],
             'valorDiaria' => ['required']
         ];
     }
@@ -27,7 +27,7 @@ class GratificacaoRequest extends FormRequest
     {
         return [
             'nome.required' => 'O campo nome é obrigatório',
-            'classe.required' => 'O campo classe é obrigatório',
+            'idClasse.required' => 'O campo classe é obrigatório',
             'valorDiaria.required' => 'O campo valorDiaria é obrigatório'
         ];
     }

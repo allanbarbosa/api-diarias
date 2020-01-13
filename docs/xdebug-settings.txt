@@ -1,0 +1,8 @@
+zend_extension=xdebug.so
+xdebug.remote_enable=1
+xdebug.remote_autostart=1
+xdebug.remote_log="/home/vagrant/xdebug.log"
+xdebug.remote_host=10.0.2.2 # <-- ip do gateway do homestead, caso não utilize seria localhost
+xdebug.remote_port=9000
+xdebug.idekey=netbeans-xdebug
+

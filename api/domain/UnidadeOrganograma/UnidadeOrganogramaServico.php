@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Unidade;
+namespace Diarias\UnidadeOrganograma;
 
-use Diarias\Unidade\Models\UnidadeModel;
-use Diarias\Unidade\Repositorios\UnidadeRepositorio;
+use Diarias\UnidadeOrganograma\Models\UnidadeOrganogramaModel;
+use Diarias\UnidadeOrganograma\Repositorios\UnidadeOrganogramaRepositorio;
 
 class UnidadeServico
 {
     protected $repositorio;
 
-    public function __construct(UnidadeRepositorio $unidadeRepositorio)
+    public function __construct(UnidadeOrganogramaRepositorio $repositorio)
     {
-        $this->repositorio = $unidadeRepositorio;
+        $this->repositorio = $repositorio;
     }
 
     public function find(int $id)
@@ -28,7 +28,7 @@ class UnidadeServico
 
         $dados = [
             'itens' => [],
-            'total' => 0,
+            'total' => 0
         ];
 
         foreach ($unidades as $unidade)
@@ -73,19 +73,24 @@ class UnidadeServico
 
     protected function tratarInput(array $input)
     {
+        
         return [
-            'unid_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'unid_nome' => array_key_exists('nome', $input) ? $input['nome'] : null,
-            'unid_sigla' => array_key_exists('sigla', $input) ? $input['sigla'] : null
+            'unid_org_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'id_unidade_pai' => array_key_exists('idUnidadePai', $input) ? $input['idUnidadePai'] : null,
+            'id_unidade' => array_key_exists('idUnidade', $input) ? $input['idUnidade'] : null,
+            'id_organograma' => array_key_exists('idOrganograma', $input) ? $input['idOrganograma'] : null,
+            'id_papel_fluxograma' => array_key_exists('idPapelFluxograma', $input) ? $input['idPapelFluxograma'] : null
         ];
     }
 
     protected function tratarOutput(UnidadeModel $model)
     {
         return [
-            'id' => $model->unid_id,
-            'nome' => $model->unid_nome,
-            'sigla'=> $model->unid_sigla
+            'id' => $model->unid_org_id,
+            'idUnidadePai' => $model->id_unidade_pai,
+            'idUnidade' => $model->id_unidade,
+            'idOrganograma' => $model->id_organograma,
+            'idPapelFluxograma' => $model->id_papel_fluxograma
         ];
     }
 }

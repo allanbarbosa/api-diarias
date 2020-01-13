@@ -84,7 +84,11 @@ class LotacaoRepositorio
 
         if (isset($input['lota_data_inicio']))
         {
-            $model = $model->where('lota_data_inicio', 'ilike', '%'.$input['lota_data_inicio'].'%');
+            $model = $model->where('lota_data_inicio', '=', $input['lota_data_inicio']);
+        }
+        if (isset($input['idVinculoEmpregaticio']))
+        {
+            $model = $model->where('id_vinculo_empregaticio', '=', $input['idVinculoEmpregaticio']);
         }
 
         if (isset($input['count']))
@@ -92,5 +96,19 @@ class LotacaoRepositorio
            return $model->paginate($input['count']);
         }
         return $model->get();
+    }
+
+    public function getLotacaoAtualDoVinculo(int $idVinculoEmpregaticio)
+    {
+        return $this->model->where('id_vinculo_empregaticio', '=', $idVinculoEmpregaticio)
+                        ->whereNull('lota_data_fim')->first();
+    }
+
+    public function desligarLotacao(int $idLotacao, $dataDesligamento)
+    {
+        $lotacao = $this->model->find($idLotacao);
+        $lotacao->lota_data_fim = $dataDesligamento;
+        $lotacao->save();
+        return $lotacao;
     }
 }

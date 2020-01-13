@@ -6,6 +6,7 @@ namespace Diarias\Organograma\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Diarias\UnidadeOrganograma\Models\UnidadeOrganogramaModel;
 
 class OrganogramaModel extends Model
 {
@@ -18,6 +19,11 @@ class OrganogramaModel extends Model
         'orga_data_inicio',
         'orga_data_fim',
     ];
+
+    public function unidade_organogramas()
+    {
+        return $this->hasMany(UnidadeOrganogramaModel::class, 'id_organograma');
+    }
 
     use SoftDeletes;
 

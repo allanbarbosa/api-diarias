@@ -73,18 +73,19 @@ class PapelFluxogramaServico
 
     protected function tratarInput(array $input)
     {
-        return [ 
-            'pape_flu_descricao' => $input['descricao'],
-            'pape_flu_slug' => Str::slug($input['descricao']),
+        return [
+            'pape_flu_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'pape_flu_descricao' => array_key_exists('descricao', $input) ? $input['descricao'] : null,
+            'pape_flu_slug' => array_key_exists('slug', $input) ? $input['slug'] : null
         ];
     }
 
-    protected function tratarOutput(PapelFluxogramaModel $papelfluxogramaModel)
+    protected function tratarOutput(PapelFluxogramaModel $model)
     {
         return [
-            'id' => $papelfluxogramaModel->papel_flu_id,
-            'descricao' => $papelfluxogramaModel->pape_flu_descricao,
-            'pape_flu_slug' => $papelfluxogramaModel->pape_flug_slug,
+            'id' => $model->papel_flu_id,
+            'descricao' => $model->pape_flu_descricao,
+            'pape_flu_slug' => $model->pape_flug_slug
         ];
     }
 

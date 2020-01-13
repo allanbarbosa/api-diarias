@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Https\Controllers;
+namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Diarias\Organograma\OrganogramaServico;
@@ -9,13 +9,13 @@ use Exception;
 use Diarias\Http\Requests\OrganogramaRequest;
 
 
-class OrganogramaController extends controller
+class OrganogramaController extends Controller
 {
     protected $servico;
 
-    public function __construct(OrganogramaServico $organogramaServico)
+    public function __construct(OrganogramaServico $servico)
     {
-        $this->servico = $organogramaServico;
+        $this->servico = $servico;
     }
 
     public function index()
@@ -76,10 +76,20 @@ class OrganogramaController extends controller
 
         } catch (Exception $e) {
 
-            return response()->json(['mesnsagem' => $e->getMessage()], 400);
+            return response()->json(['mensagem' => $e->getMessage()], 400);
 
         }
 
+    }
+
+    public function obterOrganogramaAtual()
+    {
+        try {
+            $organogramaAtual = $this->servico->obterOrganogramaAtual();
+            return response()->json($organogramaAtual, 200);
+        } catch (Exception $e) {
+            return response()->json(['mensagem' => $e->getMessage()], 400);
+        }
     }
     
 }            

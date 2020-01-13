@@ -73,15 +73,16 @@ class ClasseServico
     protected function tratarInput(array $input)
     {
         return [
-            'clas_nome' => $input['nome'],
+            'clas_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'clas_nome' => array_key_exists('nome', $input) ? $input['nome'] : null
         ];
     }
 
-    protected function tratarOutput(ClasseModel $classeModel)
+    protected function tratarOutput(ClasseModel $model)
     {
         return [
-            'id' => $classeModel->clas_id,
-            'nome' =>$classeModel->clas_nome,
+            'id' => $model->clas_id,
+            'nome' =>$model->clas_nome,
         ];
     }
 

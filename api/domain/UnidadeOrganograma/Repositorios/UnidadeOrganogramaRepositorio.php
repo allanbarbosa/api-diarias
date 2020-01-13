@@ -1,34 +1,34 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\VinculoEmpregaticio\Repositorios;
+namespace Diarias\UnidadeOrganograma\Repositorios;
 
-use Diarias\VinculoEmpregaticio\Models\VinculoEmpregaticioModel;
+use Diarias\UnidadeOrganograma\Models\UnidadeOrganogramaModel;
 use Exception;
 
-class VinculoEmpregaticioRepositorio
+class UnidadeOrganogramaRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'vinc_emp_matricula',
-        'vinc_emp_data_admissao',
-        'vinc_emp_data_desligamento',
-        'id_funcionario'
+        'id_unidade_pai',
+        'id_unidade',
+        'id_organograma',
+        'id_papel_fluxograma'
     ];
 
-    public function __construct(VinculoEmpregaticioModel $vinculoEmpregaticioModel)
+    public function __construct(UnidadeOrganogramaModel $model)
     {
-        $this->model = $vinculoEmpregaticioModel;
+        $this->model = $model;
     }
 
     public function find(int $id)
     {
-        $model = $this->model->where('vinc_emp_id', '=', $id)->first();
+        $model = $this->model->where($model->primaryKey, '=', $id)->first();
 
         if (!$model)
         {
-            throw new Exception('Vínculo empregatício não encontrado');
+            throw new Exception('UnidadeOrganograma não encontrada');
         }
 
         return $model;
@@ -77,14 +77,10 @@ class VinculoEmpregaticioRepositorio
         return $model->delete();
     }
 
-    public function getWhere(array $input)
+    public function getWhere(array $input, $sortColumn = null, $sortDirection = 'ASC')
     {
-        $model = $this->model->orderBy('vinc_emp_matricula', 'ASC');
-
-        if (isset($input['vinc_emp_matricula']))
-        {
-            $model = $model->where('vinc_emp_matricula', 'ilike', '%'.$input['vinc_emp_matricula'].'%');
-        }
+        $sortColumn = isset($sortColumn) ? $sortColumn : 'unid_org_id';
+        $model = $this->model->orderBy($sortColumn, $sortDirection);
 
         if (isset($input['count']))
         {

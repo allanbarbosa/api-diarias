@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PapelFluxogramaModel extends Model
 {
-    protected $table = 'PapelFluxograma';
+    protected $table = 'papel_fluxograma';
 
     protected $primaryKey = 'pape_flu_id';
 
@@ -17,6 +17,6 @@ class PapelFluxogramaModel extends Model
         'pape_flu_descricao'
 
     ];
-use SoftDeletes;
+    use SoftDeletes;
 }
 
