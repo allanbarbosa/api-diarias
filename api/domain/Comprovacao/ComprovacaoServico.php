@@ -73,13 +73,14 @@ class ComprovacaoServico
     protected function tratarInput(array $input)
     {
         return [
-            'compo_diarias_utilizadas' => $input['diarias_utilizadas'],
-            'compo_data_hora_saida_efetiva' => $input['data_hora_saida_efetiva'],
-            'compo_data_hora_chegada_efetiva' => $input['data_hora_chegada_efetiva'],
-            'compo_atividades_desenvolvidas' => $input['atividades_desenvolvidas'],
-            'compo_saldo_receber' => $input['saldo_receber'],
-            'compo_saldo_restituir' => $input['saldo_restituir'],
-            'compo_valor_total' => $input['valor_total'],
+            'comp_diarias_utilizadas' => $input['diarias_utilizadas'],
+            'comp_data_hora_saida_efetiva' => $input['data_hora_saida_efetiva'],
+            'comp_data_hora_chegada_efetiva' => $input['data_hora_chegada_efetiva'],
+            'comp_atividades_desenvolvidas' => $input['atividades_desenvolvidas'],
+            'comp_saldo_receber' => $input['saldo_receber'],
+            'comp_saldo_restituir' => $input['saldo_restituir'],
+            'comp_valor_total' => $input['valor_total'],
+            'id_trecho' => $input['trecho'],
         ];
     }
 
@@ -87,13 +88,14 @@ class ComprovacaoServico
     {
         return [
             'id' => $comprovacaoModel->compo_id,
-            'diarias_utilizadas' => $comprovacaoModel->compo_diarias_utilizadas,
-            'data_hora_saida_efetiva' => $comprovacaoModel->compo_data_hora_saida_efetiva,
-            'data_hora_chegada_efetiva' => $comprovacaoModel->compo_data_hora_chegada_efetiva,
-            'atividades_desenvolvidas' => $comprovacaoModel->compo_atividades_desenvolvidas,
-            'saldo_receber' => $comprovacaoModel->compo_saldo_receber,
-            'saldo_restituir' => $comprovacaoModel->compo_saldo_restituir,
-            'valor_total' => $comprovacaoModel->compo_valor_total,
+            'diarias_utilizadas' => $comprovacaoModel->comp_diarias_utilizadas,
+            'data_hora_saida_efetiva' => $comprovacaoModel->comp_data_hora_saida_efetiva,
+            'data_hora_chegada_efetiva' => $comprovacaoModel->comp_data_hora_chegada_efetiva,
+            'atividades_desenvolvidas' => $comprovacaoModel->comp_atividades_desenvolvidas,
+            'saldo_receber' => $comprovacaoModel->comp_saldo_receber,
+            'saldo_restituir' => $comprovacaoModel->comp_saldo_restituir,
+            'valor_total' => $comprovacaoModel->comp_valor_total,
+            'trecho' => $comprovacaoModel->id_trecho,
             
         ];
     }

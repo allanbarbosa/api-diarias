@@ -44,5 +44,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::middleware('apagar.usuario')->delete('funcionario/{id}', '\Diarias\Http\Controllers\FuncionarioController@destroy');
     Route::get('dropdown/{slug}', '\Diarias\Http\Controllers\DropdownController@index');
 
-});
+    Route::resource('classeGrupoInternacional', '\Diarias\Http\Controllers\ClasseGrupoInternacionalController');
+    Route::resource('comprovacao', '\Diarias\Http\Controllers\ComprovacaoController');
 
+});

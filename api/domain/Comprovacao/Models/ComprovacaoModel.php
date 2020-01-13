@@ -13,13 +13,14 @@ class ComprovacaoModel extends Model
     protected $primaryKey = 'compo_id';
 
     protected $fillable = [
-        'compo_diarias_utilizadas',
-        'compo_data_hora_saida_efetiva',
-        'compo_data_hora_chegada_efetiva',
-        'compo_atividades_desenvolvidas',
-        'compo_saldo_receber',
-        'compo_saldo_restituir',
-        'compo_valor_total',
+        'comp_diarias_utilizadas',
+        'comp_data_hora_saida_efetiva',
+        'comp_data_hora_chegada_efetiva',
+        'comp_atividades_desenvolvidas',
+        'comp_saldo_receber',
+        'comp_saldo_restituir',
+        'comp_valor_total',
+        'id_trecho',
     ];
 
     use SoftDeletes;
