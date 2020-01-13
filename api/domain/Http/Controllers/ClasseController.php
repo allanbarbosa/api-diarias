@@ -4,15 +4,15 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Classe\ClasseServico;
 use Diarias\Http\Requests\ClasseRequest;
+use Diarias\Classe\ClasseServico;
 use Exception;
 
 class ClasseController extends Controller
 {
     protected $servico;
 
-    public function __construct(classeServico $classeServico)
+    public function __construct(ClasseServico $classeServico)
     {
         $this->servico = $classeServico;
     }

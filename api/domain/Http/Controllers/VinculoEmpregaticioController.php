@@ -82,4 +82,15 @@ class VinculoEmpregaticioController extends Controller
             return response()->json(['mensagem' => $e->getMessage()], 400);
         }
     }
+
+    public function desligarVinculoEmpregaticio()
+    {
+        try {
+            $idVinculoEmpregaticio = request()->get('idVinculoEmpregaticio');
+            $dataDesligamento = request()->get('dataDesligamento');
+            $this->servico->desligarVinculoEmpregaticio((int) $idVinculoEmpregaticio, $dataDesligamento);
+        } catch (Exception $e) {
+            return response()->json(['mensagem' => $e->getMessage()], 400);
+        }
+    }
 }
