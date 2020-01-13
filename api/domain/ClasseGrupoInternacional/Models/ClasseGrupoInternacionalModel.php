@@ -13,7 +13,9 @@ class ClasseGrupoInternacionalModel extends Model
     protected $primaryKey = 'clas_gru_internacional_id';
 
     protected $fillable = [
-        'clas_gru_internacional_valor'
+        'clas_gru_internacional_valor',
+        'id_classe',
+        'id_grupo_internacional',
     ];
 
     use SoftDeletes;

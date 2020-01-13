@@ -21,6 +21,8 @@ Route::group(['middleware' => 'token.validation'], function () {
         phpinfo();
     });
     Route::resource('usuario', '\Diarias\Http\Controllers\UsuarioController');
+    Route::resource('classeGrupoInternacional', '\Diarias\Http\Controllers\ClasseGrupoInternacionalController');
+    Route::resource('comprovacao', '\Diarias\Http\Controllers\ComprovacaoController');
     Route::resource('estado', '\Diarias\Http\Controllers\EstadoController');
     Route::resource('pais', '\Diarias\Http\Controllers\PaisController');
     Route::resource('classe', '\Diarias\Http\Controllers\ClasseController');

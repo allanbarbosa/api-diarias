@@ -50,9 +50,9 @@ class ClasseGrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
 
-        $prerrogativa = $this->repositorio->save($dados);
+        $classeGrupoInternacional = $this->repositorio->save($dados);
 
-        return $this->tratarOutput($prerrogativa);
+        return $this->tratarOutput($classeGrupoInternacional);
     }
 
     public function update(array $input, int $id)
@@ -75,6 +75,8 @@ class ClasseGrupoInternacionalServico
     {
         return [
             'clas_gru_internacional_valor' => $input['valor'],
+            'id_classe' => $input['classe'],
+            'id_grupo_internacional' => $input['grupo_internacional'],
         ];
     }
 
@@ -83,6 +85,8 @@ class ClasseGrupoInternacionalServico
         return [
             'id' => $classeGrupoInternacionalModel->clas_gru_internacional_id,
             'valor' => $classeGrupoInternacionalModel->clas_gru_internacional_valor,
+            'classe' => $classeGrupoInternacionalModel->id_classe,
+            'grupo_internacional' => $classeGrupoInternacionalModel->id_grupo_internacional,
         ];
     }
 }

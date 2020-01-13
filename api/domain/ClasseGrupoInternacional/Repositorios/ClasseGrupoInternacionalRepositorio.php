@@ -12,9 +12,11 @@ class ClasseGrupoInternacionalRepositorio
 
     protected $fields = [
         'clas_gru_internacional_valor',
+        'id_classe',
+        'id_grupo_internacional',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
     public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
