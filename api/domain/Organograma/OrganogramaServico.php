@@ -25,10 +25,12 @@ class OrganogramaServico
 
     }
 
-    public function all(array $input)
+    public function all(array $input, $paginage = false)
     {
-
-        $organogramas = $this->repositorio->getwhere($input);
+        $organogramas = array_map(array($this, 'tratarOutput'), $this->repositorio->getwhere($input)->all());
+        if (!$paginage) {
+            return $organogramas;
+        }
 
         $dados = [
             'itens' => [],
@@ -80,6 +82,22 @@ class OrganogramaServico
         $organograma = $this->repositorio->obterOrganogramaAtual();
         return $this->tratarOutput($organograma);
     }
+    
+    public function obterSugestaoCodigo()
+    {
+        $codAtual = $this->repositorio->obterOrganogramaAtual()->orga_codigo;
+        $parts = explode('.', $codAtual);
+        if (count($parts) != 2 || !is_numeric($parts[0]) || !is_numeric($parts[1])) {
+            return '';
+        }
+        if ($parts[0] == date('Y')) {
+            $novaVersao = intval($parts[1]) + 1;
+            return $parts[0].'.'.$novaVersao;
+        } else {
+            return date('Y').'.1';
+        }
+        
+    }
 
     protected function tratarInput(array $input)
     {
@@ -90,6 +108,7 @@ class OrganogramaServico
             'orga_data_fim' => array_key_exists('dataFim', $input) ? $input['dataFim'] : null,
         ];
     }
+    
     protected function tratarOutput(OrganogramaModel $model)
     {
         $output = [
@@ -103,13 +122,23 @@ class OrganogramaServico
             $output['unidadeOrganogramas'][] = [
                 'id' => $unidade_organograma->unid_org_id,
                 'idUnidadePai' => $unidade_organograma->id_unidade_pai,
+                'unidadePai' => $unidade_organograma->unidade_pai != null ? [
+                    'id' => $unidade_organograma->unidade_pai->unid_id,
+                    'nome' => $unidade_organograma->unidade_pai->unid_nome,
+                    'sigla' => $unidade_organograma->unidade_pai->unid_sigla
+                ] : null,
                 'idUnidade' => $unidade_organograma->id_unidade,
-                'idOrganograma' => $unidade_organograma->id_organograma,
-                'idPapelFluxograma' => $unidade_organograma->id_papel_fluxograma,
                 'unidade' => [
                     'id' => $unidade_organograma->unidade->unid_id,
                     'nome' => $unidade_organograma->unidade->unid_nome,
                     'sigla' => $unidade_organograma->unidade->unid_sigla
+                ],
+                'idOrganograma' => $unidade_organograma->id_organograma,
+                'idPapelFluxograma' => $unidade_organograma->id_papel_fluxograma,
+                'papelFluxograma' => [
+                    'id' => $unidade_organograma->papel_fluxograma->pape_flu_id,
+                    'slug' => $unidade_organograma->papel_fluxograma->pape_flu_slug,
+                    'descricao' => $unidade_organograma->papel_fluxograma->pape_flu_descricao
                 ]
             ];
         }

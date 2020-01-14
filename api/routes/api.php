@@ -17,9 +17,6 @@ Route::post('autenticar', '\Diarias\Http\Controllers\AutenticacaoController@stor
 
 Route::group(['middleware' => 'token.validation'], function () {
 
-    Route::get('teste', function () {
-        phpinfo();
-    });
     Route::resource('usuario', '\Diarias\Http\Controllers\UsuarioController');
     Route::resource('estado', '\Diarias\Http\Controllers\EstadoController');
     Route::resource('pais', '\Diarias\Http\Controllers\PaisController');
@@ -37,6 +34,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
 
     Route::get('organograma/obterOrganogramaAtual', '\Diarias\Http\Controllers\OrganogramaController@obterOrganogramaAtual');
+    Route::get('organograma/obterSugestaoCodigo', '\Diarias\Http\Controllers\OrganogramaController@obterSugestaoCodigo');
     Route::resource('organograma', '\Diarias\Http\Controllers\OrganogramaController');
     
     Route::middleware('criacao.usuario')->post('funcionario', '\Diarias\Http\Controllers\FuncionarioController@store');
@@ -44,5 +42,9 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::middleware('apagar.usuario')->delete('funcionario/{id}', '\Diarias\Http\Controllers\FuncionarioController@destroy');
     Route::get('dropdown/{slug}', '\Diarias\Http\Controllers\DropdownController@index');
 
-});
+    Route::resource('classeGrupoInternacional', '\Diarias\Http\Controllers\ClasseGrupoInternacionalController');
+    Route::resource('comprovacao', '\Diarias\Http\Controllers\ComprovacaoController');
+    Route::resource('trechoRoteiro', '\Diarias\Http\Controllers\TrechoRoteiroController');
+    Route::resource('tipoTransporte', '\Diarias\Http\Controllers\TipoTransporteController');
 
+});

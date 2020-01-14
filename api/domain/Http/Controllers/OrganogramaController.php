@@ -92,6 +92,13 @@ class OrganogramaController extends Controller
         }
     }
     
-}            
-
-    
+    public function obterSugestaoCodigo()
+    {
+        try {
+            $codigoSugerido = $this->servico->obterSugestaoCodigo();
+            return response($codigoSugerido, 200);
+        } catch (Exception $ex) {
+            return response()->json(['mensagem' => $ex->getMessage()], 400);
+        }
+    }
+}

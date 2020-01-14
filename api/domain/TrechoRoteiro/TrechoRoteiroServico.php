@@ -78,19 +78,31 @@ class TrechoRoteiroServico
             'trec_rot_valor_unitario' => $input['valor_unitario'],
             'trec_rot_valor_adicional' => $input['valor_adicional'],
             'trec_rot_qtd_diarias' => $input['qtd_diarias'],
+            'id_tipo_transporte' => $input['tipo_transporte'],
+            'id_viagem' => $input['viagem'],
+            'id_pais_origem' => $input['pais_origem'],
+            'id_municipio_origem' => $input['municipio_origem'],
+            'id_pais_destino' => $input['pais_destino'],
+            'id_municipio_destino' => $input['municipio_destino'],
 
         ];
     }
 
-    protected function tratarOutput(TrechoRoteiroModel $prerrogativaModel)
+    protected function tratarOutput(TrechoRoteiroModel $trechoRoteiroModel)
     {
         return [
-            'id' => $prerrogativaModel->trec_rot_id,
-            'data_hora_saida' => $prerrogativaModel->trec_rot_data_hora_saida,
-            'data_hora_retorno' => $prerrogativaModel->trec_rot_data_hora_retorno,
-            'valor_unitario' => $prerrogativaModel->trec_rot_valor_unitario,
-            'valor_adicional' => $prerrogativaModel->trec_rot_valor_adicional,
-            'qtd_diarias' => $prerrogativaModel->trec_rot_qtd_diarias,
+            'id' => $trechoRoteiroModel->trec_rot_id,
+            'data_hora_saida' => $trechoRoteiroModel->trec_rot_data_hora_saida,
+            'data_hora_retorno' => $trechoRoteiroModel->trec_rot_data_hora_retorno,
+            'valor_unitario' => $trechoRoteiroModel->trec_rot_valor_unitario,
+            'valor_adicional' => $trechoRoteiroModel->trec_rot_valor_adicional,
+            'qtd_diarias' => $trechoRoteiroModel->trec_rot_qtd_diarias,
+            'tipo_transporte' => $trechoRoteiroModel->id_tipo_transporte,
+            'viagem' => $trechoRoteiroModel->id_viagem,
+            'pais_origem' => $trechoRoteiroModel->id_pais_origem,
+            'municipio_origem' => $trechoRoteiroModel->id_municipio_origem,
+            'pais_destino' => $trechoRoteiroModel->id_pais_destino,
+            'municipio_destino' => $trechoRoteiroModel->id_municipio_destino,
         ];
     }
 }

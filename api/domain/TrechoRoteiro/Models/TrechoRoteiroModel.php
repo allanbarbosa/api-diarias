@@ -18,6 +18,13 @@ class TrechoRoteiroModel extends Model
         'trec_rot_valor_unitario',
         'trec_rot_valor_adicional',
         'trec_rot_qtd_diarias',
+        'id_tipo_transporte',
+        'id_viagem',
+        'id_pais_origem',
+        'id_municipio_origem',
+        'id_pais_destino',
+        'id_municipio_destino',
+
     ];
 
     use SoftDeletes;

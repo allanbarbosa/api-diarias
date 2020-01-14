@@ -11,13 +11,14 @@ class ComprovacaoRepositorio
     protected $model;
 
     protected $fields = [
-        'compo_diarias_utilizadas',
-        'compo_data_hora_saida_efetiva',
-        'compo_data_hora_chegada_efetiva',
-        'compo_atividades_desenvolvidas',
-        'compo_saldo_receber',
-        'compo_saldo_restituir',
-        'compo_valor_total',
+        'comp_diarias_utilizadas',
+        'comp_data_hora_saida_efetiva',
+        'comp_data_hora_chegada_efetiva',
+        'comp_atividades_desenvolvidas',
+        'comp_saldo_receber',
+        'comp_saldo_restituir',
+        'comp_valor_total',
+        'id_trecho',
         'created_by',
         'updated_by',
         'deleted_by',
@@ -84,10 +85,10 @@ class ComprovacaoRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('compo_diarias_utilizadas', 'ASC');
+        $model = $this->model->orderBy('comp_diarias_utilizadas', 'ASC');
 
-        if (isset($input['compo_diarias_utilizadas'])) {
-            $model = $model->where('compo_diarias_utilizadas', 'ilike', '%'.$input['compo_diarias_utilizadas'].'%');
+        if (isset($input['comp_diarias_utilizadas'])) {
+            $model = $model->where('comp_diarias_utilizadas', 'ilike', '%'.$input['comp_diarias_utilizadas'].'%');
         }
 
         if (isset($input['count'])) {
