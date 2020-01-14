@@ -23,9 +23,12 @@ class ClasseGrupoInternacionalServico
         return $this->tratarOutput($classeGrupoInternacional);
     }
 
-    public function all(array $input)
+    public function all(array $input, $paginage = false)
     {
-        $classeGrupoInternacionais = $this->repositorio->getWhere($input);
+        $classeGrupoInternacionais = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
+        if (!$paginage) {
+            return $classeGrupoInternacionais;
+        }
         
         $dados = [
             'itens' => [],
@@ -50,9 +53,9 @@ class ClasseGrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
 
-        $prerrogativa = $this->repositorio->save($dados);
+        $classeGrupoInternacional = $this->repositorio->save($dados);
 
-        return $this->tratarOutput($prerrogativa);
+        return $this->tratarOutput($classeGrupoInternacional);
     }
 
     public function update(array $input, int $id)
@@ -67,22 +70,38 @@ class ClasseGrupoInternacionalServico
 
     public function delete(int $id, int $usuario)
     {
-
         return $this->repositorio->delete($id, $usuario);
     }
 
     protected function tratarInput(array $input)
     {
-        return [
-            'clas_gru_internacional_valor' => $input['valor'],
-        ];
+        return new ClasseGrupoInternacionalModel([
+            'clas_gru_internacional_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'clas_gru_internacional_valor' => array_key_exists('valor', $input) ? $input['valor'] : null,
+            'id_classe' => array_key_exists('idClasse', $input) ? $input['idClasse'] : null,
+            'classe' => array_key_exists('classe', $input) ? $input['classe'] : null,
+            'id_grupo_internacional' => array_key_exists('idGrupoInternacional', $input) ? $input['idGrupoInternacional'] : null,
+            'grupo_internacional' => array_key_exists('grupoInternacional', $input) ? $input['grupoInternacional'] : null
+        ]);
     }
 
     protected function tratarOutput(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
     {
         return [
-            'id' => $classeGrupoInternacionalModel->clas_gru_internacional_id,
-            'valor' => $classeGrupoInternacionalModel->clas_gru_internacional_valor,
+            'id' => $model->clas_gru_internacional_id,
+            'valor' => $model->clas_gru_internacional_valor,
+            'idClasse' => $model->id_classe,
+            'classe' =>
+            [
+                'id' => $model->classe->clas_id,
+                'nome' => $model->classe->clas_nome,
+            ],
+            'idGrupoInternacional' => $model->id_grupo_internacional,
+            'grupoInternacional' =>
+            [
+                'id' => $model->grupoInternacional->grup_int_id,
+                'codigo' => $model->grupoInternacional->grup_int_codigo,
+            ]
         ];
     }
 }

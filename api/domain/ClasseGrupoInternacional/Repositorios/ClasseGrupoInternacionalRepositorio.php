@@ -11,10 +11,7 @@ class ClasseGrupoInternacionalRepositorio
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor',
-        'created_by',
-        'updated_by',
-        'deleted_by'
+        'clas_gru_internacional_valor'
     ];
 
     public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
@@ -69,10 +66,9 @@ class ClasseGrupoInternacionalRepositorio
     public function delete(int $id, int $usuario)
     {
         $model = $this->find($id);
-
-        $model->deleted_by = $usuario;
+        
         $model->save();
-
+        
         return $model->delete();
     }
     
@@ -82,6 +78,16 @@ class ClasseGrupoInternacionalRepositorio
 
         if (isset($input['clas_gru_internacional_valor'])) {
             $model = $model->where('clas_gru_internacional_valor', '%'.$input['clas_gru_internacional_valor'].'%');
+        }
+        
+        if (isset($input['idClasse']))
+        {
+            $model = $model->where('id_classe', '=', $input['idClasse']);
+        }
+        
+        if (isset($input['idGrupoNacional']))
+        {
+            $model = $model->where('id_grupo_nacional', '=', $input['idGrupoNacional']);
         }
 
         if (isset($input['count'])) {

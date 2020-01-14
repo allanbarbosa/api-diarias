@@ -17,20 +17,24 @@ class GrupoInternacionalServico
 
     public function find(int $id)
     {
-        $grupointernacional = $this->repositorio->find($id);
+        $grupoInternacional = $this->repositorio->find($id);
 
-        return $this->tratarOutput($grupointernacional);
+        return $this->tratarOutput($grupoInternacional);
     }
 
-    public function all(array $input)
+    public function all(array $input, $paginate = false)
     {
-        $grupointernacionais = $this->repositorio->getWhere($input);
+        $gruposInternacionais = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
+        if (!$paginate) {
+            return $gruposInternacionais;
+        }
+     
         $dados = [
             'itens' => [],
             'total' => 0
         ];
 
-        foreach ($grupointernacionais as $grupointernacional) {
+        foreach ($gruposInternacionais as $grupointernacional) {
             $dados['itens'][] = $this->tratarOutput($grupointernacional);
         }
 
@@ -46,43 +50,64 @@ class GrupoInternacionalServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
-        $dados['created_by'] = $input['usuario'];
 
-        $grupointernacional = $this->repositorio->save($dados);
+        $grupoInternacional = $this->repositorio->save($dados);
 
-        return $this->tratarOutput($grupointernacional);
+        return $this->tratarOutput($grupoInternacional);
     }
 
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
-        $dados['updated_by'] = $input['usuario'];
 
-        $grupointernacional = $this->repositorio->update($dados, $id);
+        $grupoInternacional = $this->repositorio->update($dados->toArray(), $id);
 
-        return $this->tratarOutput($grupointernacional);
+        return $this->tratarOutput($grupoInternacional);
     }
 
-    public function delete(int $id, int $usuario)
+    public function delete(int $id)
     {
 
-        return $this->repositorio->delete($id, $usuario);
+        return $this->repositorio->delete($id);
     }
 
     protected function tratarInput(array $input)
     {
-        return [
-            'grup_int_codigo' => $input['codigo'],
-            
-        ];
+        return new GrupoInternacionalModel([
+            'grup_int_id' => array_key_exists('id', $input) ? $input['id'] : null,
+            'grup_int_codigo' => array_key_exists('codigo', $input) ? $input['codigo'] : null
+        ]);
     }
 
-    protected function tratarOutput(GrupoInternacionalModel $grupointernacionalModel)
+    protected function tratarOutput(GrupoInternacionalModel $grupoInternacionalModel)
     {
-        return [
-            'id' => $grupointernacionalModel->grup_int_id,
-            'codigo' => $grupointernacionalModel->grup_int_codigo,
-            
+        $output = [
+            'id' => $grupoInternacionalModel->grup_int_id,
+            'codigo' => $grupoInternacionalModel->grup_int_codigo,
+            'grupoInternacionalPaises' => [],
+            'classesXgruposInternacionais' => [],
         ];
+        foreach ($grupoInternacionalModel->grupo_internacional_paises as $grupo_internacional_pais) {
+            $output['grupoInternacionalPaises'][] = [
+                'id' => $grupo_internacional_pais->grup_int_pais_id,
+                'idPais' => $grupo_internacional_pais->id_pais,
+                'pais' => [
+                    'id' => $grupo_internacional_pais->pais->pais_id,
+                    'nome' => $grupo_internacional_pais->pais->pais_nome
+                ]
+            ];
+        }
+        foreach ($grupoInternacionalModel->classes_x_grupos_internacionais as $classe_x_grupo_internacional) {
+            $output['classesXgruposInternacionais'][] = [
+                'id' => $classe_x_grupo_internacional->clas_gru_internacional_id,
+                'valor' => $classe_x_grupo_internacional->clas_gru_internacional_valor,
+                'idClasse' => $classe_x_grupo_internacional->id_classe,
+                'classe' => [
+                    'id' => $classe_x_grupo_internacional->classe->classe_id,
+                    'nome' => $classe_x_grupo_internacional->classe->classe_nome
+                ]
+            ];
+        }
+        return $output;
     }
 }
