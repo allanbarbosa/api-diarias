@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoTransporteTable extends Migration
+class AlterTableTipoTransporteAddForeign extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateTipoTransporteTable extends Migration
      */
     public function up()
     {
-        Schema::hasTable('tipo_transporte', function (Blueprint $table) {
-            $table->bigIncrements('tipo_tra_id');
-            $table->string('tipo_tra_nome', 255);
-            $table->string('tipo_tra_slug', 255);
-            $table->timestamps();
-            $table->softDeletes();
-
+        Schema::table('tipo_transporte', function (Blueprint $table) {
+            
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
@@ -41,6 +36,8 @@ class CreateTipoTransporteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_transporte');
+        Schema::table('tipo_transporte', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -17,7 +17,7 @@ class TipoTransporteRepositorio
         'tipo_tra_slug',
         'created_by',
         'updated_by',
-        'deleted_by'
+        'deleted_by',
     ];
 
     public function __construct(TipoTransporteModel $tipoTransporteModel)
