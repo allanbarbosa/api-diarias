@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Diarias\Unidade\Models\UnidadeModel;
 use Diarias\Organograma\Models\OrganogramaModel;
+use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 
 class UnidadeOrganogramaModel extends Model
 {
@@ -38,7 +39,7 @@ class UnidadeOrganogramaModel extends Model
 
     public function papel_fluxograma()
     {
-        return $this->belongsTo(OrganogramaModel::class, 'id_papel_fluxograma');
+        return $this->belongsTo(PapelFluxogramaModel::class, 'id_papel_fluxograma');
     }
 
     use SoftDeletes;
