@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Diarias\Https\Controllers;
+namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Diarias\Http\Requests\TrechoRoteiroRequest;
@@ -25,7 +25,7 @@ class TrechoRoteiroController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
             
