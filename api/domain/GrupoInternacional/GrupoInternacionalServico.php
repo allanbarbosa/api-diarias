@@ -22,36 +22,16 @@ class GrupoInternacionalServico
         return $this->tratarOutput($grupoInternacional);
     }
 
-    public function all(array $input, $paginate = false)
+    public function all(array $input)
     {
-        $gruposInternacionais = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-        if (!$paginate) {
-            return $gruposInternacionais;
-        }
-     
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($gruposInternacionais as $grupointernacional) {
-            $dados['itens'][] = $this->tratarOutput($grupointernacional);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $grupointernacionais->total();
-        } else {
-            $dados['total'] = count($grupointernacionais);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
-
-        $grupoInternacional = $this->repositorio->save($dados);
+        
+        $grupoInternacional = $this->repositorio->save($dados->toArray());
 
         return $this->tratarOutput($grupoInternacional);
     }
