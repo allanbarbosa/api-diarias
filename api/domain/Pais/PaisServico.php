@@ -22,8 +22,13 @@ class PaisServico
     return $this->tratarOutput($pais);
   }
 
-  public function all(array $input)
+  public function all(array $input, $paginate = false)
   {
+    $paises = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
+    if (!$paginate) {
+        return $paises;
+    }
+    
     $paises = $this->repositorio->getWhere($input);
     $dados = [
         'itens' => [],
@@ -73,13 +78,15 @@ class PaisServico
 
   protected function tratarInput(array $input)
   {
-    return [
-      'pais_nome' => $input['nome']
-    ];
+    return new PaisModel([
+      'pais_id' => array_key_exists('id', $input) ? $input['id'] : null,
+      'pais_nome' => array_key_exists('nome', $input) ? $input['nome'] : null
+    ]);
   }
 
   protected function tratarOutput(PaisModel $paisModel)
   {
+      
     return [
       'id' => $paisModel->pais_id,
       'nome' => $paisModel->pais_nome

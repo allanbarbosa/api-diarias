@@ -29,7 +29,7 @@ class GrupoInternacionalController extends Controller
     {
         try {
             
-            $grupointernacional = $this->servico->find($id);
+            $grupointernacional = $this->servico->find((int)$id);
 
             return response()->json($grupointernacional, 200);
 
