@@ -19,6 +19,7 @@ class ViagemModel extends Model
         'viag_flag_alimentacao_custeada',
         'viag_flag_adicional_deslocamento',
         'viag_flag_urgente',
+        'lota_id',
     ];
 
     use SoftDeletes;

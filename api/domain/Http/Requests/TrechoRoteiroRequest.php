@@ -20,7 +20,6 @@ class TrechoRoteiroRequest extends FormRequest
             'data_hora_saida' => ['required'],
             'data_hora_retorno' => ['required'],
             'valor_unitario' => ['required'],
-            'valor_adicional' => ['required'],
             'qtd_diarias' => ['required'],
         ];
     }
@@ -31,7 +30,6 @@ class TrechoRoteiroRequest extends FormRequest
             'data_hora_saida.required' => 'Campo data hora saída é obrigatório',
             'data_hora_retorno.required' => 'Campo data hora retorno é obrigatório',
             'valor_unitario.required' => 'Campo valor unitário é obrigatório',
-            'valor_adicional.required' => 'Campo valor adicional é obrigatório',
             'qtd_diarias.required' => 'Campo quantidade de diarias é obrigatório',
         ];
     }
