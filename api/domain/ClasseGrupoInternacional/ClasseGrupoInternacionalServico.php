@@ -23,29 +23,9 @@ class ClasseGrupoInternacionalServico
         return $this->tratarOutput($classeGrupoInternacional);
     }
 
-    public function all(array $input, $paginage = false)
+    public function all(array $input)
     {
-        $classeGrupoInternacionais = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-        if (!$paginage) {
-            return $classeGrupoInternacionais;
-        }
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($classeGrupoInternacionais as $classeGrupoInternacional) {
-            $dados['itens'][] = $this->tratarOutput($classeGrupoInternacional);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $classeGrupoInternacionais->total();
-        } else {
-            $dados['total'] = count($classeGrupoInternacionais);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -63,7 +43,7 @@ class ClasseGrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
 
-        $classeGrupoInternacional = $this->repositorio->update($dados, $id);
+        $classeGrupoInternacional = $this->repositorio->update($dados->toArray(), $id);
 
         return $this->tratarOutput($classeGrupoInternacional);
     }
@@ -88,19 +68,19 @@ class ClasseGrupoInternacionalServico
     protected function tratarOutput(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
     {
         return [
-            'id' => $model->clas_gru_internacional_id,
-            'valor' => $model->clas_gru_internacional_valor,
-            'idClasse' => $model->id_classe,
+            'id' => $classeGrupoInternacionalModel->clas_gru_internacional_id,
+            'valor' => $classeGrupoInternacionalModel->clas_gru_internacional_valor,
+            'idClasse' => $classeGrupoInternacionalModel->id_classe,
             'classe' =>
             [
-                'id' => $model->classe->clas_id,
-                'nome' => $model->classe->clas_nome,
+                'id' => $classeGrupoInternacionalModel->classe->clas_id,
+                'nome' => $classeGrupoInternacionalModel->classe->clas_nome,
             ],
-            'idGrupoInternacional' => $model->id_grupo_internacional,
+            'idGrupoInternacional' => $classeGrupoInternacionalModel->id_grupo_internacional,
             'grupoInternacional' =>
             [
-                'id' => $model->grupoInternacional->grup_int_id,
-                'codigo' => $model->grupoInternacional->grup_int_codigo,
+                'id' => $classeGrupoInternacionalModel->grupo_internacional->grup_int_id,
+                'codigo' => $classeGrupoInternacionalModel->grupo_internacional->grup_int_codigo
             ]
         ];
     }
