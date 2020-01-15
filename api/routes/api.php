@@ -46,5 +46,8 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('comprovacao', '\Diarias\Http\Controllers\ComprovacaoController');
     Route::resource('trechoRoteiro', '\Diarias\Http\Controllers\TrechoRoteiroController');
     Route::resource('tipoTransporte', '\Diarias\Http\Controllers\TipoTransporteController');
+    Route::resource('particularidade', '\Diarias\Http\Controllers\ParticularidadeController');
+    Route::resource('historicoMovimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
+    
 
 });

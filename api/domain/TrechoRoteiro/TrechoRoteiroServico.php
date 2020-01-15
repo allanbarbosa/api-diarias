@@ -24,24 +24,7 @@ class TrechoRoteiroServico
 
     public function all(array $input)
     {
-        $trechoRoteiros = $this->repositorio->getWhere($input);
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($trechoRoteiros as $trechoRoteiro) {
-            $dados['itens'][] = $this->tratarOutput($trechoRoteiro);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $trechoRoteiros->total();
-        } else {
-            $dados['total'] = count($trechoRoteiros);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
