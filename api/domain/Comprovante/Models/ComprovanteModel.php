@@ -15,6 +15,8 @@ class ComprovanteModel extends Model
     protected $fillable = [
         'comp_caminho',
         'compe_nome_arquivo',
+        'id_comprovacao',
+        'id_tipo_comprovante',
     ];
 
     use SoftDeletes;

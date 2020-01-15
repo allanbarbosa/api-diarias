@@ -75,6 +75,7 @@ class FeriasServico
         return [
             'feri_data_inicio' => $input['data_inicio'],
             'feri_data_fim' => $input['data_fim'],
+            'id_funcionario' => $input['funcionario'],
         ];
     }
 
@@ -84,6 +85,7 @@ class FeriasServico
             'id' => $feriasModel->feri_id,
             'data_inicio' => $feriasModel->feri_data_inicio,
             'data_fim' => $feriasModel->feri_data_fim,
+            'funcionario' => $feriasModel->id_funcionario,
         ];
     }
 }

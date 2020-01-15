@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Diarias\Particularidade\Repositorios;
 
-use Exception;
 use Diarias\Paricularidade\Models\ParticularidadeModel;
+use Exception;
 
 class ParticularidadeRepositorio
 {
     protected $model;
 
     protected $fields = [
-        'prer_descricao',
-        'prer_slug',
+        'part_descricao',
+        'part_slug',
         'created_by',
         'updated_by',
         'deleted_by',
