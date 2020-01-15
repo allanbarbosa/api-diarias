@@ -25,7 +25,7 @@ class TipoComprovanteController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
             
