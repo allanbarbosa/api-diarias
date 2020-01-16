@@ -77,9 +77,9 @@ class ComprovacaoServico
             'comp_data_hora_saida_efetiva' => $input['data_hora_saida_efetiva'],
             'comp_data_hora_chegada_efetiva' => $input['data_hora_chegada_efetiva'],
             'comp_atividades_desenvolvidas' => $input['atividades_desenvolvidas'],
-            'comp_saldo_receber' => $input['saldo_receber'],
-            'comp_saldo_restituir' => $input['saldo_restituir'],
-            'comp_valor_total' => $input['valor_total'],
+            'comp_saldo_receber' => isset($input['saldo_receber']) ? $input['saldo_receber'] : null,
+            'comp_saldo_restituir' => isset($input['saldo_restituir']) ? $input['saldo_restituir'] : null,
+            'comp_valor_total' => isset($input['valor_total']) ? $input['valor_total'] : null,
             'id_trecho' => $input['trecho'],
         ];
     }

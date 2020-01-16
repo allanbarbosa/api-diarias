@@ -5,6 +5,7 @@ namespace Diarias\Classe\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Diarias\Gratificacao\Models\GratificacaoModel;
 
 class ClasseModel extends Model
 
@@ -17,6 +18,11 @@ class ClasseModel extends Model
             'clas_nome'
         ];
 
+        public function gratificacoes()
+        {
+            return $this->hasMany(GratificacaoModel::class, 'id_classe');
+        }
+    
         use SoftDeletes;
-
+      
     }

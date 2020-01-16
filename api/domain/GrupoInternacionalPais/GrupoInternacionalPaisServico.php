@@ -75,9 +75,9 @@ class GrupoInternacionalPaisServico
     protected function tratarInput(array $input)
     {
         return new GrupoInternacionalPaisModel([
-            'grup_int_pais_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'id_pais' => array_key_exists('idPais', $input) ? $input['idPais'] : null,
-            'id_grupo_internacional' => array_key_exists('idGrupoInternacional', $input) ? $input['idGrupoInternacional'] : null
+            'grup_int_pais_id' => isset($input['id']) ? $input['id'] : null,
+            'id_pais' => isset($input['idPais']) ? $input['idPais'] : null,
+            'id_grupo_internacional' => isset($input['idGrupoInternacional']) ? $input['idGrupoInternacional'] : null
         ]);
     }
 

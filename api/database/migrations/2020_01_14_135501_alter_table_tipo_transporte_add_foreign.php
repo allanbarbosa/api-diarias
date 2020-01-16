@@ -13,7 +13,7 @@ class AlterTableTipoTransporteAddForeign extends Migration
      */
     public function up()
     {
-        Schema::table('tipo_transporte', function (Blueprint $table) {
+        Schema::hasTable('tipo_transporte', function (Blueprint $table) {
             
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();

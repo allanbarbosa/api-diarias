@@ -74,9 +74,9 @@ class PapelFluxogramaServico
     protected function tratarInput(array $input)
     {
         return [
-            'pape_flu_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'pape_flu_descricao' => array_key_exists('descricao', $input) ? $input['descricao'] : null,
-            'pape_flu_slug' => array_key_exists('slug', $input) ? $input['slug'] : null
+            'pape_flu_id' => isset($input['id']) ? $input['id'] : null,
+            'pape_flu_descricao' => isset($input['descricao']) ? $input['descricao'] : null,
+            'pape_flu_slug' => isset($input['slug']) ? $input['slug'] : null
         ];
     }
 

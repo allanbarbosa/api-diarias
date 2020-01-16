@@ -74,9 +74,9 @@ class UnidadeServico
     protected function tratarInput(array $input)
     {
         return [
-            'unid_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'unid_nome' => array_key_exists('nome', $input) ? $input['nome'] : null,
-            'unid_sigla' => array_key_exists('sigla', $input) ? $input['sigla'] : null
+            'unid_id' => isset($input['id']) ? $input['id'] : null,
+            'unid_nome' => isset($input['nome']) ? $input['nome'] : null,
+            'unid_sigla' => isset($input['sigla']) ? $input['sigla'] : null
         ];
     }
 

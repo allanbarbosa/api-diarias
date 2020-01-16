@@ -102,10 +102,10 @@ class OrganogramaServico
     protected function tratarInput(array $input)
     {
         return [
-            'orga_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'orga_codigo' => array_key_exists('codigo', $input) ? $input['codigo'] : null,
-            'orga_data_inicio' => array_key_exists('dataInicio', $input) ? $input['dataInicio'] : null,
-            'orga_data_fim' => array_key_exists('dataFim', $input) ? $input['dataFim'] : null,
+            'orga_id' => isset($input['id']) ? $input['id'] : null,
+            'orga_codigo' => isset($input['codigo']) ? $input['codigo'] : null,
+            'orga_data_inicio' => isset($input['dataInicio']) ? $input['dataInicio'] : null,
+            'orga_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null,
         ];
     }
     

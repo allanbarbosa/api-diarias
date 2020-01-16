@@ -17,6 +17,7 @@ class ViagemRepositorio
         'viag_flag_alimentacao_custeada',
         'viag_flag_adicional_deslocamento',
         'viag_flag_urgente',
+        'lota_id',
         'created_by',
         'updated_by',
         'deleted_by',

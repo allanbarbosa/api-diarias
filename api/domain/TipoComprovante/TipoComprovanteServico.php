@@ -26,24 +26,7 @@ class TipoComprovanteServico
 
     public function all(array $input)
     {
-        $tipoComprovantes = $this->repositorio->getWhere($input);
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($tipoComprovantes as $tipoComprovante) {
-            $dados['itens'][] = $this->tratarOutput($tipoComprovante);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $tipoComprovantes->total();
-        } else {
-            $dados['total'] = count($tipoComprovantes);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

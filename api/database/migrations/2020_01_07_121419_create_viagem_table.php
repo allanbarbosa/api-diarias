@@ -28,18 +28,20 @@ class CreateViagemTable extends Migration
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
 
-            $table->foreign('created_by', 'fk_viagem_created_by')
-                ->references('usua_id')->on('usuario');
-            $table->foreign('updated_by', 'fk_viagem_updated_by')
-                ->references('usua_id')->on('usuario');
-            $table->foreign('deleted_by', 'fk_viagem_deleted_by')
-                ->references('usua_id')->on('usuario');
+            $table->index('created_by', 'viagem_created_by_idx');
+            $table->index('updated_by', 'viagem_updated_by_idx');
+            $table->index('deleted_by', 'viagem_deleted_by_idx');
+
+
+            $table->foreign('created_by', 'fk_viagem_created_by')->references('usua_id')->on('usuario');
+            $table->foreign('updated_by', 'fk_viagem_updated_by')->references('usua_id')->on('usuario');
+            $table->foreign('deleted_by', 'fk_viagem_deleted_by')->references('usua_id')->on('usuario');
             
-            $table->unsignedBigInteger('lota_id');
+            $table->unsignedBigInteger('id_lotacao');
 
-            $table->index('lota_id', 'viagem_lotacao_idx');
+            $table->index('id_lotacao', 'viagem_lotacao_idx');
 
-            $table->foreign('lota_id', 'fk_viagem_lota_id')
+            $table->foreign('id_lotacao', 'fk_viagem_lota_id')
                 ->references('lota_id')->on('lotacao');
         });
     }

@@ -26,23 +26,7 @@ class ClasseServico
 
     public function all(array $input)
     {
-        $classes = $this->repositorio->getwhere($input);
-        $dados = [
-            'itens' => [],
-            'total'=> 0
-        ];
-
-        foreach ($classes as $classe) {
-            $dados['itens'][] = $this->tratarOutput($classe);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $classes->total();
-        }else {
-            $dados['total'] = count($classes);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -50,7 +34,7 @@ class ClasseServico
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
 
-        $classe = $this->repositorio->save($dados);
+        $classe = $this->repositorio->save($dados->toArray());
 
         return $this->tratarOutput($classe);
     }
@@ -60,7 +44,7 @@ class ClasseServico
         $dados = $this->tratarInput($input);
         $dados['update_by'] = $input['usuario'];
 
-        $classe = $this->repositorio->update($dados, $id);
+        $classe = $this->repositorio->update($dados->toArray(), $id);
         
         return $this->tratarOutput($classe);
     }
@@ -72,18 +56,28 @@ class ClasseServico
 
     protected function tratarInput(array $input)
     {
-        return [
-            'clas_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'clas_nome' => array_key_exists('nome', $input) ? $input['nome'] : null
-        ];
+        return new ClasseModel([
+            'clas_id' => isset($input['id']) ? $input['id'] : null,
+            'clas_nome' => isset($input['nome']) ? $input['nome'] : null
+        ]);
     }
 
     protected function tratarOutput(ClasseModel $model)
     {
-        return [
+        $output = [
             'id' => $model->clas_id,
             'nome' =>$model->clas_nome,
+            'gratificacoes' => [],
         ];
+        foreach ($model->gratificacoes as $gratificacao) {
+            $output['gratificacoes'][] = [
+                'id' => $gratificacao->grat_id,
+                'nome' => $gratificacao->grat_nome,
+                'slug' => $gratificacao->grat_slug,
+                'valor' => $gratificacao->grat_valor_diaria
+            ];
+        }
+        return $output;
     }
 
 }

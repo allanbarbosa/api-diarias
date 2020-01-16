@@ -18,7 +18,7 @@ class HistoricoMovimentacaoRepositorio
         'deleted_by'
     ];
 
-    public function __construct(HistoricoMovimentacaoModel $historicoMovimentacaoModel)
+    public function __construct(HistoricoMovimentacaoModel $historicoMovimentacao)
     {
         $this->model = $historicoMovimentacao;
     }
@@ -36,7 +36,7 @@ class HistoricoMovimentacaoRepositorio
 
     public function all()
     {
-        return $this->model->all();
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

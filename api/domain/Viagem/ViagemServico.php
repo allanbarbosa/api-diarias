@@ -74,11 +74,12 @@ class ViagemServico
     {
         return [
             'viag_objetivo' => $input['objetivo'],
-            'viag_justificativa_feriado_fds' => $input['just_feriado'],
-            'viag_justificativa_reprogramacao' => $input['just_reprog'],
-            'viag_flag_alimentacao_custeada' => $input['flag_ali_cust'],
+            'viag_justificativa_feriado_fds' => isset($input['just_feriado']) ? $input['just_feriado'] : null,
+            'viag_justificativa_reprogramacao' => isset($input['just_reprog']) ? $input['just_reprog'] : null,
+            'viag_flag_alimentacao_custeada' => isset($input['flag_ali_cust']) ? $input['flag_ali_cust'] : null,
             'viag_flag_adicional_deslocamento' => $input['flag_adic_desl'],
             'viag_flag_urgente' => $input['flag_urgente'],
+            'lota_id' => $input['lotacao'],
             
         ];
     }
@@ -93,6 +94,8 @@ class ViagemServico
             'flag_ali_cust' => $viagemModel->viag_flag_alimentacao_custeada,
             'flag_adic_desl' => $viagemModel->viag_flag_adicional_deslocamento,
             'flag_urgente' => $viagemModel->viag_flag_urgente,
+            'lotacao' => $viagemModel->lota_id,
+
         ];
     }
 }

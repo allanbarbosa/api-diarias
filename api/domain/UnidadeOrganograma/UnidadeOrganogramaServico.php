@@ -75,11 +75,11 @@ class UnidadeServico
     {
         
         return [
-            'unid_org_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'id_unidade_pai' => array_key_exists('idUnidadePai', $input) ? $input['idUnidadePai'] : null,
-            'id_unidade' => array_key_exists('idUnidade', $input) ? $input['idUnidade'] : null,
-            'id_organograma' => array_key_exists('idOrganograma', $input) ? $input['idOrganograma'] : null,
-            'id_papel_fluxograma' => array_key_exists('idPapelFluxograma', $input) ? $input['idPapelFluxograma'] : null
+            'unid_org_id' => isset($input['id']) ? $input['id'] : null,
+            'id_unidade_pai' => isset($input['idUnidadePai']) ? $input['idUnidadePai'] : null,
+            'id_unidade' => isset($input['idUnidade']) ? $input['idUnidade'] : null,
+            'id_organograma' => isset($input['idOrganograma']) ? $input['idOrganograma'] : null,
+            'id_papel_fluxograma' => isset($input['idPapelFluxograma']) ? $input['idPapelFluxograma'] : null
         ];
     }
 

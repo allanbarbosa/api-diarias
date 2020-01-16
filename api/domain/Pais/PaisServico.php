@@ -79,8 +79,8 @@ class PaisServico
   protected function tratarInput(array $input)
   {
     return new PaisModel([
-      'pais_id' => array_key_exists('id', $input) ? $input['id'] : null,
-      'pais_nome' => array_key_exists('nome', $input) ? $input['nome'] : null
+      'pais_id' => isset($input['id']) ? $input['id'] : null,
+      'pais_nome' => isset($input['nome']) ? $input['nome'] : null
     ]);
   }
 

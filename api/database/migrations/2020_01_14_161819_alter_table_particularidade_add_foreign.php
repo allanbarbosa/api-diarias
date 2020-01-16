@@ -13,7 +13,7 @@ class AlterTableParticularidadeAddForeign extends Migration
      */
     public function up()
     {
-        Schema::table('particularidade', function (Blueprint $table) {
+        Schema::hasTable('particularidade', function (Blueprint $table) {
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

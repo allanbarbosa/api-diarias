@@ -25,26 +25,7 @@ class MunicipioServico
 
     public function all(array $input)
     {
-        $municipios = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($municipios as $municipio)
-        {
-            $dados['itens'][] = $this->tratarOutput($municipio);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $municipios->total();
-        } 
-        else
-        {
-            $dados['total'] = count($municipios);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

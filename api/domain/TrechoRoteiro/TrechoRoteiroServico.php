@@ -59,7 +59,7 @@ class TrechoRoteiroServico
             'trec_rot_data_hora_saida' => $input['data_hora_saida'],
             'trec_rot_data_hora_retorno' => $input['data_hora_retorno'],
             'trec_rot_valor_unitario' => $input['valor_unitario'],
-            'trec_rot_valor_adicional' => $input['valor_adicional'],
+            'trec_rot_valor_adicional' => isset($input['valor_adicional']) ? $input['valor_adicional'] : null,
             'trec_rot_qtd_diarias' => $input['qtd_diarias'],
             'id_tipo_transporte' => $input['tipo_transporte'],
             'id_viagem' => $input['viagem'],

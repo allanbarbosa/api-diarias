@@ -26,25 +26,7 @@ class EstadoServico
 
     public function all(array $input)
     {
-        
-        $estados = $this->repositorio->getWhere($input);
-
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($estados as $estado) {
-            $dados['itens'][] = $this->tratarOutput($estado);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $estados->total();
-        } else {
-            $dados['total'] = count($estados);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

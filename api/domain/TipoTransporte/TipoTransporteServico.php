@@ -26,24 +26,7 @@ class TipoTransporteServico
 
     public function all(array $input)
     {
-        $tipoTransportes = $this->repositorio->getWhere($input);
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($tipoTransportes as $tipoTransporte) {
-            $dados['itens'][] = $this->tratarOutput($tipoTransporte);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $tipoTransportes->total();
-        } else {
-            $dados['total'] = count($tipoTransportes);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
