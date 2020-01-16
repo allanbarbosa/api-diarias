@@ -22,7 +22,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('pais', '\Diarias\Http\Controllers\PaisController');
     Route::resource('classe', '\Diarias\Http\Controllers\ClasseController');
     Route::resource('gratificacao', '\Diarias\Http\Controllers\GratificacaoController');
-    Route::resource('grupoInternacional', '\Diarias\Http\Controllers\GrupoInternacionalController');
+    Route::resource('grupo-internacional', '\Diarias\Http\Controllers\GrupoInternacionalController');
     Route::resource('cargo', '\Diarias\Http\Controllers\CargoController');
     
     Route::put('vinculoEmpregaticio/desligarVinculoEmpregaticio', '\Diarias\Http\Controllers\VinculoEmpregaticioController@desligarVinculoEmpregaticio');
@@ -52,4 +52,5 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('particularidade', '\Diarias\Http\Controllers\ParticularidadeController');
     Route::resource('ferias', '\Diarias\Http\Controllers\FeriasController');
     Route::resource('feriado', '\Diarias\Http\Controllers\FeriadoController');
+    Route::resource('status', '\Diarias\Http\Controllers\StatusController');
 });

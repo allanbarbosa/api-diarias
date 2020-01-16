@@ -17,16 +17,16 @@ class UnidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'unid_nome' => ['required'],
-            'unid_sigla' => ['required'],
+            'nome' => ['required'],
+            'sigla' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'unid_nome.requerid' => 'Campo descrição é obrigatório.',
-            'unid_sigla.required' => 'Campo sigla é obrigatório.',
+            'nome.requerid' => 'Campo descrição é obrigatório.',
+            'sigla.required' => 'Campo sigla é obrigatório.',
         ];
     }
 
@@ -34,7 +34,7 @@ class UnidadeRequest extends FormRequest
     {
         throw new HttpResponseException
         (
-            response()->json(['mensagem' => $validator->errors()->firts()], 422)
+            response()->json(['mensagem' => $validator->errors()->first()], 422)
         );
     }
 }

@@ -51,7 +51,7 @@ class UnidadeServico
 
     public function save(array $input)
     {
-        $dados = $this->tratarOutput($input);
+        $dados = $this->tratarInput($input);
 
         $unidade = $this->repositorio->save($dados);
 
@@ -61,7 +61,7 @@ class UnidadeServico
 
     public function update(array $input, int $id)
     {
-        $dados = $this->trataInput($input);
+        $dados = $this->tratarInput($input);
 
         $unidade = $this->repositorio->update($dados, $id);
     }

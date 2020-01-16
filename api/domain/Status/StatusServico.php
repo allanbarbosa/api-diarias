@@ -32,7 +32,7 @@ class StatusServico
         ];
 
         foreach ($status as $statu) {
-            $dados['itens'][] = $this->tratarOutput($status);
+            $dados['itens'][] = $this->tratarOutput($statu);
         }
 
         if (isset($input['count'])) {
@@ -74,7 +74,7 @@ class StatusServico
     {
         return [
             'stat_nome' => $input['nome'],
-            'stat_slug' => Str::slug($input['nome']),
+            'stat_slug' => Str::slug($input['slug']),
         ];
     }
 
