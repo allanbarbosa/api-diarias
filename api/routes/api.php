@@ -54,7 +54,4 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('feriado', '\Diarias\Http\Controllers\FeriadoController');
 <<<<<<< HEAD
     Route::resource('status', '\Diarias\Http\Controllers\StatusController');
-=======
-    Route::resource('historico-movimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
->>>>>>> db96245120b347f6fd5009a2b7fae94e3142e623
 });
