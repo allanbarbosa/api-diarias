@@ -22,33 +22,9 @@ class PaisServico
     return $this->tratarOutput($pais);
   }
 
-  public function all(array $input, $paginate = false)
+  public function all(array $input)
   {
-    $paises = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-    if (!$paginate) {
-        return $paises;
-    }
-    
-    $paises = $this->repositorio->getWhere($input);
-    $dados = [
-        'itens' => [],
-        'todos' => 0,
-    ];
-
-    foreach ($paises as $pais)
-    {
-        $dados['itens'][] = $this->tratarOutput($pais);
-    }
-
-    if (isset($input['count']))
-    {
-        $dados['total'] = $paises->total();
-    } 
-    else
-    {
-        $dados['total'] = count($paises);
-    }
-    return $dados;
+    return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
   }
 
   public function save(array $input)
@@ -79,8 +55,8 @@ class PaisServico
   protected function tratarInput(array $input)
   {
     return new PaisModel([
-      'pais_id' => array_key_exists('id', $input) ? $input['id'] : null,
-      'pais_nome' => array_key_exists('nome', $input) ? $input['nome'] : null
+      'pais_id' => isset($input['id']) ? $input['id'] : null,
+      'pais_nome' => isset($input['nome']) ? $input['nome'] : null
     ]);
   }
 

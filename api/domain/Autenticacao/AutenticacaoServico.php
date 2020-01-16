@@ -12,7 +12,7 @@ class AutenticacaoServico
 
     protected $chave = '8xad012Amcd';
 
-    protected $expiracao = 86400;
+    protected $expiracao = 7200;
 
     protected $criptografia = 'HS256';
 
@@ -46,6 +46,7 @@ class AutenticacaoServico
             'iat' => $time,
             'nbf' => $time - 1,
             'data' => $dados,
+            'exp' => $expire
         ];
 
         $token = JWT::encode($tokenParams, $this->chave);

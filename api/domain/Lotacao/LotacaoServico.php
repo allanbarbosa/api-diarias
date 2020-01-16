@@ -22,31 +22,9 @@ class LotacaoServico
         return $this->tratarOutput($lotacao);
     }
 
-    public function all(array $input, $paginage = false)
+    public function all(array $input)
     {
-        $lotacoes = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-        if (!$paginage) {
-            return $lotacoes;
-        }
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($lotacoes as $lotacao)
-        {
-            $dados['itens'][] = $lotacoes;
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $lotacoes->total();
-        } 
-        else
-        {
-            $dados['total'] = count($lotacoes);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -82,18 +60,18 @@ class LotacaoServico
     protected function tratarInput(array $input)
     {
         return new LotacaoModel([
-            'lota_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'lota_data_inicio' => array_key_exists('dataInicio', $input) ? $input['dataInicio'] : null,
-            'lota_data_fim' => array_key_exists('dataFim', $input) ? $input['dataFim'] : null,
-            'id_cargo' => array_key_exists('idCargo', $input) ? $input['idCargo'] : null,
-            'cargo' => array_key_exists('cargo', $input) ? $input['cargo'] : null,
-            'id_unidade_organograma' => array_key_exists('idUnidadeOrganograma', $input) ? $input['idUnidadeOrganograma'] : null,
-            'unidade_organograma' => array_key_exists('unidadeOrganograma', $input) ? $input['unidadeOrganograma'] : null,
-            'id_vinculo_empregaticio' => array_key_exists('idVinculoEmpregaticio', $input) ? $input['idVinculoEmpregaticio'] : null,
-            'vinculo_empregaticio' => array_key_exists('vinculoEmpregaticio', $input) ? $input['vinculoEmpregaticio'] : null,
-            'historico_status' => array_key_exists('historicoStatus', $input) ? $input['historicoStatus'] : null,
-            'historico_movimentacoes' => array_key_exists('historicoMovimentacoes', $input) ? $input['historicoMovimentacoes'] : null,
-            'viagens' => array_key_exists('viagens', $input) ? $input['viagens'] : null,
+            'lota_id' => isset($input['id']) ? $input['id'] : null,
+            'lota_data_inicio' => isset($input['dataInicio']) ? $input['dataInicio'] : null,
+            'lota_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null,
+            'id_cargo' => isset($input['idCargo']) ? $input['idCargo'] : null,
+            'cargo' => isset($input['cargo']) ? $input['cargo'] : null,
+            'id_unidade_organograma' => isset($input['idUnidadeOrganograma']) ? $input['idUnidadeOrganograma'] : null,
+            'unidade_organograma' => isset($input['unidadeOrganograma']) ? $input['unidadeOrganograma'] : null,
+            'id_vinculo_empregaticio' => isset($input['idVinculoEmpregaticio']) ? $input['idVinculoEmpregaticio'] : null,
+            'vinculo_empregaticio' => isset($input['vinculoEmpregaticio']) ? $input['vinculoEmpregaticio'] : null,
+            'historico_status' => isset($input['historicoStatus']) ? $input['historicoStatus'] : null,
+            'historico_movimentacoes' => isset($input['historicoMovimentacoes']) ? $input['historicoMovimentacoes'] : null,
+            'viagens' => isset($input['viagens']) ? $input['viagens'] : null
         ]);
     }
 

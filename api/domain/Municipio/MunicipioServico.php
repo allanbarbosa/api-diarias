@@ -25,26 +25,7 @@ class MunicipioServico
 
     public function all(array $input)
     {
-        $municipios = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($municipios as $municipio)
-        {
-            $dados['itens'][] = $this->tratarOutput($municipio);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $municipios->total();
-        } 
-        else
-        {
-            $dados['total'] = count($municipios);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -75,11 +56,11 @@ class MunicipioServico
     protected function tratarInput(array $input)
     {
         return [
-            'muni_nome' => $input['nome'],
-            'muni_slug' => Str::slug($input['nome']),
-            'muni_porcentagem_diaria' => $input['porcentagemDiaria'],
-            'muni_codigo_ibge' => $input['codigoIbge'],
-            'id_estado' => $input['estado']
+            'muni_nome' => isset($input['nome']) ? $input['nome'] : null,
+            'muni_slug' => isset($input['slug']) ? $input['slug'] : Str::slug($input['nome']),
+            'muni_porcentagem_diaria' => isset($input['porcentagemDiaria']) ? $input['porcentagemDiaria'] : null,
+            'muni_codigo_ibge' => isset($input['codigoIbge']) ? $input['codigoIbge'] : null,
+            'id_estado' => isset($input['estado']) ? $input['estado'] : null
         ];
     }
 

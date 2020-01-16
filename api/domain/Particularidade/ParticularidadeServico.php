@@ -26,24 +26,7 @@ class ParticularidadeServico
 
     public function all(array $input)
     {
-        $particularidades = $this->repositorio->getWhere($input);
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($particularidades as $particularidade) {
-            $dados['itens'][] = $this->tratarOutput($particularidade);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $particularidades->total();
-        } else {
-            $dados['total'] = count($particularidades);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

@@ -90,6 +90,10 @@ class MunicipioRepositorio
         {
             $model = $model->where('muni_nome', 'ilike', '%'.$input['muni_nome'].'%');
         }
+        if (isset($input['idEstado']))
+        {
+            $model = $model->where('id_estado', '=', $input['idEstado']);
+        }
 
         if (isset($input['count']))
         {

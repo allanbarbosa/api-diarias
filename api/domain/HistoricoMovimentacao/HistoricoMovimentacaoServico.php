@@ -24,24 +24,7 @@ class HistoricoMovimentacaoServico
 
     public function all(array $input)
     {
-        $historicoMovimentacoes = $this->repositorio->getWhere($input);
-        
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($historicoMovimentacoes as $historicoMovimentacao) {
-            $dados['itens'][] = $this->tratarOutput($historicoMovimentacao);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $historicoMovimentacoes->total();
-        } else {
-            $dados['total'] = count($historicoMovimentacoes);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

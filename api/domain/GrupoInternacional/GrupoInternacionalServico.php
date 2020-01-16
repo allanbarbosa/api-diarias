@@ -54,8 +54,8 @@ class GrupoInternacionalServico
     protected function tratarInput(array $input)
     {
         return new GrupoInternacionalModel([
-            'grup_int_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'grup_int_codigo' => array_key_exists('codigo', $input) ? $input['codigo'] : null
+            'grup_int_id' => isset($input['id']) ? $input['id'] : null,
+            'grup_int_codigo' => isset($input['codigo']) ? $input['codigo'] : null
         ]);
     }
 

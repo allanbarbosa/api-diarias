@@ -56,12 +56,12 @@ class ClasseGrupoInternacionalServico
     protected function tratarInput(array $input)
     {
         return new ClasseGrupoInternacionalModel([
-            'clas_gru_internacional_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'clas_gru_internacional_valor' => array_key_exists('valor', $input) ? $input['valor'] : null,
-            'id_classe' => array_key_exists('idClasse', $input) ? $input['idClasse'] : null,
-            'classe' => array_key_exists('classe', $input) ? $input['classe'] : null,
-            'id_grupo_internacional' => array_key_exists('idGrupoInternacional', $input) ? $input['idGrupoInternacional'] : null,
-            'grupo_internacional' => array_key_exists('grupoInternacional', $input) ? $input['grupoInternacional'] : null
+            'clas_gru_internacional_id' => isset($input['id']) ? $input['id'] : null,
+            'clas_gru_internacional_valor' => isset($input['valor']) ? $input['valor'] : null,
+            'id_classe' => isset($input['idClasse']) ? $input['idClasse'] : null,
+            'classe' => isset($input['classe']) ? $input['classe'] : null,
+            'id_grupo_internacional' => isset($input['idGrupoInternacional']) ? $input['idGrupoInternacional'] : null,
+            'grupo_internacional' => isset($input['grupoInternacional']) ? $input['grupoInternacional'] : null
         ]);
     }
 

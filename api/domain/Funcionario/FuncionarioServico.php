@@ -24,26 +24,7 @@ class FuncionarioServico
 
     public function all(array $input)
     {
-        $funcionarios = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($funcionarios as $funcionario)
-        {
-            $dados['itens'][] = $this->tratarOutput($funcionario);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $funcionarios->total();
-        } 
-        else
-        {
-            $dados['total'] = count($funcionarios);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -74,13 +55,13 @@ class FuncionarioServico
     protected function tratarInput(array $input)
     {
         return [
-            'func_cpf' => $input['cpf'],
-            'func_nome' => $input['nome'],
-            'func_telefone' => $input['telefone'],
-            'func_email' => $input['email'],
-            'id_empresa' => $input['empresa'],
-            'id_profissao' => $input['profissao'],
-            'id_escolaridade' => $input['escolaridade']
+            'func_cpf' => isset($input['cpf']) ? $input['cpf'] : null,
+            'func_nome' => isset($input['nome']) ? $input['nome'] : null,
+            'func_telefone' => isset($input['telefone']) ? $input['telefone'] : null,
+            'func_email' => isset($input['email']) ? $input['email'] : null,
+            'id_empresa' => isset($input['empresa']) ? $input['empresa'] : null,
+            'id_profissao' => isset($input['profissao']) ? $input['profissao'] : null,
+            'id_escolaridade' => isset($input['escolaridade']) ? $input['escolaridade'] : null
         ];
     }
 

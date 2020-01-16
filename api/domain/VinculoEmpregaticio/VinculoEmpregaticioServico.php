@@ -29,26 +29,7 @@ class VinculoEmpregaticioServico
 
     public function all(array $input)
     {
-        $vinculosEmpregaticios = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($vinculosEmpregaticios as $vinculoEmpregaticio)
-        {
-            $dados['itens'][] = $this->tratarOutput($vinculoEmpregaticio);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $vinculosEmpregaticios->total();
-        } 
-        else
-        {
-            $dados['total'] = count($vinculosEmpregaticios);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -77,11 +58,11 @@ class VinculoEmpregaticioServico
     protected function tratarInput(array $input)
     {
         return [
-            'vinc_emp_id' => array_key_exists('id', $input) ? $input['id'] : null,
-            'vinc_emp_matricula' => array_key_exists('matricula', $input) ? $input['matricula'] : null,
-            'vinc_emp_data_admissao' => array_key_exists('dataAdmissao', $input) ? $input['dataAdmissao'] : null,
-            'vinc_emp_data_desligamento' => array_key_exists('dataDesligamento', $input) ? $input['dataDesligamento'] : null,
-            'id_funcionario' => array_key_exists('idFuncionario', $input) ? $input['idFuncionario'] : null
+            'vinc_emp_id' => isset($input['id']) ? $input['id'] : null,
+            'vinc_emp_matricula' => isset($input['matricula']) ? $input['matricula'] : null,
+            'vinc_emp_data_admissao' => isset($input['dataAdmissao']) ? $input['dataAdmissao'] : null,
+            'vinc_emp_data_desligamento' => isset($input['dataDesligamento']) ? $input['dataDesligamento'] : null,
+            'id_funcionario' => isset($input['idFuncionario']) ? $input['idFuncionario'] : null
         ];
     }
 

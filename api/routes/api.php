@@ -25,16 +25,16 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('grupo-internacional', '\Diarias\Http\Controllers\GrupoInternacionalController');
     Route::resource('cargo', '\Diarias\Http\Controllers\CargoController');
     
-    Route::put('vinculoEmpregaticio/desligarVinculoEmpregaticio', '\Diarias\Http\Controllers\VinculoEmpregaticioController@desligarVinculoEmpregaticio');
-    Route::resource('vinculoEmpregaticio', '\Diarias\Http\Controllers\VinculoEmpregaticioController');
+    Route::put('vinculo-empregaticio/desligar-vinculo-empregaticio', '\Diarias\Http\Controllers\VinculoEmpregaticioController@desligarVinculoEmpregaticio');
+    Route::resource('vinculo-empregaticio', '\Diarias\Http\Controllers\VinculoEmpregaticioController');
 
     Route::resource('lotacao', '\Diarias\Http\Controllers\LotacaoController');
     Route::resource('municipio', '\Diarias\Http\Controllers\MunicipioController');
     Route::resource('unidade', '\Diarias\Http\Controllers\UnidadeController');
     Route::resource('prerrogativa', '\Diarias\Http\Controllers\PrerrogativaController');
 
-    Route::get('organograma/obterOrganogramaAtual', '\Diarias\Http\Controllers\OrganogramaController@obterOrganogramaAtual');
-    Route::get('organograma/obterSugestaoCodigo', '\Diarias\Http\Controllers\OrganogramaController@obterSugestaoCodigo');
+    Route::get('organograma/obter-organograma-atual', '\Diarias\Http\Controllers\OrganogramaController@obterOrganogramaAtual');
+    Route::get('organograma/obter-sugestao-codigo', '\Diarias\Http\Controllers\OrganogramaController@obterSugestaoCodigo');
     Route::resource('organograma', '\Diarias\Http\Controllers\OrganogramaController');
     
     Route::middleware('criacao.usuario')->post('funcionario', '\Diarias\Http\Controllers\FuncionarioController@store');
@@ -52,5 +52,9 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('particularidade', '\Diarias\Http\Controllers\ParticularidadeController');
     Route::resource('ferias', '\Diarias\Http\Controllers\FeriasController');
     Route::resource('feriado', '\Diarias\Http\Controllers\FeriadoController');
+<<<<<<< HEAD
     Route::resource('status', '\Diarias\Http\Controllers\StatusController');
+=======
+    Route::resource('historico-movimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
+>>>>>>> db96245120b347f6fd5009a2b7fae94e3142e623
 });
