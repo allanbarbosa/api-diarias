@@ -58,8 +58,8 @@ class EstadoServico
     protected function tratarInput(array $input)
     {
         return [
-            'esta_sigla' => $input['sigla'],
-            'esta_nome' => $input['nome'],
+            'esta_sigla' => isset($input['sigla']) ? $input['sigla'] : null,
+            'esta_nome' => isset($input['nome']) ? $input['nome'] : null
         ];
 
     }

@@ -14,6 +14,8 @@ class ComprovanteRepositorio
     protected $fields = [
         'compe_caminho',
         'compe_nome_arquivo',
+        'id_comprovacao',
+        'id_tipo_comprovante',
         'created_by',
         'updated_by',
         'deleted_by',
@@ -26,7 +28,7 @@ class ComprovanteRepositorio
 
     public function find(int $id)
     {
-        $model = $this->model->where('prer_id', '=', $id)->first();
+        $model = $this->model->where('compe_id', '=', $id)->first();
 
         if (!$model) {
             throw new Exception('Comprovante não encontrada.');

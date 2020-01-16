@@ -13,6 +13,7 @@ class FeriasRepositorio
     protected $fields = [
         'feri_data_inicio',
         'feri_data_fim',
+        'id_funcionario',
         'created_by',
         'updated_by',
         'deleted_by',

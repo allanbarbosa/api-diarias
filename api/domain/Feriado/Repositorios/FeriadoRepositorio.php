@@ -14,6 +14,9 @@ class FeriadoRepositorio
         'feri_dia',
         'feri_mes',
         'feri_nome',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function __construct(FeriadoModel $feriadoModel)
@@ -74,7 +77,7 @@ class FeriadoRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('feri_dia', 'feri_mes', 'feri_nome', 'ASC');
+        $model = $this->model->orderBy('feri_dia', 'ASC', 'feri_mes', 'ASC', 'feri_nome', 'ASC');
 
         if (isset($input['feri_dia'])) {
             $model = $model->where('feri_dia', '=', '%'.$input['feri_dia'].'%');

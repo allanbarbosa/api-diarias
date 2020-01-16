@@ -22,31 +22,9 @@ class LotacaoServico
         return $this->tratarOutput($lotacao);
     }
 
-    public function all(array $input, $paginage = false)
+    public function all(array $input)
     {
-        $lotacoes = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-        if (!$paginage) {
-            return $lotacoes;
-        }
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($lotacoes as $lotacao)
-        {
-            $dados['itens'][] = $lotacoes;
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $lotacoes->total();
-        } 
-        else
-        {
-            $dados['total'] = count($lotacoes);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -93,7 +71,7 @@ class LotacaoServico
             'vinculo_empregaticio' => isset($input['vinculoEmpregaticio']) ? $input['vinculoEmpregaticio'] : null,
             'historico_status' => isset($input['historicoStatus']) ? $input['historicoStatus'] : null,
             'historico_movimentacoes' => isset($input['historicoMovimentacoes']) ? $input['historicoMovimentacoes'] : null,
-            'viagens' => isset($input['viagens']) ? $input['viagens'] : null,
+            'viagens' => isset($input['viagens']) ? $input['viagens'] : null
         ]);
     }
 

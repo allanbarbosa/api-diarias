@@ -25,31 +25,9 @@ class OrganogramaServico
 
     }
 
-    public function all(array $input, $paginage = false)
+    public function all(array $input)
     {
-        $organogramas = array_map(array($this, 'tratarOutput'), $this->repositorio->getwhere($input)->all());
-        if (!$paginage) {
-            return $organogramas;
-        }
-
-        $dados = [
-            'itens' => [],
-            'Total' => 0,
-        ];
-
-        foreach ($organogramas as $organograma) {
-            $dados['itens'][] = $this->tratarOutput($organograma);
-        }
-
-        if (isset($input['count'])) {
-
-            $dados['total'] = $organograma->total();
-        } else {
-            $dados['total'] = count($organogramas);
-        }
-
-        return $dados;
-
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -105,7 +83,7 @@ class OrganogramaServico
             'orga_id' => isset($input['id']) ? $input['id'] : null,
             'orga_codigo' => isset($input['codigo']) ? $input['codigo'] : null,
             'orga_data_inicio' => isset($input['dataInicio']) ? $input['dataInicio'] : null,
-            'orga_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null,
+            'orga_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null
         ];
     }
     

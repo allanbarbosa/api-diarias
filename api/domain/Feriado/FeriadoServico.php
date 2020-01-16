@@ -46,6 +46,7 @@ class FeriadoServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $feriado = $this->repositorio->save($dados);
 
@@ -69,9 +70,9 @@ class FeriadoServico
     protected function tratarInput(array $input)
     {
         return [
-            'feri_dia' => $input['feri_dia'],
-            'feri_mes' => $input['feri_mes'],
-            'feri_nome' => $input['feri_nome'],
+            'feri_dia' => $input['feriado_dia'],
+            'feri_mes' => $input['feriado_mes'],
+            'feri_nome' => $input['feriado_nome'],
         ];
     }
 
@@ -79,9 +80,9 @@ class FeriadoServico
     {
         return [
             'id' => $feriadoModel->feri_id,
-            'feri_dia' => $feriadoModel->feri_dia,
-            'feri_mes' => $feriadoModel->feri_mes,
-            'feri_nome' => $feriadoModel->feri_nome,
+            'feriado_dia' => $feriadoModel->feri_dia,
+            'feriado_mes' => $feriadoModel->feri_mes,
+            'feriado_nome' => $feriadoModel->feri_nome,
         ];
     }
 }

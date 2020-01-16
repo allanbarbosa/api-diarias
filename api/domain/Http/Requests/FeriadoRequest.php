@@ -17,18 +17,18 @@ class FeriadoRequest extends FormRequest
     public function rules()
     {
         return [
-            'feri_dia' => ['required'],
-            'feri_mes' => ['required'],
-            'feri_nome' => ['required'],
+            'feriado_dia' => ['required'],
+            'feriado_mes' => ['required'],
+            'feriado_nome' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'feri_dia.required' => 'Campo dia do feriado é obrigatório',
-            'feri_mes.required' => 'Campo mês do feriado é obrigatório',
-            'feri_nome.required' => 'Campo nome do feriado é obrigatório',
+            'feriado_dia.required' => 'Campo dia do feriado é obrigatório',
+            'feriado_mes.required' => 'Campo mês do feriado é obrigatório',
+            'feriado_nome.required' => 'Campo nome do feriado é obrigatório',
         ];
     }
 

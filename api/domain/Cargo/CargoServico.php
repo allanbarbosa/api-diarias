@@ -25,26 +25,7 @@ class CargoServico
 
     public function all(array $input)
     {
-        $cargos = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($cargos as $cargo)
-        {
-            $dados['itens'][] = $this->tratarOutput($cargo);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $cargos->total();
-        } 
-        else
-        {
-            $dados['total'] = count($cargos);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

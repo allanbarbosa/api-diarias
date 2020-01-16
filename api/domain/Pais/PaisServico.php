@@ -22,33 +22,9 @@ class PaisServico
     return $this->tratarOutput($pais);
   }
 
-  public function all(array $input, $paginate = false)
+  public function all(array $input)
   {
-    $paises = array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
-    if (!$paginate) {
-        return $paises;
-    }
-    
-    $paises = $this->repositorio->getWhere($input);
-    $dados = [
-        'itens' => [],
-        'todos' => 0,
-    ];
-
-    foreach ($paises as $pais)
-    {
-        $dados['itens'][] = $this->tratarOutput($pais);
-    }
-
-    if (isset($input['count']))
-    {
-        $dados['total'] = $paises->total();
-    } 
-    else
-    {
-        $dados['total'] = count($paises);
-    }
-    return $dados;
+    return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
   }
 
   public function save(array $input)

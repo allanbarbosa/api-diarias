@@ -29,26 +29,7 @@ class VinculoEmpregaticioServico
 
     public function all(array $input)
     {
-        $vinculosEmpregaticios = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
-
-        foreach ($vinculosEmpregaticios as $vinculoEmpregaticio)
-        {
-            $dados['itens'][] = $this->tratarOutput($vinculoEmpregaticio);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $vinculosEmpregaticios->total();
-        } 
-        else
-        {
-            $dados['total'] = count($vinculosEmpregaticios);
-        }
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)

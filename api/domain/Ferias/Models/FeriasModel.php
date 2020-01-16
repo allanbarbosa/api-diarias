@@ -15,6 +15,7 @@ class FeriasModel extends Model
     protected $fillable = [
         'feri_data_inicio',
         'feri_data_fim',
+        'id_funcionario',
     ];
 
     use SoftDeletes;

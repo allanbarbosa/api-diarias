@@ -80,7 +80,7 @@ class OrganogramaRepositorio
         return $model->delete();
     }
 
-    public function getwhere(array $input)
+    public function getWhere(array $input)
     {
         $model = $this->model->orderby('orga_codigo', 'ASC');
 

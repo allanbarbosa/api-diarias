@@ -76,6 +76,8 @@ class ComprovanteServico
         return [
             'compe_caminho' => $input['caminho'],
             'compe_nome_arquivo' => $input['nome_arquivo'],
+            'id_comprovacao' => $input['comprovacao'],
+            'id_tipo_comprovante' => $input['tipo_comprovante'],
         ];
     }
 
@@ -85,6 +87,8 @@ class ComprovanteServico
             'id' => $comprovanteModel->compe_id,
             'caminho' => $comprovanteModel->compe_caminho,
             'nome_arquivo' => $comprovanteModel->compe_nome_arquivo,
+            'comprovacao' => $comprovanteModel->id_comprovacao,
+            'tipo_comprovante' => $comprovanteModel->id_tipo_comprovante,
         ];
     }
 }

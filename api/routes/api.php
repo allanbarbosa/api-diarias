@@ -46,8 +46,11 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('comprovacao', '\Diarias\Http\Controllers\ComprovacaoController');
     Route::resource('trecho-roteiro', '\Diarias\Http\Controllers\TrechoRoteiroController');
     Route::resource('tipo-transporte', '\Diarias\Http\Controllers\TipoTransporteController');
+    Route::resource('viagem', '\Diarias\Http\Controllers\ViagemController');
+    Route::resource('tipo-comprovante', '\Diarias\Http\Controllers\TipoComprovanteController');
+    Route::resource('comprovante', '\Diarias\Http\Controllers\ComprovanteController');
     Route::resource('particularidade', '\Diarias\Http\Controllers\ParticularidadeController');
+    Route::resource('ferias', '\Diarias\Http\Controllers\FeriasController');
+    Route::resource('feriado', '\Diarias\Http\Controllers\FeriadoController');
     Route::resource('historico-movimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
-    
-
 });
