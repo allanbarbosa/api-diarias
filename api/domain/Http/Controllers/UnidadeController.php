@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Diarias\Autenticacao\AutenticacaoServico;
 use Diarias\Http\Requests\UnidadeRequest;
 use Diarias\Unidade\UnidadeServico;
 use Exception;
@@ -12,10 +13,12 @@ use Exception;
 class UnidadeController extends Controller
 {
     protected $servico;
+    protected $autenticacaoServico;
 
-    public function __construct(UnidadeServico $unidadeServico)
+    public function __construct(UnidadeServico $unidadeServico, AutenticacaoServico $autenticacaoServico)
     {
         $this->servico = $unidadeServico;
+        $this->autenticacaoServico = $autenticacaoServico;
     }
 
     public function index()
@@ -43,7 +46,11 @@ class UnidadeController extends Controller
 
     public function store(UnidadeRequest $request)
     {
+        $token = request()->bearerToken();
+        $dados = $this->autenticacaoServico->extrairDados($token);
+        
         $input = $request->all();
+        $input['created_by'] = $dados->data->id;
         
         $unidade = $this->servico->save($input);
 

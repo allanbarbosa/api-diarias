@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Diarias\Parametro\Repositorios;
 
-use Exception;
 use Diarias\Parametros\Models\ParametroModel;
+use Exception;
 
 class ParametroRepositorio
 {
@@ -14,6 +14,10 @@ class ParametroRepositorio
         'para_max_diarias_mes',
         'para_max_diarias_ano',
         'para_max_diarias_consecutivas',
+        'created_by',
+        'updated_by',
+        'deleted_by',
+
     ];
 
     public function __construct(ParametroModel $parametroModel)
@@ -74,7 +78,7 @@ class ParametroRepositorio
     
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('para_max_diarias_mes', 'para_max_diarias_ano', 'para_max_diarias_consecutivas', 'ASC');
+        $model = $this->model->orderBy('para_max_diarias_mes', 'ASC', 'para_max_diarias_ano', 'ASC', 'para_max_diarias_consecutivas', 'ASC');
 
 
         if (isset($input['para_max_diarias_mes'])) {

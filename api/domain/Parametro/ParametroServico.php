@@ -46,6 +46,7 @@ class ParametroServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $parametro = $this->repositorio->save($dados);
 
@@ -55,6 +56,7 @@ class ParametroServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $parametro = $this->repositorio->update($dados, $id);
 
@@ -69,9 +71,9 @@ class ParametroServico
     protected function tratarInput(array $input)
     {
         return [
-            'para_max_diarias_mes' => $input['para_max_diarias_mes'],
-            'para_max_diarias_ano' => $input['para_max_diarias_ano'],
-            'para_max_diarias_consecutivas' => $input['para_max_diarias_consecutivas'],
+            'para_max_diarias_mes' => $input['max_diarias_mes'],
+            'para_max_diarias_ano' => $input['max_diarias_ano'],
+            'para_max_diarias_consecutivas' => $input['max_diarias_consecutivas'],
         ];
     }
 
