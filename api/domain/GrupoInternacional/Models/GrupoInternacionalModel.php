@@ -15,7 +15,8 @@ class GrupoInternacionalModel extends Model
     protected $primaryKey = 'grup_int_id';
 
     protected $fillable = [
-        'grup_int_codigo'
+        'grup_int_codigo',
+        'created_by'
     ];
     
     public function grupo_internacional_paises()

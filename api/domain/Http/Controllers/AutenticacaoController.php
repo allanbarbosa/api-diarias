@@ -31,4 +31,5 @@ class AutenticacaoController extends Controller
             return response()->json(['mensagem' => $e->getMessage()], 400);
         }
     }
+   
 }

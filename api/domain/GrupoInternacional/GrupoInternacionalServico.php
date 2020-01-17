@@ -30,6 +30,7 @@ class GrupoInternacionalServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
         
         $grupoInternacional = $this->repositorio->save($dados->toArray());
 
@@ -39,6 +40,7 @@ class GrupoInternacionalServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $grupoInternacional = $this->repositorio->update($dados->toArray(), $id);
 

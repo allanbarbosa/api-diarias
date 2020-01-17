@@ -16,6 +16,7 @@ class GratificacaoModel extends Model
     protected $fillable = [
         'grat_nome',
         'grat_slug',
+        'id_classe',
         'grat_valor_diaria'
     ];
 

@@ -30,7 +30,7 @@ class OrganogramaController extends Controller
     {
         try{
 
-            $organograma = $this->servico->find($id);
+            $organograma = $this->servico->find((int)$id);
 
             return response()->json($organograma, 200);
 

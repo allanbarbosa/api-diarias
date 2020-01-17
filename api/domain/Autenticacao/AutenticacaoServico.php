@@ -12,7 +12,7 @@ class AutenticacaoServico
 
     protected $chave = '8xad012Amcd';
 
-    protected $expiracao = 7200;
+    protected $expiracao = 3600;
 
     protected $criptografia = 'HS256';
 
@@ -55,6 +55,7 @@ class AutenticacaoServico
             'token' => $token,
             'nome' => $usuario->usua_nome,
             'login' => $usuario->usua_login,
+            'expiraEm' => $tokenParams['exp'] - $tokenParams['iat']
         ];
     }
 

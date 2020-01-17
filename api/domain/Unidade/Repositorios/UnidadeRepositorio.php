@@ -12,7 +12,10 @@ class UnidadeRepositorio
 
     protected $fields = [
         'unid_nome',
-        'unid_sigla'
+        'unid_sigla',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function __construct(UnidadeModel $unidadeModel)

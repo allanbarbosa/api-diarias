@@ -17,8 +17,8 @@ class UnidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'unid_nome' => ['required'],
-            'unid_sigla' => ['required'],
+            'nome' => ['required'],
+            'sigla' => ['required'],
         ];
     }
 
