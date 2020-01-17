@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Diarias\Http\Requests;
 
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class EmpresaRequest extends FormRequest
 {
@@ -17,7 +17,7 @@ class EmpresaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_empresa' => ['required'],
+            'empresa' => ['required'],
             'sigla' => ['requrid'],
         ];
     }
@@ -25,7 +25,7 @@ class EmpresaRequest extends FormRequest
     public function messages()
     {
         return [
-            'nome_empresa.required' => 'Campo Nome da Empresa é obrigatório',
+            'empresa.required' => 'Campo Nome da Empresa é obrigatório',
             'sigla.required' => 'Campo Sigla é obrigatório',
         ];
     }

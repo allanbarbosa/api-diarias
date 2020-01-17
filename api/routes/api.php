@@ -55,5 +55,6 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('status', '\Diarias\Http\Controllers\StatusController');
     Route::resource('perfil', '\Diarias\Http\Controllers\PerfilController');
     Route::resource('parametro', '\Diarias\Http\Controllers\ParametroController');
+    Route::resource('empresa', '\Diarias\Http\Controllers\EmpresaController');
 
 });
