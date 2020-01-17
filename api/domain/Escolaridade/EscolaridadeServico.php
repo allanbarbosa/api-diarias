@@ -52,6 +52,7 @@ class EscolaridadeServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $escolaridade = $this->repositorio->save($dados);
 
@@ -61,15 +62,16 @@ class EscolaridadeServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $escolaridade = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($escolaridade);
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
-        return $this->repositorio->delete($id);
+        return $this->repositorio->delete($id, $usuario);
     }
 
     protected function tratarInput(array $input)

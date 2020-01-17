@@ -17,14 +17,14 @@ class EscolaridadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'esco_nome' => ['required'],
+            'escolaridade' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'esco_nome.required' => 'Campo Escolaridade é obrigatório',
+            'escolaridade.required' => 'Campo Escolaridade é obrigatório',
         ];
     }
 

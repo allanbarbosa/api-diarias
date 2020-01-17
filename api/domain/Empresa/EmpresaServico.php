@@ -50,6 +50,7 @@ class EmpresaServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $empresa = $this->repositorio->save($dados);
 
@@ -59,6 +60,7 @@ class EmpresaServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $empresa = $this->repositorio->save($dados, $id);
 

@@ -13,6 +13,9 @@ class EmpresaRepositorio
     protected $fields = [
         'empr_nome',
         'empr_sigla',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function __construct(EmpresaModel $empresaModel)
