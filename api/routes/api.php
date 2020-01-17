@@ -56,6 +56,10 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('perfil', '\Diarias\Http\Controllers\PerfilController');
     Route::resource('parametro', '\Diarias\Http\Controllers\ParametroController');
     Route::resource('empresa', '\Diarias\Http\Controllers\EmpresaController');
+<<<<<<< HEAD
     Route::resource('escolaridade', '\Diarias\Http\Controllers\EscolaridadeController');
+=======
+    Route::resource('historico-movimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
+>>>>>>> 1d02be1e28e540fd320d7d5239dd786b13585ccf
 
 });

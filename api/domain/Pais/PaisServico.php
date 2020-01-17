@@ -32,7 +32,7 @@ class PaisServico
     $dados = $this->tratarInput($input);
     $dados['created_by'] = $input['usuario'];
 
-    $pais = $this->repositorio->save($dados);
+    $pais = $this->repositorio->save($dados->toArray());
 
     return $this->tratarOutput($pais);
   }
@@ -42,7 +42,7 @@ class PaisServico
     $dados = $this->tratarInput($input);
     $dados['updated_by'] = $input['usuario'];
 
-    $pais = $this->repositorio->update($dados, $id);
+    $pais = $this->repositorio->update($dados->toArray(), $id);
 
     return $this->tratarOutput($pais);
   }

@@ -52,6 +52,7 @@ class UnidadeServico
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
+        $dados['created_by'] = $input['usuario'];
 
         $unidade = $this->repositorio->save($dados);
 
@@ -62,8 +63,11 @@ class UnidadeServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $unidade = $this->repositorio->update($dados, $id);
+        
+        return $this->tratarOutput($unidade);
     }
 
     public function delete(int $id)

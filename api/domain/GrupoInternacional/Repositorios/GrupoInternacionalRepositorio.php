@@ -11,7 +11,10 @@ class GrupoInternacionalRepositorio
     protected $model;
 
     protected $fields = [
-        'grup_int_codigo'
+        'grup_int_codigo',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function __construct(GrupoInternacionalModel $grupointernacionalModel)

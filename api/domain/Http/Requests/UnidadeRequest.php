@@ -25,8 +25,8 @@ class UnidadeRequest extends FormRequest
     public function messages()
     {
         return [
-            'nome.requerid' => 'Campo descrição é obrigatório.',
-            'sigla.required' => 'Campo sigla é obrigatório.',
+            'unid_nome.requerid' => 'Campo descrição é obrigatório.',
+            'unid_sigla.required' => 'Campo sigla é obrigatório.',
         ];
     }
 
@@ -34,7 +34,7 @@ class UnidadeRequest extends FormRequest
     {
         throw new HttpResponseException
         (
-            response()->json(['mensagem' => $validator->errors()->first()], 422)
+            response()->json(['mensagem' => $validator->errors()->firts()], 422)
         );
     }
 }
