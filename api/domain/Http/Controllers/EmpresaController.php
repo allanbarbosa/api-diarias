@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\EmpresaRequest;
 use Diarias\Empresa\EmpresaServico;
+use Diarias\Http\Requests\EmpresaRequest;
 use Exception;
 
 class EmpresaController extends Controller
@@ -25,7 +25,7 @@ class EmpresaController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try
         {
