@@ -27,23 +27,14 @@ class PapelFluxogramaServico
     {
         $papelfluxogramas = $this->repositorio->getWhere($input);
 
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
-        foreach ($papelfluxogramas as $papelfluxograma) {
-            $dados['itens'][] = $this->tratarOutput($papelfluxograma);
+        foreach ($papelfluxogramas as $papelfluxograma)
+        {
+            $dados[] = $this->tratarOutput($papelfluxograma);
         }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $papelfluxogramas->total();
-        }else {
-            $dados['total'] = count($papelfluxogramas);
-        }
-
+   
         return $dados;
-
     }
 
     public function save(array $input)
@@ -75,7 +66,7 @@ class PapelFluxogramaServico
     {
         return [
             'pape_flu_descricao' => $input['descricao'],
-            'pape_flu_slug' => Str::slug($input['descricao']),
+            'pape_flu_slug' => Str::slug($input['slug']),
         ];
     }
 
