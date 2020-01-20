@@ -19,7 +19,7 @@ class EscolaridadeRepositorio
         'deleted_by',
     ];
 
-    protected function __construct(EscolaridadeModel $escolaridadeModel)
+    public function __construct(EscolaridadeModel $escolaridadeModel)
     {
         $this->model = $escolaridadeModel;
     }

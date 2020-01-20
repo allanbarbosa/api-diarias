@@ -14,7 +14,7 @@ class EscolaridadeController extends Controller
 
     public function __construct(EscolaridadeServico $escolaridadeServico)
     {
-        $this->servico = $$escolaridadeServico;
+        $this->servico = $escolaridadeServico;
     }
 
     public function index()
@@ -51,9 +51,9 @@ class EscolaridadeController extends Controller
 
     public function update(EscolaridadeRequest $request, int $id)
     {
-        try {
-            
+        try {      
             $input = $request->all();
+
 
             $escolaridade = $this->servico->update($input, $id);
 
@@ -69,7 +69,9 @@ class EscolaridadeController extends Controller
     {
         try {
 
-            $this->servico->delete($id);
+            $usuario = request()->get('usuario');
+
+            $this->servico->delete($id, (int)$usuario);
 
             return response()->json('Registro excluído com sucesso', 200);
 

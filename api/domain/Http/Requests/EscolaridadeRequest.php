@@ -17,7 +17,7 @@ class EscolaridadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'escolaridade' => ['required'],
+            'escolaridade' => ['required']
         ];
     }
 
