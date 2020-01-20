@@ -17,6 +17,7 @@ class OrganogramaRepositorio
         'orga_data_fim',
         'created_by',
         'updated_by',
+        'deleted_by',
     ];
 
     public function __construct(OrganogramaModel $organograma)

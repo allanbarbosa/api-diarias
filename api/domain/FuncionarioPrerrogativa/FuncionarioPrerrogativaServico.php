@@ -75,6 +75,8 @@ class FuncionarioPrerrogativaServico
         return [
             'func_pre_data_inicio' => $input['data_inicio'],
             'func_pre_data_fim' => $input['data_fim'],
+            'id_funcionario' => $input['funcionario'],
+            'id_prerrogativa' => $input['prerrogativa'],
         ];
     }
 
@@ -84,6 +86,8 @@ class FuncionarioPrerrogativaServico
             'id' => $funcionarioPrerrogativaModel->func_pre_id,
             'data_inicio' => $funcionarioPrerrogativaModel->func_pre_data_inicio,
             'data_fim' => $funcionarioPrerrogativaModel->func_pre_data_fim,
+            'funcionario' => $funcionarioPrerrogativaModel->id_funcionario,
+            'prerrogativa' => $funcionarioPrerrogativaModel->id_prerrogativa,
         ];
     }
 }

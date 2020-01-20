@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Diarias\PapelFluxograma;
 
+use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 use Diarias\PapelFluxograma\Repositorios\PapelFluxogramaRepositorio;
 use Illuminate\Support\Str;
-use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
 
 class PapelFluxogramaServico
 {
@@ -29,7 +29,7 @@ class PapelFluxogramaServico
 
         $dados = [
             'itens' => [],
-            'total' =>0
+            'total' => 0
         ];
 
     foreach ($papelfluxogramas as $papelfluxograma) {
@@ -37,9 +37,9 @@ class PapelFluxogramaServico
     }    
 
     if (isset($input['count'])) {
-        $dados['total'] = $papelfluxograma->total();
+        $dados['total'] = $papelfluxogramas->total();
     }else {
-        $dados['total'] = count($papelfluxograma);
+        $dados['total'] = count($papelfluxogramas);
     }
 
     return $dados;
@@ -61,7 +61,7 @@ class PapelFluxogramaServico
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
 
-        $papelfluxograma = $this->repositorio->updadte($dados, $id);
+        $papelfluxograma = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($papelfluxograma);
     }

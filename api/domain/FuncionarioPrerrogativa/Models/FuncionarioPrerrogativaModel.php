@@ -15,6 +15,8 @@ class FuncionarioPrerrogativaModel extends Model
     protected $fillable = [
         'func_pre_data_inicio',
         'func_pre_data_fim',
+        'id_funcionario',
+        'id_prerrogativa',
     ];
 
     use SoftDeletes;

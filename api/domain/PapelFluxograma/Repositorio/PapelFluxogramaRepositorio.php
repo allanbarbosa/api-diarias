@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Diarias\PapelFluxograma\Repositorios;
 
-use Exception;
 use Diarias\PapelFluxograma\Models\PapelFluxogramaModel;
+use Exception;
 
 class PapelFluxogramaRepositorio
 {
@@ -15,7 +15,8 @@ class PapelFluxogramaRepositorio
         'pape_flu_slug',
         'pape_flu_descricao',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'deleted_by',
     ];
     public function __construct(PapelFluxogramaModel $papelFluxogramaModel)
     {
@@ -24,9 +25,9 @@ class PapelFluxogramaRepositorio
 
     public function find(int $id)
     {
-        $model = $this->model->where('papel_flu_id', '=', $id)->first();
+        $model = $this->model->where('pape_flu_id', '=', $id)->first();
 
-        if (!model) {
+        if (!$model) {
             throw new Exception('Papel Fluxograma não encontrada.');
         }
 
@@ -67,20 +68,20 @@ class PapelFluxogramaRepositorio
 
     public function delete(int $id, int $usuario)
     {
-        $model = $this-find($id);
+        $model = $this->find($id);
         
         $model->deleted_by = $usuario;
         $model->save();
 
-        return $model-delete();
+        return $model->delete();
     }
 
     public function getWhere(array $input)
     {
-        $model = $this->model->orderBy('papel_flu_descricao', 'ASC');
+        $model = $this->model->orderBy('pape_flu_descricao', 'ASC');
 
-        if (isset($input['papel_flu_descricao'])) {
-            $model = $model->where('papel_flu_descricao', 'ilike', '%'.$input['papel_flu_descricao'].'%');
+        if (isset($input['pape_flu_descricao'])) {
+            $model = $model->where('pape_flu_descricao', 'ilike', '%'.$input['pape_flu_descricao'].'%');
         }
 
         if (isset($input['count'])) {

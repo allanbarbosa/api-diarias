@@ -13,8 +13,8 @@ class PapelFluxogramaModel extends Model
     protected $primaryKey = 'pape_flu_id';
 
     protected $fillable = [
+        'pape_flu_descricao',
         'pape_flu_slug',
-        'pape_flu_descricao'
 
     ];
     use SoftDeletes;

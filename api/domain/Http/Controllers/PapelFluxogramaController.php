@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Diarias\Https\Requests\PapelFluxogramaRequest;
 use Diarias\PapelFluxograma\PapelFluxogramaServico;
 use Exception;
-use Diarias\Https\Requests\PapelFluxogramaRequest;
 
 class PapelFluxogramaController extends Controller
 {
@@ -25,7 +25,7 @@ class PapelFluxogramaController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
             $papelfluxograma = $this->servico->find($id);
@@ -34,7 +34,7 @@ class PapelFluxogramaController extends Controller
 
         } catch (Exception $e) {
             
-            return reposnse()->json(['mesagem' => $e->getMessage()], 400);
+            return response()->json(['mesagem' => $e->getMessage()], 400);
         
         }
     }

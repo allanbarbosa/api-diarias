@@ -13,6 +13,8 @@ class FuncionarioPrerrogativaRepositorio
     protected $fields = [
         'func_pre_data_inicio',
         'func_pre_data_fim',
+        'id_funcionario',
+        'id_prerrogativa',
         'created_by',
         'updated_by',
         'deleted_by',
