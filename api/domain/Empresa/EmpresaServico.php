@@ -24,33 +24,12 @@ class EmpresaServico
 
     public function all(array $input)
     {
-        $empresas = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($empresas as $empresa)
-        {
-            $dados['itens'][] = $this->tratarOutput($empresa);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $empresas->total();
-        }
-        else
-        {
-            $dados['total'] = count($empresas);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
     {
         $dados = $this->tratarInput($input);
-        $dados['created_by'] = $input['usuario'];
 
         $empresa = $this->repositorio->save($dados);
 
@@ -60,7 +39,6 @@ class EmpresaServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
-        $dados['updated_by'] = $input['usuario'];
 
         $empresa = $this->repositorio->save($dados, $id);
 
@@ -75,7 +53,7 @@ class EmpresaServico
     protected function tratarInput(array $input)
     {
         return [
-            'empr_nome' => $input['empresa'],
+            'empr_nome' => $input['nome'],
             'empr_sigla' => $input['sigla'],
         ];
     }
@@ -84,7 +62,7 @@ class EmpresaServico
     {
         return [
             'id' => $empresaModel->empr_id,
-            'empresa' => $empresaModel->empr_nome,
+            'nome' => $empresaModel->empr_nome,
             'sigla' => $empresaModel->empr_sigla,
         ];
 
