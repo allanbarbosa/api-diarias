@@ -32,17 +32,17 @@ class PapelFluxogramaServico
             'total' => 0
         ];
 
-    foreach ($papelfluxogramas as $papelfluxograma) {
-        $dados['itens'][] = $this->tratarOutput($papelfluxograma);
-    }    
+        foreach ($papelfluxogramas as $papelfluxograma) {
+            $dados['itens'][] = $this->tratarOutput($papelfluxograma);
+        }
 
-    if (isset($input['count'])) {
-        $dados['total'] = $papelfluxogramas->total();
-    }else {
-        $dados['total'] = count($papelfluxogramas);
-    }
+        if (isset($input['count'])) {
+            $dados['total'] = $papelfluxogramas->total();
+        }else {
+            $dados['total'] = count($papelfluxogramas);
+        }
 
-    return $dados;
+        return $dados;
 
     }
 
@@ -74,9 +74,8 @@ class PapelFluxogramaServico
     protected function tratarInput(array $input)
     {
         return [
-            'pape_flu_id' => isset($input['id']) ? $input['id'] : null,
-            'pape_flu_descricao' => isset($input['descricao']) ? $input['descricao'] : null,
-            'pape_flu_slug' => isset($input['slug']) ? $input['slug'] : null
+            'pape_flu_descricao' => $input['descricao'],
+            'pape_flu_slug' => Str::slug($input['descricao']),
         ];
     }
 
@@ -85,7 +84,7 @@ class PapelFluxogramaServico
         return [
             'id' => $model->papel_flu_id,
             'descricao' => $model->pape_flu_descricao,
-            'pape_flu_slug' => $model->pape_flug_slug
+            'slug' => $model->pape_flug_slug
         ];
     }
 
