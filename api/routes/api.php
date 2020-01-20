@@ -58,5 +58,6 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('empresa', '\Diarias\Http\Controllers\EmpresaController');
     Route::resource('escolaridade', '\Diarias\Http\Controllers\EscolaridadeController');
     Route::resource('historico-movimentacao', '\Diarias\Http\Controllers\HistoricoMovimentacaoController');
+    Route::resource('profissao', '\Diarias\Http\Controllers\ProfissaoController');
 
 });
