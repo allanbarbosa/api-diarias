@@ -3,21 +3,24 @@ declare(strict_types=1);
 
 namespace Diarias\Profissao\Repositorios;
 
-use Exception;
 use Diarias\Profissao\Models\ProfissaoModel;
+use Exception;
 
 class ProfissaoRepositorio
 {
     protected $model;
 
-    protected $fildes = [
+    protected $fields = [
         'prof_nome',
         'prof_slug',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function __construct(ProfissaoModel $profissaoModel)
     {
-        $this->model->profissaoModel;
+        $this->model = $profissaoModel;
     }
 
     public function find(int $id)
@@ -39,11 +42,11 @@ class ProfissaoRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fildes as $filde)
+        foreach ($this->fields as $field)
         {
-            if (isset($input[$filde]))
+            if (isset($input[$field]))
             {
-                $this->model->{$filde} = $input[$filde];
+                $this->model->{$field} = $input[$field];
             }
         }
 
@@ -56,11 +59,11 @@ class ProfissaoRepositorio
     {
         $model = $this->find($id);
 
-        foreach ($this->fildes as $filde)
+        foreach ($this->fields as $field)
         {
-            if (isset($input[$filde]))
+            if (isset($input[$field]))
             {
-                $model->{$filde} = $input[$filde];
+                $model->{$field} = $input[$field];
             }    
         }
         $model->save();
