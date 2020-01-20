@@ -82,7 +82,7 @@ class EmpresaServico
     {
         return [
             'id' => $empresaModel->empr_id,
-            'empresa' => $empresaModel->empr_nome,
+            'nome' => $empresaModel->empr_nome,
             'sigla' => $empresaModel->empr_sigla,
         ];
 
