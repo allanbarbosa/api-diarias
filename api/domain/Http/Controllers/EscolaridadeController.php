@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\EscolaridadeRequest;
 use Diarias\Escolaridade\EscolaridadeServico;
+use Diarias\Http\Requests\EscolaridadeRequest;
 use Exception;
 
 class EscolaridadeController extends Controller
@@ -14,7 +14,7 @@ class EscolaridadeController extends Controller
 
     public function __construct(EscolaridadeServico $escolaridadeServico)
     {
-        $this->servico = $$escolaridadeServico;
+        $this->servico = $escolaridadeServico;
     }
 
     public function index()
@@ -25,7 +25,7 @@ class EscolaridadeController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
             
@@ -51,9 +51,9 @@ class EscolaridadeController extends Controller
 
     public function update(EscolaridadeRequest $request, int $id)
     {
-        try {
-            
+        try {      
             $input = $request->all();
+
 
             $escolaridade = $this->servico->update($input, $id);
 
@@ -69,7 +69,9 @@ class EscolaridadeController extends Controller
     {
         try {
 
-            $this->servico->delete($id);
+            $usuario = request()->get('usuario');
+
+            $this->servico->delete($id, (int)$usuario);
 
             return response()->json('Registro excluído com sucesso', 200);
 

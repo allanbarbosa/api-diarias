@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Profissao\ProfissaoServico;
 use Diarias\Http\Requests\ProfissaoResquest;
+use Diarias\Profissao\ProfissaoServico;
 use Exception;
 
 
@@ -69,7 +69,9 @@ class ProfissaoController extends Controller
     {
         try
         {
-            $this->servico->delete($id);
+            $usuario = request()->get('usuario');
+
+            $this->servico->delete($id, (int)$usuario);
 
             return response()->json('Registro excluído com sucesso.', 200);
         }

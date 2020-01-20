@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AlterTableEscolaridadeAddForeign extends Migration
 {
@@ -23,12 +23,9 @@ class AlterTableEscolaridadeAddForeign extends Migration
             $table->index('updated_by', 'escolaridade_updated_by_idx');
             $table->index('deleted_by', 'escolaridade_deleted_by_idx');
 
-            $table->foreign('created_by', 'fk_escolaridade_created_by')
-                ->references('usua_id')->on('usuario');
-            $table->foreign('updated_by', 'fk_escolaridade_updated_by')
-                ->references('usua_id')->on('usuario');
-            $table->foreign('deleted_by', 'fk_escolaridade_deleted_by')
-                ->references('usua_id')->on('usuario');
+            $table->foreign('created_by', 'fk_escolaridade_created_by')->references('usua_id')->on('usuario');
+            $table->foreign('updated_by', 'fk_escolaridade_updated_by')->references('usua_id')->on('usuario');
+            $table->foreign('deleted_by', 'fk_escolaridade_deleted_by')->references('usua_id')->on('usuario');
 
         });
     }

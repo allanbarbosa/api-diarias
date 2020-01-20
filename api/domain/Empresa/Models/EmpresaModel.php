@@ -14,7 +14,7 @@ class EmpresaModel extends Model
 
     protected $fillable = [
         'empr_nome',
-        'empr_sigla'
+        'empr_sigla',
     ];
 
     use SoftDeletes;

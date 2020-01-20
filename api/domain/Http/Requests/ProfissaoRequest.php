@@ -17,14 +17,14 @@ class ProfissaoResquest extends FormRequest
     public function rules()
     {
         return [
-            'prof_nome' => ['required'],
+            'profissao' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'prof_nome.required' => 'Campo Nome é requerido',
+            'profissao.required' => 'Campo Nome é requerido',
         ];
     }
 

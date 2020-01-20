@@ -5,8 +5,8 @@ namespace Diarias\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\CargoRequest;
 use Diarias\Cargo\CargoServico;
+use Diarias\Http\Requests\CargoRequest;
 use Exception;
 
 class CargoController extends Controller
@@ -27,11 +27,11 @@ class CargoController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
 
-            $cargo = $this->servico->find((int)$id);
+            $cargo = $this->servico->find($id);
 
             return response()->json($cargo, 200);
 

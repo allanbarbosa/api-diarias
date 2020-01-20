@@ -24,27 +24,7 @@ class EmpresaServico
 
     public function all(array $input)
     {
-        $empresas = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
-
-        foreach ($empresas as $empresa)
-        {
-            $dados['itens'][] = $this->tratarOutput($empresa);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $empresas->total();
-        }
-        else
-        {
-            $dados['total'] = count($empresas);
-        }
-
-        return $dados;
+        return array_map(array($this, 'tratarOutput'), $this->repositorio->getWhere($input)->all());
     }
 
     public function save(array $input)
@@ -73,7 +53,7 @@ class EmpresaServico
     protected function tratarInput(array $input)
     {
         return [
-            'empr_nome' => $input['empresa'],
+            'empr_nome' => $input['nome'],
             'empr_sigla' => $input['sigla'],
         ];
     }

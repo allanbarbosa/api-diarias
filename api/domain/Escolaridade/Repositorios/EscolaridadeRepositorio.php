@@ -14,9 +14,12 @@ class EscolaridadeRepositorio
     protected $fields = [
         'esco_nome',
         'esco_slug',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
-    protected function __construct(EscolaridadeModel $escolaridadeModel)
+    public function __construct(EscolaridadeModel $escolaridadeModel)
     {
         $this->model = $escolaridadeModel;
     }
@@ -52,7 +55,7 @@ class EscolaridadeRepositorio
 
     public function update(array $input, int $id)
     {
-        $model = $this->model->find($id);
+        $model = $this->find($id);
 
         foreach ($this->fields as $field)
         {
@@ -66,9 +69,12 @@ class EscolaridadeRepositorio
         return $model;
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
         $model = $this->find($id);
+
+        $model->deleted_by = $usuario;
+        $model->save();
 
         return $model->delete();
     }

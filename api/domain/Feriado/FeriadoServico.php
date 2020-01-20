@@ -56,6 +56,7 @@ class FeriadoServico
     public function update(array $input, int $id)
     {
         $dados = $this->tratarInput($input);
+        $dados['updated_by'] = $input['usuario'];
 
         $feriado = $this->repositorio->update($dados, $id);
 

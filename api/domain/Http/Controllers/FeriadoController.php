@@ -44,9 +44,9 @@ class FeriadoController extends Controller
     {
         $input = $request->all();
         
-        $prerrogativa = $this->servico->save($input);
+        $feriado = $this->servico->save($input);
 
-        return response()->json($prerrogativa, 200);
+        return response()->json($feriado, 200);
     }
 
     public function update(FeriadoRequest $request, int $id)

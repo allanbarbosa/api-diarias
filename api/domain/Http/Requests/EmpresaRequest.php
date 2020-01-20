@@ -18,7 +18,7 @@ class EmpresaRequest extends FormRequest
     {
         return [
             'empresa' => ['required'],
-            'sigla' => ['requrid'],
+            'sigla' => ['required'],
         ];
     }
 

@@ -42,9 +42,11 @@ class FeriasRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fields as $field) {
-            if (isset($input[$field])) {
-                $this->model->{$field} = $input[$field];
+        foreach ($this->fields as $field) 
+        {
+            if (isset($input[$field])) 
+            {
+                $this->model{$field} = $input[$field];
             }
         }
 
@@ -57,8 +59,10 @@ class FeriasRepositorio
     {
         $model = $this->find($id);
 
-        foreach ($this->fields as $field) {
-            if (isset($input[$field])) {
+        foreach ($this->fields as $field) 
+        {
+            if (isset($input[$field])) 
+            {
                 $model->{$field} = $input[$field];
             }
         }
