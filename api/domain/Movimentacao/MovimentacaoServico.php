@@ -50,15 +50,16 @@ class MovimentacaoServico
     {
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
-
+        
         $movimentacao = $this->repositorio->update($dados, $id);
+       
 
         return $this->tratarOutput($movimentacao);
     }
 
     public function delete(int $id, int $usuario)
     {
-
+        
         return $this->repositorio->delete($id, $usuario);
     }
 

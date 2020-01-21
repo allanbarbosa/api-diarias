@@ -65,7 +65,7 @@ class EscolaridadeServico
     protected function tratarInput(array $input)
     {
         return [
-            'esco_nome' => $input['escolaridade'],
+            'esco_nome' => $input['nome'],
             'esco_slug' => Str::slug($input['slug']),
         ];
     }
@@ -74,7 +74,7 @@ class EscolaridadeServico
     {
         return [
             'id' => $escolaridadeModel->esco_id,
-            'escolaridade' => $escolaridadeModel->esco_nome,
+            'nome' => $escolaridadeModel->esco_nome,
             'slug' => $escolaridadeModel->esco_slug,
         ];
     }

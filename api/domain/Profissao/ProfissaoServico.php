@@ -66,7 +66,7 @@ class ProfissaoServico
     protected function tratarInput(array $input)
     {
         return [
-            'prof_nome' => $input['profissao'],
+            'prof_nome' => $input['nome'],
             'prof_slug' => Str::slug($input['slug']),
         ];
     }
@@ -75,7 +75,7 @@ class ProfissaoServico
     {
         return [
             'id' => $profissaoModel->prof_id,
-            'profissao' => $profissaoModel->prof_nome,
+            'nome' => $profissaoModel->prof_nome,
             'slug' => $profissaoModel->prof_slug,
         ];
     }

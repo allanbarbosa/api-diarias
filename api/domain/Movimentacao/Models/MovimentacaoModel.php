@@ -10,7 +10,7 @@ class MovimentacaoModel extends Model
 {
     protected $table = 'movimentacao';
 
-    protected $primaryKey = 'movimentacao';
+    protected $primaryKey = 'movi_id';
 
     protected $fillable = [
         'movi_nome',
