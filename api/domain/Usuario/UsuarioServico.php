@@ -129,7 +129,7 @@ class UsuarioServico
                 'idEmpresa' => $usuarioModel->funcionario->id_empresa,
                 'idProfissao' => $usuarioModel->funcionario->id_profissao,
                 'idEscolaridade' => $usuarioModel->funcionario->id_escolaridade,
-            ]
+            ];
         }
         
         return $dados;
