@@ -75,7 +75,7 @@ class FuncionarioServico
             'email' => $funcionarioModel->func_email,
             'idEmpresa' => $funcionarioModel->id_empresa,
             'idProfissao' => $funcionarioModel->id_profissao,
-            'id_escolaridade' => $funcionarioModel->id_escolaridade,
+            'idEscolaridade' => $funcionarioModel->id_escolaridade,
             'empresa' =>
             [
                 'id' => $funcionarioModel->empresa->empr_id,
@@ -84,13 +84,13 @@ class FuncionarioServico
             ],
             'profissao' =>
             [
-                'id' => $funcionarioModel->profissao->id_profissao,
+                'id' => $funcionarioModel->profissao->prof_id,
                 'nome' => $funcionarioModel->profissao->prof_nome,
                 'slug' => $funcionarioModel->profissao->prof_slug
             ],
             'escolaridade' =>
             [
-                'id' => $funcionarioModel->escolaridade->id_escolaridade,
+                'id' => $funcionarioModel->escolaridade->esco_id,
                 'nome' => $funcionarioModel->escolaridade->esco_nome,
                 'slug' => $funcionarioModel->escolaridade->esco_slug
             ],

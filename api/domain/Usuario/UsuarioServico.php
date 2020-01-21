@@ -104,8 +104,9 @@ class UsuarioServico
             'nome' => $usuarioModel->usua_nome,
             'login' => $usuarioModel->usua_login,
             'primeiroAcesso' => $usuarioModel->usua_primeiro_acesso,
+            'idFuncionario' => $usuarioModel->id_funcionario,
             'funcionario' => [
-                'id' => $usuarioModel->id_funcionario,
+                'id' => $usuarioModel->funcionario->func_id,
                 'nome' => (!is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : "inexistente",
             ],
 

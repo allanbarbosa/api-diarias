@@ -4,17 +4,18 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\PagamentoRequest;
-use Diarias\Pagamento\PagamentoServico;
+use Diarias\HistoricoStatus\HistoricoStatusServico;
+use Diarias\Http\Requests\HistoricoStatusRequest;
 use Exception;
 
-class PagamentoController extends Controller
+
+class HistoricoStatusController extends Controller
 {
     protected $servico;
 
-    public function __construct(PagamentoServico $pagamentoServico)
+    public function __construct(HistoricoStatusServico $historicoStatusServico)
     {
-        $this->servico = $pagamentoServico;
+        $this->servico = $historicoStatusServico;
     }
 
     public function index()
@@ -29,9 +30,9 @@ class PagamentoController extends Controller
     {
         try {
             
-            $pagamento = $this->servico->find($id);
+            $historicoStatus = $this->servico->find($id);
 
-            return response()->json($pagamento, 200);
+            return response()->json($historicoStatus, 200);
 
         } catch (Exception $e) {
             
@@ -40,24 +41,24 @@ class PagamentoController extends Controller
         }
     }
 
-    public function store(PagamentoRequest $request)
+    public function store(HistoricoStatusRequest $request)
     {
         $input = $request->all();
         
-        $pagamento = $this->servico->save($input);
+        $historicoStatus = $this->servico->save($input);
 
-        return response()->json($pagamento, 200);
+        return response()->json($historicoStatus, 200);
     }
 
-    public function update(PagamentoRequest $request, int $id)
+    public function update(HistoricoStatusRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
 
-            $pagamento = $this->servico->update($input, $id);
+            $historicoStatus = $this->servico->update($input, $id);
 
-            return response()->json($pagamento, 200);
+            return response()->json($historicoStatus, 200);
 
         } catch (Exception $e) {
 

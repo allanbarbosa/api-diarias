@@ -10,7 +10,7 @@ class HistoricoStatusModel extends Model
 {
     protected $table = 'historico_status';
 
-    protected $primaryKe = 'hist_sta_id';
+    protected $primaryKey = 'hist_sta_id';
 
     protected $fillable = [
         'hist_sta_data_tramitacao',

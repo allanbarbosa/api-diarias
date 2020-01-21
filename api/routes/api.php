@@ -62,6 +62,8 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('funcionario-prerrogativa', '\Diarias\Http\Controllers\FuncionarioPrerrogativaController');
     Route::resource('papel-fluxograma', '\Diarias\Http\Controllers\PapelFluxogramaController');
     Route::resource('movimentacao', '\Diarias\Http\Controllers\MovimentacaoController');
+    Route::resource('historico-status', '\Diarias\Http\Controllers\HistoricoStatusController');
+    Route::resource('pagamento', '\Diarias\Http\Controllers\PagamentoController');
 
 
 });

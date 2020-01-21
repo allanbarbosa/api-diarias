@@ -32,7 +32,7 @@ class GrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
         
-        $grupoInternacional = $this->repositorio->save($dados->toArray());
+        $grupoInternacional = $this->repositorio->save($dados);
 
         return $this->tratarOutput($grupoInternacional);
     }
@@ -42,7 +42,7 @@ class GrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
 
-        $grupoInternacional = $this->repositorio->update($dados->toArray(), $id);
+        $grupoInternacional = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($grupoInternacional);
     }
