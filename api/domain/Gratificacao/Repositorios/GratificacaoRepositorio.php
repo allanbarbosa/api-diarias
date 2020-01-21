@@ -90,10 +90,6 @@ class GratificacaoRepositorio
             $model = $model->where('grat_nome', 'ilike', '%'.$input['grat_nome'].'%');
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 }

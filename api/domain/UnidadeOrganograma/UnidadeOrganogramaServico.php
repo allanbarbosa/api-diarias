@@ -26,23 +26,11 @@ class UnidadeServico
     {
         $unidades = $this->repositorio->getWhere($input);
 
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($unidades as $unidade)
         {
-            $dados['itens'][] = $this->tratarOutput($unidade);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $unidades->total();
-        }
-        else
-        {
-            $dados['total'] = count($unidades);
+            $dados[] = $this->tratarOutput($unidade);
         }
 
         return $dados;
@@ -51,7 +39,7 @@ class UnidadeServico
 
     public function save(array $input)
     {
-        $dados = $this->tratarOutput($input);
+        $dados = $this->tratarInput($input);
 
         $unidade = $this->repositorio->save($dados);
 
@@ -61,7 +49,7 @@ class UnidadeServico
 
     public function update(array $input, int $id)
     {
-        $dados = $this->trataInput($input);
+        $dados = $this->tratarInput($input);
 
         $unidade = $this->repositorio->update($dados, $id);
     }
@@ -75,15 +63,15 @@ class UnidadeServico
     {
         
         return [
-            'unid_org_id' => isset($input['id']) ? $input['id'] : null,
+            
             'id_unidade_pai' => isset($input['idUnidadePai']) ? $input['idUnidadePai'] : null,
-            'id_unidade' => isset($input['idUnidade']) ? $input['idUnidade'] : null,
-            'id_organograma' => isset($input['idOrganograma']) ? $input['idOrganograma'] : null,
-            'id_papel_fluxograma' => isset($input['idPapelFluxograma']) ? $input['idPapelFluxograma'] : null
+            'id_unidade' => $input['idUnidade'],
+            'id_organograma' => $input['idOrganograma'],
+            'id_papel_fluxograma' => $input['idPapelFluxograma']
         ];
     }
 
-    protected function tratarOutput(UnidadeModel $model)
+    protected function tratarOutput(UnidadeOrganogramaModel $model)
     {
         return [
             'id' => $model->unid_org_id,

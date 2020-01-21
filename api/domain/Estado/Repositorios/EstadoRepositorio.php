@@ -85,10 +85,7 @@ class EstadoRepositorio
         if (isset($input['esta_sigla'])) {
             $model = $model->where('esta_sigla', 'ilike', '%'.$input['esta_sigla'].'%');
         }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
+        
         return $model->get();
     }
 }

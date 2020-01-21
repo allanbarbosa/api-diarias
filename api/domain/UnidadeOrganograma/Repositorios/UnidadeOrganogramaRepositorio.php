@@ -24,7 +24,7 @@ class UnidadeOrganogramaRepositorio
 
     public function find(int $id)
     {
-        $model = $this->model->where($model->primaryKey, '=', $id)->first();
+        $model = $this->model->where('primaryKey', '=', $id)->first();
 
         if (!$model)
         {
@@ -82,10 +82,6 @@ class UnidadeOrganogramaRepositorio
         $sortColumn = isset($sortColumn) ? $sortColumn : 'unid_org_id';
         $model = $this->model->orderBy($sortColumn, $sortDirection);
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 }

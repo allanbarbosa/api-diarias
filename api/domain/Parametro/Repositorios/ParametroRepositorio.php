@@ -93,10 +93,6 @@ class ParametroRepositorio
             $model = $model->where('para_max_diarias_consecutivas', '=', '%'.$input['para_max_diarias_consecutivas'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

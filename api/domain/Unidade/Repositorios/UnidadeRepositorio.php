@@ -87,10 +87,6 @@ class UnidadeRepositorio
             $model = $model->where('unid_nome', 'ilike', '%'.$input['unid_nome'].'%');
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 }

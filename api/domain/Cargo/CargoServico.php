@@ -56,10 +56,10 @@ class CargoServico
     protected function tratarInput(array $input)
     {
         return [
-            'carg_id' => isset($input['id']) ? $input['id'] : null,
-            'carg_nome' => isset($input['nome']) ? $input['nome'] : null,
-            'carg_slug' => isset($input['slug']) ? $input['slug'] : Str::slug($input['nome']),
-            'id_gratificacao' => isset($input['idGratificacao']) ? $input['idGratificacao'] : null
+            
+            'carg_nome' => $input['nome'],
+            'carg_slug' => Str::slug($input['nome']),
+            'id_gratificacao' => $input['idGratificacao'],
         ];
     }
 

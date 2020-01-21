@@ -26,19 +26,10 @@ class ViagemServico
     {
         $viagens = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($viagens as $viagem) {
-            $dados['itens'][] = $this->tratarOutput($viagem);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $viagens->total();
-        } else {
-            $dados['total'] = count($viagens);
+            $dados[] = $this->tratarOutput($viagem);
         }
 
         return $dados;

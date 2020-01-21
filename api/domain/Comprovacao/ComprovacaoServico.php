@@ -26,19 +26,11 @@ class ComprovacaoServico
     {
         $comprovacoes = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
-        foreach ($comprovacoes as $comprovacao) {
-            $dados['itens'][] = $this->tratarOutput($comprovacao);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $comprovacoes->total();
-        } else {
-            $dados['total'] = count($comprovacoes);
+        foreach ($comprovacoes as $comprovacao)
+        {
+            $dados[] = $this->tratarOutput($comprovacao);
         }
 
         return $dados;

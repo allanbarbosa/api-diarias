@@ -91,10 +91,6 @@ class ComprovacaoRepositorio
             $model = $model->where('comp_diarias_utilizadas', 'ilike', '%'.$input['comp_diarias_utilizadas'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

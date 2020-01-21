@@ -5,6 +5,7 @@ namespace Diarias\GrupoInternacionalPais;
 
 use Diarias\GrupoInternacionalPais\Models\GrupoInternacionalPaisModel;
 use Diarias\GrupoInternacionalPais\Repositorios\GrupoInternacionalPaisRepositorio;
+use Diarias\Lotacao\Models\LotacaoModel;
 
 class GrupoInternacionalPaisServico
 {

@@ -86,10 +86,6 @@ class VinculoEmpregaticioRepositorio
             $model = $model->where('vinc_emp_matricula', 'ilike', '%'.$input['vinc_emp_matricula'].'%');
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 }

@@ -95,10 +95,6 @@ class TrechoRoteiroRepositorio
             $model = $model->where('trec_rot_data_hora_saida', 'ilike', '%'.$input['trec_rot_data_hora_saida'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

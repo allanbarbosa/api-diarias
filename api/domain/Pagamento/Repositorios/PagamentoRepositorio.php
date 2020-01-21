@@ -12,6 +12,7 @@ class PagamentoRepositorio
 
     protected $fields = [
         'paga_numero_pagamento',
+        'id_viagem',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -82,10 +83,6 @@ class PagamentoRepositorio
 
         if (isset($input['paga_numero_pagamento'])) {
             $model = $model->where('paga_numero_pagamento', 'ilike', '%'.$input['paga_numero_pagamento'].'%');
-        }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
         }
 
         return $model->get();

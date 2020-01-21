@@ -59,20 +59,20 @@ class LotacaoServico
 
     protected function tratarInput(array $input)
     {
-        return new LotacaoModel([
-            'lota_id' => isset($input['id']) ? $input['id'] : null,
-            'lota_data_inicio' => isset($input['dataInicio']) ? $input['dataInicio'] : null,
+        return [
+           
+            'lota_data_inicio' => $input['dataInicio'],
             'lota_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null,
-            'id_cargo' => isset($input['idCargo']) ? $input['idCargo'] : null,
-            'cargo' => isset($input['cargo']) ? $input['cargo'] : null,
-            'id_unidade_organograma' => isset($input['idUnidadeOrganograma']) ? $input['idUnidadeOrganograma'] : null,
-            'unidade_organograma' => isset($input['unidadeOrganograma']) ? $input['unidadeOrganograma'] : null,
-            'id_vinculo_empregaticio' => isset($input['idVinculoEmpregaticio']) ? $input['idVinculoEmpregaticio'] : null,
-            'vinculo_empregaticio' => isset($input['vinculoEmpregaticio']) ? $input['vinculoEmpregaticio'] : null,
-            'historico_status' => isset($input['historicoStatus']) ? $input['historicoStatus'] : null,
-            'historico_movimentacoes' => isset($input['historicoMovimentacoes']) ? $input['historicoMovimentacoes'] : null,
-            'viagens' => isset($input['viagens']) ? $input['viagens'] : null
-        ]);
+            'id_cargo' => $input['idCargo'],
+            'cargo' => $input['cargo'],
+            'id_unidade_organograma' => $input['idUnidadeOrganograma'],
+            'unidade_organograma' => $input['unidadeOrganograma'],
+            'id_vinculo_empregaticio' => $input['idVinculoEmpregaticio'],
+            'vinculo_empregaticio' => $input['vinculoEmpregaticio'],
+            'historico_status' => $input['historicoStatus'],
+            'historico_movimentacoes' => $input['historicoMovimentacoes'],
+            'viagens' => $input['viagens']
+        ];
     }
 
   protected function tratarOutput(LotacaoModel $model)

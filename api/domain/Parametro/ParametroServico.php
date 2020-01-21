@@ -25,19 +25,10 @@ class ParametroServico
     public function all(array $input)
     {
         $parametros = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($parametros as $parametro) {
-            $dados['itens'][] = $this->tratarOutput($parametro);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $parametros->total();
-        } else {
-            $dados['total'] = count($parametros);
+            $dados[] = $this->tratarOutput($parametro);
         }
 
         return $dados;

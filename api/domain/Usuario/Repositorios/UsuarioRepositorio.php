@@ -103,10 +103,6 @@ class UsuarioRepositorio
             $model = $model->where('id_funcionario', '=', $input['id_funcionario']);   
         }
         
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-        
         return $model->get();
     }
 }

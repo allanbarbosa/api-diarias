@@ -47,18 +47,18 @@ class GrupoInternacionalServico
         return $this->tratarOutput($grupoInternacional);
     }
 
-    public function delete(int $id)
+    public function delete(int $id, int $usuario)
     {
 
-        return $this->repositorio->delete($id);
+        return $this->repositorio->delete($id, $usuario);
     }
 
     protected function tratarInput(array $input)
     {
-        return new GrupoInternacionalModel([
-            'grup_int_id' => isset($input['id']) ? $input['id'] : null,
-            'grup_int_codigo' => isset($input['codigo']) ? $input['codigo'] : null
-        ]);
+        return [
+            
+            'grup_int_codigo' => $input['codigo']
+        ];
     }
 
     protected function tratarOutput(GrupoInternacionalModel $grupoInternacionalModel)

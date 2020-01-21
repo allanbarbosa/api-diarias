@@ -26,19 +26,10 @@ class PagamentoServico
     {
         $pagamentos = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($pagamentos as $pagamento) {
-            $dados['itens'][] = $this->tratarOutput($pagamento);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $pagamentos->total();
-        } else {
-            $dados['total'] = count($pagamentos);
+            $dados[] = $this->tratarOutput($pagamento);
         }
 
         return $dados;
@@ -74,6 +65,7 @@ class PagamentoServico
     {
         return [
             'paga_numero_pagamento' => $input['numero_pagamento'],
+            'id_viagem' => $input['viagem'],
         ];
     }
 
@@ -82,6 +74,7 @@ class PagamentoServico
         return [
             'id' => $pagamentoModel->paga_id,
             'numero_pagamento' => $pagamentoModel->paga_numero_pagamento,
+            'viagem' => $pagamentoModel->id_viagem,
         ];
     }
 }

@@ -89,10 +89,6 @@ class OrganogramaRepositorio
             $model = $model->where('orga_codigo', 'ilike', '%' . $input['orga_codigo'] . '%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
 
     }

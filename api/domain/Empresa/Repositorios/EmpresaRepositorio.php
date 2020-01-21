@@ -85,11 +85,6 @@ class EmpresaRepositorio
             $model = $model->where('empr_nome', 'ilike', '%'.$input['empr_nome'].'%');
         }
 
-        if (isset($input['count']))
-        {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 

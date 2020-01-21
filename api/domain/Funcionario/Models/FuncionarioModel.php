@@ -3,11 +3,12 @@ declare(strict_types=1);
 
 namespace Diarias\Funcionario\Models;
 
+use Diarias\Empresa\Models\EmpresaModel;
+use Diarias\Escolaridade\Models\EscolaridadeModel;
+use Diarias\Profissao\Models\ProfissaoModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Diarias\Empresa\Models\EmpresaModel;
-use Diarias\Profissao\Models\ProfissaoModel;
-Use Diarias\Escolaridade\Models\EscolaridadeModel;
+
 
 class FuncionarioModel extends Model
 {

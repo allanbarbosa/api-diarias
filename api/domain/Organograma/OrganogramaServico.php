@@ -80,10 +80,10 @@ class OrganogramaServico
     protected function tratarInput(array $input)
     {
         return [
-            'orga_id' => isset($input['id']) ? $input['id'] : null,
-            'orga_codigo' => isset($input['codigo']) ? $input['codigo'] : null,
-            'orga_data_inicio' => isset($input['dataInicio']) ? $input['dataInicio'] : null,
-            'orga_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null
+            'orga_id' => $input['id'],
+            'orga_codigo' => $input['codigo'],
+            'orga_data_inicio' => $input['dataInicio'],
+            'orga_data_fim' => $input['dataFim']
         ];
     }
     

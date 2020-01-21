@@ -87,11 +87,6 @@ class ProfissaoRepositorio
             $model = $model->where('prof_nome', 'ilike', '%'.$input['prof_nome'].'%');
         }
 
-        if (isset($input['count']))
-        {
-            return $model->paginate($input['cout']);
-        }
-
         return $model->get();
     }
 }

@@ -28,19 +28,10 @@ class PrerrogativaServico
     {
         $prerrogativas = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($prerrogativas as $prerrogativa) {
-            $dados['itens'][] = $this->tratarOutput($prerrogativa);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $prerrogativas->total();
-        } else {
-            $dados['total'] = count($prerrogativas);
+            $dados[] = $this->tratarOutput($prerrogativa);
         }
 
         return $dados;

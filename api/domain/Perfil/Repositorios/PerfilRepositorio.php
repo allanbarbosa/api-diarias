@@ -85,10 +85,6 @@ class PerfilRepositorio
             $model = $model->where('perf_descricao', 'ilike', '%'.$input['perf_descricao'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

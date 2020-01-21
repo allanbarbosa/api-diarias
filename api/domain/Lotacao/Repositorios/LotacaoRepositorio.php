@@ -15,7 +15,10 @@ class LotacaoRepositorio
         'lota_data_fim',
         'id_cargo',
         'id_vinculo_empregaticio',
-        'id_unidade_organograma'
+        'id_unidade_organograma',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 
     public function __construct(LotacaoModel $lotacaoModel)
@@ -91,10 +94,6 @@ class LotacaoRepositorio
             $model = $model->where('id_vinculo_empregaticio', '=', $input['idVinculoEmpregaticio']);
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 

@@ -26,19 +26,10 @@ class StatusServico
     public function all(array $input)
     {
         $status = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($status as $statu) {
-            $dados['itens'][] = $this->tratarOutput($statu);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $status->total();
-        } else {
-            $dados['total'] = count($status);
+            $dados[] = $this->tratarOutput($statu);
         }
 
         return $dados;

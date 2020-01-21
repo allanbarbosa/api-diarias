@@ -13,6 +13,9 @@ class HistoricoStatusRepositorio
     protected $fields = [
         'hist_sta_data_tramitacao',
         'hist_sta_observacao',
+        'id_viagem',
+        'id_status',
+        'id_lotacao',
         'created_by',
         'updated_by',
         'deleted_by',
@@ -83,10 +86,6 @@ class HistoricoStatusRepositorio
 
         if (isset($input['hist_sta_data_tramitacao'])) {
             $model = $model->where('hist_sta_data_tramitacao', 'ilike', '%'.$input['hist_sta_data_tramitacao'].'%');
-        }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
         }
 
         return $model->get();

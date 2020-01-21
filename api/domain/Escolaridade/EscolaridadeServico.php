@@ -27,23 +27,11 @@ class EscolaridadeServico
     {
         $escolaridades = $this->repositorio->getWhere($input);
 
-        $dados = [
-            'itens' => [],
-            'total' => 0,
-        ];
+        $dados = [];
 
         foreach ($escolaridades as $escolaridade)
         {
-            $dados['itens'] = $this->tratarOutput($escolaridade);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $escolaridades->total();
-        }
-        else
-        {
-            $dados['total'] = count($escolaridades);
+            $dados[] = $this->tratarOutput($escolaridade);
         }
 
         return $dados;

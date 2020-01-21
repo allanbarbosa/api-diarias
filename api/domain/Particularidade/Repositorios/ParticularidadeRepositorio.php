@@ -86,10 +86,6 @@ class ParticularidadeRepositorio
             $model = $model->where('part_descricao', 'ilike', '%'.$input['part_descricao'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

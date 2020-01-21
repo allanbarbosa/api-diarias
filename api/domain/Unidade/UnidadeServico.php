@@ -26,23 +26,11 @@ class UnidadeServico
     {
         $unidades = $this->repositorio->getWhere($input);
 
-        $dados = [
-            'itens' => [],
-            'total' => 0,
-        ];
+        $dados = [];
 
         foreach ($unidades as $unidade)
         {
-            $dados['itens'][] = $this->tratarOutput($unidade);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $unidades->total();
-        }
-        else
-        {
-            $dados['total'] = count($unidades);
+            $dados[] = $this->tratarOutput($unidade);
         }
 
         return $dados;
@@ -78,9 +66,9 @@ class UnidadeServico
     protected function tratarInput(array $input)
     {
         return [
-            'unid_id' => isset($input['id']) ? $input['id'] : null,
-            'unid_nome' => isset($input['nome']) ? $input['nome'] : null,
-            'unid_sigla' => isset($input['sigla']) ? $input['sigla'] : null
+            
+            'unid_nome' => $input['nome'],
+            'unid_sigla' => $input['sigla']
         ];
     }
 

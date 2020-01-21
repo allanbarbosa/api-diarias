@@ -86,10 +86,7 @@ class GrupoInternacionalPaisRepositorio
             $model = $model->where('id_pais', '=', $input['idPais']);
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
+        
         return $model->get();
     }
 }

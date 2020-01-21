@@ -15,7 +15,8 @@ class PrerrogativaRepositorio
         'prer_descricao',
         'prer_slug',
         'created_by',
-        'updated_by'
+        'updated_by',
+        'deleted_by'
     ];
 
     public function __construct(PrerrogativaModel $prerrotivaModel)
@@ -83,10 +84,6 @@ class PrerrogativaRepositorio
 
         if (isset($input['prer_descricao'])) {
             $model = $model->where('prer_descricao', 'ilike', '%'.$input['prer_descricao'].'%');
-        }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
         }
 
         return $model->get();

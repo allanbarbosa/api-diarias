@@ -86,10 +86,6 @@ class TipoComprovanteRepositorio
             $model = $model->where('tipo_com_nome', 'ilike', '%'.$input['tipo_com_nome'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

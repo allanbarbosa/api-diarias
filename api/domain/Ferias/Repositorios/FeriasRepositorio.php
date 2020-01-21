@@ -90,10 +90,6 @@ class FeriasRepositorio
             $model = $model->where('feri_data_inicio', 'ilike', '%'.$input['feri_data_inicio'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

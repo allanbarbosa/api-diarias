@@ -27,19 +27,10 @@ class MovimentacaoServico
     {
         $movimentacoes = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($movimentacoes as $movimentacao) {
-            $dados['itens'][] = $this->tratarOutput($movimentacao);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $movimentacoes->total();
-        } else {
-            $dados['total'] = count($movimentacoes);
+            $dados[] = $this->tratarOutput($movimentacao);
         }
 
         return $dados;

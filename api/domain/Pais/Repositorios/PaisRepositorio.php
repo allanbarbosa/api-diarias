@@ -86,10 +86,6 @@ class PaisRepositorio
           $model = $model->where('pais_nome', 'ilike', '%'.$input['pais_nome'].'%');
       }
 
-      if (isset($input['count']))
-      {
-          return $model->paginate($input['count']);
-      }
       return $model->get();
     }
 }

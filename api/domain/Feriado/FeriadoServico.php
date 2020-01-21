@@ -25,21 +25,12 @@ class FeriadoServico
     public function all(array $input)
     {
         $feriados = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($feriados as $feriado) {
-            $dados['itens'][] = $this->tratarOutput($feriado);
+            $dados[] = $this->tratarOutput($feriado);
         }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $feriados->total();
-        } else {
-            $dados['total'] = count($feriados);
-        }
-
+        
         return $dados;
     }
 

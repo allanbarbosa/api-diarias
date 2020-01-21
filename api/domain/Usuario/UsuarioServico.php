@@ -27,19 +27,10 @@ class UsuarioServico
     {
         $usuarios = $this->repositorio->getWhere($this->tratarFiltro($input));
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
         
         foreach ($usuarios as $usuario) {
-            $dados['itens'][] = $this->tratarOutput($usuario);   
-        }
-        
-        if (isset($input['count'])) {
-            $dados['total'] = $usuarios->total();
-        } else {
-            $dados['total'] = count($usuarios);
+            $dados[] = $this->tratarOutput($usuario);   
         }
         
         return $dados;

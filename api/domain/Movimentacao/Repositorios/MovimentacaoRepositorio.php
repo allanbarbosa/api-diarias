@@ -86,10 +86,6 @@ class MovimentacaoRepositorio
             $model = $model->where('movi_nome', 'ilike', '%'.$input['movi_nome'].'%');
         }
 
-        if (isset($input['conut']))
-        {
-            return $model->paginate($input['conut']);
-        }
         return $model->get();
     }
 

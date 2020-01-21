@@ -95,10 +95,6 @@ class MunicipioRepositorio
             $model = $model->where('id_estado', '=', $input['idEstado']);
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
         return $model->get();
     }
 }

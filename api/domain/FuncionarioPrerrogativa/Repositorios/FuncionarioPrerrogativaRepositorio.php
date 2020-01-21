@@ -87,10 +87,6 @@ class FuncionarioPrerrogativaRepositorio
             $model = $model->where('func_pre_data_inicio', 'ilike', '%'.$input['func_pre_data_inicio'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

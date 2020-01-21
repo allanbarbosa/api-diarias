@@ -88,10 +88,6 @@ class ComprovanteRepositorio
             $model = $model->where('compe_caminho', 'ilike', '%'.$input['compe_caminho'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

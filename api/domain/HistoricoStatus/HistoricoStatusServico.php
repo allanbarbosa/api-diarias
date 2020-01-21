@@ -26,19 +26,10 @@ class HistoricoStatusServico
     {
         $historicoStatuses = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($historicoStatuses as $historicoStatus) {
-            $dados['itens'][] = $this->tratarOutput($historicoStatus);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $historicoStatuses->total();
-        } else {
-            $dados['total'] = count($historicoStatuses);
+            $dados[] = $this->tratarOutput($historicoStatus);
         }
 
         return $dados;
@@ -74,7 +65,10 @@ class HistoricoStatusServico
     {
         return [
             'hist_sta_data_tramitacao' => $input['data_tramitacao'],
-            'hist_sta_observacao' => $input['sta_observacao'],
+            'hist_sta_observacao' => isset($input['sta_observacao']) ? $input['sta_observacao'] : null,
+            'id_viagem' => $input['viagem'],
+            'id_status' => $input['status'],
+            'id_lotacao' => $input['lotacao']
         ];
     }
 
@@ -84,6 +78,9 @@ class HistoricoStatusServico
             'id' => $historicoStatusModel->hist_sta_id,
             'data_tramitacao' => $historicoStatusModel->hist_sta_data_tramitacao,
             'sta_observacao' => $historicoStatusModel->hist_sta_observacao,
+            'viagem' => $historicoStatusModel->id_viagem,
+            'status' => $historicoStatusModel->id_status,
+            'lotacao' => $historicoStatusModel->id_lotacao,
         ];
     }
 }

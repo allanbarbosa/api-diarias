@@ -87,10 +87,6 @@ class TipoTransporteRepositorio
             $model = $model->where('tipo_tra_nome', 'ilike', '%'.$input['tipo_tra_nome'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

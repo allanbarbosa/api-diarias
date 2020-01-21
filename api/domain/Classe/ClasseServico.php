@@ -57,8 +57,8 @@ class ClasseServico
     protected function tratarInput(array $input)
     {
         return new ClasseModel([
-            'clas_id' => isset($input['id']) ? $input['id'] : null,
-            'clas_nome' => isset($input['nome']) ? $input['nome'] : null
+            
+            'clas_nome' => $input['nome']
         ]);
     }
 

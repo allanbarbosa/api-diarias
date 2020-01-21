@@ -27,23 +27,11 @@ class ProfissaoServico
     {
         $profissoes = $this->repositorio->getWhere($input);
 
-        $dados = [
-            'itens' => [],
-            'total' => 0,
-        ];
+        $dados = [];
 
         foreach ($profissoes as $profissao)
         {
-            $dados['itens'][] = $this->tratarOutput($profissao);
-        }
-
-        if (isset($input['count']))
-        {
-            $dados['total'] = $profissoes->total();
-        }
-        else
-        {
-            $dados['total'] = count($profissoes); 
+            $dados[] = $this->tratarOutput($profissao);
         }
 
         return $dados;

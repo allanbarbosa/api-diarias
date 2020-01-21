@@ -85,10 +85,6 @@ class StatusRepositorio
             $model = $model->where('stat_nome', 'ilike', '%'.$input['stat_nome'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

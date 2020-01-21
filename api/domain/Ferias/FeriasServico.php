@@ -26,19 +26,10 @@ class FeriasServico
     {
         $ferias = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($ferias as $feria) {
-            $dados['itens'][] = $this->tratarOutput($feria);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $ferias->total();
-        } else {
-            $dados['total'] = count($ferias);
+            $dados[] = $this->tratarOutput($feria);
         }
 
         return $dados;

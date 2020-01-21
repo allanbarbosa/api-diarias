@@ -13,6 +13,9 @@ class HistoricoMovimentacaoRepositorio
     protected $fields = [
         'hist_mov_data_tramitacao',
         'hist_mov_observacao',
+        'id_movimentacao',
+        'id_viagem',
+        'id_lotacao',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -83,10 +86,6 @@ class HistoricoMovimentacaoRepositorio
 
         if (isset($input['hist_mov_data_tramitacao'])) {
             $model = $model->where('hist_mov_data_tramitacao', 'ilike', '%'.$input['hist_mov_data_tramitacao'].'%');
-        }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
         }
 
         return $model->get();

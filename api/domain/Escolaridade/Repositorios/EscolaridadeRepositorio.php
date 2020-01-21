@@ -88,11 +88,6 @@ class EscolaridadeRepositorio
             $model = $model->where('esco_nome', 'ilike', '%'.$input['esco_nome'].'%');
         }
 
-        if (isset($input['count']))
-        {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

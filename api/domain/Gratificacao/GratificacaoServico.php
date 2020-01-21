@@ -50,11 +50,12 @@ class GratificacaoServico {
 
     protected function tratarInput(array $input) {
         return new GratificacaoModel([
-            'grat_id' => isset($input['idClasse']) ? $input['id'] : null,
-            'grat_nome' => isset($input['idClasse']) ? $input['nome'] : null,
+           
+            'grat_nome' => $input['idClasse'],
             'grat_slug' => isset($input['idClasse']) ? $input['slug'] : Str::slug($input['nome']),
-            'grat_valor_diaria' => isset($input['idClasse']) ? $input['valorDiaria'] : null,
-            'id_classe' => isset($input['idClasse']) ? $input['idClasse'] : null
+            'grat_valor_diaria' => $input['idClasse'],
+            'id_classe' => $input['idClasse']
+
         ]);
     }
 

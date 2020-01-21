@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Diarias\VinculoEmpregaticio;
 
+use Diarias\Lotacao\Repositorios\LotacaoRepositorio;
 use Diarias\VinculoEmpregaticio\Models\VinculoEmpregaticioModel;
 use Diarias\VinculoEmpregaticio\Repositorios\VinculoEmpregaticioRepositorio;
-use Diarias\Lotacao\Repositorios\LotacaoRepositorio;
 
 class VinculoEmpregaticioServico
 {
@@ -58,11 +58,11 @@ class VinculoEmpregaticioServico
     protected function tratarInput(array $input)
     {
         return [
-            'vinc_emp_id' => isset($input['id']) ? $input['id'] : null,
-            'vinc_emp_matricula' => isset($input['matricula']) ? $input['matricula'] : null,
+           
+            'vinc_emp_matricula' => $input['matricula'],
             'vinc_emp_data_admissao' => isset($input['dataAdmissao']) ? $input['dataAdmissao'] : null,
             'vinc_emp_data_desligamento' => isset($input['dataDesligamento']) ? $input['dataDesligamento'] : null,
-            'id_funcionario' => isset($input['idFuncionario']) ? $input['idFuncionario'] : null
+            'id_funcionario' => $input['idFuncionario']
         ];
     }
 

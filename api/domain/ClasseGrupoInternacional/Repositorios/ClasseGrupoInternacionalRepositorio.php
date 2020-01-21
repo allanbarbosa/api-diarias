@@ -11,7 +11,10 @@ class ClasseGrupoInternacionalRepositorio
     protected $model;
 
     protected $fields = [
-        'clas_gru_internacional_valor'
+        'clas_gru_internacional_valor',
+        'created_by',
+        'updated_by',
+        'deleted_by',
     ];
 
     public function __construct(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
@@ -88,10 +91,6 @@ class ClasseGrupoInternacionalRepositorio
         if (isset($input['idGrupoNacional']))
         {
             $model = $model->where('id_grupo_nacional', '=', $input['idGrupoNacional']);
-        }
-
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
         }
 
         return $model->get();

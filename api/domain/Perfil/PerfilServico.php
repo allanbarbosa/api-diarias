@@ -26,21 +26,12 @@ class PerfilServico
     public function all(array $input)
     {
         $perfis = $this->repositorio->getWhere($input);
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($perfis as $perfil) {
-            $dados['itens'][] = $this->tratarOutput($perfil);
+            $dados[] = $this->tratarOutput($perfil);
         }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $perfis->total();
-        } else {
-            $dados['total'] = count($perfis);
-        }
-
+        
         return $dados;
     }
 

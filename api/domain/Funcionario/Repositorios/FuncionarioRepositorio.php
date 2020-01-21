@@ -98,11 +98,6 @@ class FuncionarioRepositorio
             $model = $model->where('func_cpf', 'ilike', '%'.$input['func_cpf'].'%');
         }
 
-        if (isset($input['count']))
-        {
-           return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

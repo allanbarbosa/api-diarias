@@ -90,10 +90,6 @@ class ViagemRepositorio
             $model = $model->where('viag_objetivo', 'ilike', '%'.$input['viag_objetivo'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

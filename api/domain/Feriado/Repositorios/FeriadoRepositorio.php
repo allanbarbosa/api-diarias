@@ -91,10 +91,6 @@ class FeriadoRepositorio
             $model = $model->where('feri_nome', 'ilike', '%'.$input['feri_nome'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 }

@@ -84,10 +84,6 @@ class PapelFluxogramaRepositorio
             $model = $model->where('pape_flu_descricao', 'ilike', '%'.$input['pape_flu_descricao'].'%');
         }
 
-        if (isset($input['count'])) {
-            return $model->paginate($input['count']);
-        }
-
         return $model->get();
     }
 

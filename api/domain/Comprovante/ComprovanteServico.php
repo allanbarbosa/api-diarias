@@ -27,19 +27,10 @@ class ComprovanteServico
     {
         $comprovantes = $this->repositorio->getWhere($input);
         
-        $dados = [
-            'itens' => [],
-            'total' => 0
-        ];
+        $dados = [];
 
         foreach ($comprovantes as $comprovante) {
-            $dados['itens'][] = $this->tratarOutput($comprovante);
-        }
-
-        if (isset($input['count'])) {
-            $dados['total'] = $comprovantes->total();
-        } else {
-            $dados['total'] = count($comprovantes);
+            $dados[] = $this->tratarOutput($comprovante);
         }
 
         return $dados;

@@ -58,6 +58,9 @@ class HistoricoMovimentacaoServico
         return [
             'hist_mov_data_tramitacao' => $input['data_tramitacao'],
             'hist_mov_observacao' => $input['mov_observacao'],
+            'id_movimentacao' => $input['movimentacao'],
+            'id_viagem' => $input['viagem'],
+            'id_lotacao' => $input['lotacao']
         ];
     }
 
@@ -67,6 +70,9 @@ class HistoricoMovimentacaoServico
             'id' => $historicoMovimentacaoModel->hist_mov_id,
             'data_tramitacao' => $historicoMovimentacaoModel->hist_mov_data_tramitacao,
             'mov_observacao' => $historicoMovimentacaoModel->hist_mov_observacao,
+            'movimentacao' => $historicoMovimentacaoModel->id_movimentacao,
+            'viagem' => $historicoMovimentacaoModel->id_viagem,
+            'lotacao' => $historicoMovimentacaoModel->id_lotacao
         ];
     }
 }
