@@ -65,17 +65,17 @@ class MovimentacaoServico
     protected function tratarInput(array $input)
     {
         return [
-            'prer_descricao' => $input['descricao'],
-            'prer_slug' => Str::slug($input['descricao']),
+            'movi_nome' => $input['nome'],
+            'movi_slug' => Str::slug($input['slug']),
         ];
     }
 
     protected function tratarOutput(MovimentacaoModel $movimentacaoModel)
     {
         return [
-            'id' => $movimentacaoModel->prer_id,
-            'descricao' => $movimentacaoModel->prer_descricao,
-            'slug' => $movimentacaoModel->prer_slug,
+            'id' => $movimentacaoModel->movi_id,
+            'nome' => $movimentacaoModel->movi_nome,
+            'slug' => $movimentacaoModel->movi_slug,
         ];
     }
 }

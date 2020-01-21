@@ -17,14 +17,16 @@ class MovimentacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => ['required'],
+            'nome' => ['required'],
+            'slug' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'descricao.required' => 'Campo Descrição é obrigatório',
+            'nome.required' => 'Campo Descrição é obrigatório',
+            'slug.required' => 'Campo Descrição é obrigatório',
         ];
     }
 
