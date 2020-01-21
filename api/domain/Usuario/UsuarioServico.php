@@ -105,15 +105,11 @@ class UsuarioServico
             'login' => $usuarioModel->usua_login,
             'primeiroAcesso' => $usuarioModel->usua_primeiro_acesso,
             'idFuncionario' => $usuarioModel->id_funcionario,
-            'funcionario' => [
-                'id' => $usuarioModel->funcionario->func_id,
-                'nome' => (!is_null($usuarioModel->id_funcionario)) ? $usuarioModel->funcionario->func_nome : "inexistente",
-            ],
-
-            
-
+            'funcionario' => [],
             'perfil' => []
         ];
+
+        
         $perfis = $usuarioModel->perfil;
         
         foreach ($perfis as $perfil) {
@@ -121,6 +117,19 @@ class UsuarioServico
                 'id' => $perfil->perf_id,
                 'nome' => $perfil->perf_descricao
             ];
+        }
+
+        if ($usuarioModel->funcionario) {
+            $dados['funcionario'] = [
+                'id' => $usuarioModel->funcionario->func_id,
+                'cpf' => $usuarioModel->funcionario->func_cpf,
+                'nome' => $usuarioModel->funcionario->func_nome,
+                'telefone' => $usuarioModel->funcionario->func_telefone,
+                'email' => $usuarioModel->funcionario->func_email,
+                'idEmpresa' => $usuarioModel->funcionario->id_empresa,
+                'idProfissao' => $usuarioModel->funcionario->id_profissao,
+                'idEscolaridade' => $usuarioModel->funcionario->id_escolaridade,
+            ]
         }
         
         return $dados;
