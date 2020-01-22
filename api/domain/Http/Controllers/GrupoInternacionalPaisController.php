@@ -3,25 +3,23 @@ declare(strict_types=1);
 
 namespace Diarias\Http\Controllers;
 
-
 use App\Http\Controllers\Controller;
-use Diarias\Gratificacao\GratificacaoServico;
-use Diarias\Http\Requests\GratificacaoRequest;
+use Diarias\GrupoInternacionalPais\GrupoInternacionalPaisServico;
+use Diarias\Http\Requests\GrupoInternacionalPaisRequest;
 use Exception;
 
-class GratificacaoController extends Controller
+class GrupoInternacionalPaisController extends Controller
 {
     protected $servico;
 
-    public function __construct(GratificacaoServico $gratificacaoServico)
+    public function __construct(GrupoInternacionalPaisServico $grupointernacionalPaisServico)
     {
-        $this->servico = $gratificacaoServico;
+        $this->servico = $grupointernacionalPaisServico;
     }
 
     public function index()
     {
         $input = request()->all();
-
         $resposta = $this->servico->all($input);
 
         return response()->json($resposta, 200);
@@ -30,36 +28,36 @@ class GratificacaoController extends Controller
     public function show(int $id)
     {
         try {
+            
+            $grupointernacionalPais = $this->servico->find((int)$id);
 
-            $gratificacao = $this->servico->find((int)$id);
-
-            return response()->json($gratificacao, 200);
+            return response()->json($grupointernacionalPais, 200);
 
         } catch (Exception $e) {
-
+            
             return response()->json(['mensagem' => $e->getMessage()], 400);
 
         }
     }
 
-    public function store(GratificacaoRequest $request)
+    public function store(GrupoInternacionalPaisRequest $request)
     {
         $input = $request->all();
+        
+        $grupointernacionalPais = $this->servico->save($input);
 
-        $gratificacao = $this->servico->save($input);
-
-        return response()->json($gratificacao, 200);
+        return response()->json($grupointernacionalPais, 200);
     }
 
-    public function update(GratificacaoRequest $request, int $id)
+    public function update(GrupoInternacionalPaisRequest $request, int $id)
     {
         try {
             
             $input = $request->all();
-        
-            $gratificacao = $this->servico->update($input, $id);
-        
-            return response()->json($gratificacao, 200);
+
+            $grupointernacionalPais = $this->servico->update($input, $id);
+
+            return response()->json($grupointernacionalPais, 200);
 
         } catch (Exception $e) {
 

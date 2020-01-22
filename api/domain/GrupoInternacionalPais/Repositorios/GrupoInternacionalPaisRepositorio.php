@@ -87,7 +87,6 @@ class GrupoInternacionalPaisRepositorio
         {
             $model = $model->where('id_pais', '=', $input['idPais']);
         }
-
         
         return $model->get();
     }

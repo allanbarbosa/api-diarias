@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Diarias\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Diarias\Http\Requests\OrganogramaRequest;
 use Diarias\Organograma\OrganogramaServico;
 use Exception;
-use Diarias\Http\Requests\OrganogramaRequest;
 
 
 class OrganogramaController extends Controller
@@ -26,7 +26,7 @@ class OrganogramaController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try{
 
