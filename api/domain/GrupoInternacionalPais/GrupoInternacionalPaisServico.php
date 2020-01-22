@@ -5,7 +5,6 @@ namespace Diarias\GrupoInternacionalPais;
 
 use Diarias\GrupoInternacionalPais\Models\GrupoInternacionalPaisModel;
 use Diarias\GrupoInternacionalPais\Repositorios\GrupoInternacionalPaisRepositorio;
-use Diarias\Lotacao\Models\LotacaoModel;
 
 class GrupoInternacionalPaisServico
 {
@@ -29,24 +28,13 @@ class GrupoInternacionalPaisServico
         if (!$paginage) {
             return $grupoInternacionalPaises;
         }
-        $dados = [
-            'itens' => [],
-            'todos' => 0,
-        ];
+        $dados = [];
 
         foreach ($grupoInternacionalPaises as $grupoInternacionalPais)
         {
-            $dados['itens'][] = $grupoInternacionalPaises;
+            $dados[] = $grupoInternacionalPaises;
         }
 
-        if (isset($input['count']))
-        {
-            $dados['total'] = $grupoInternacionalPaises->total();
-        } 
-        else
-        {
-            $dados['total'] = count($grupoInternacionalPaises);
-        }
         return $dados;
     }
     
@@ -75,14 +63,14 @@ class GrupoInternacionalPaisServico
 
     protected function tratarInput(array $input)
     {
-        return new GrupoInternacionalPaisModel([
-            'grup_int_pais_id' => isset($input['id']) ? $input['id'] : null,
-            'id_pais' => isset($input['idPais']) ? $input['idPais'] : null,
-            'id_grupo_internacional' => isset($input['idGrupoInternacional']) ? $input['idGrupoInternacional'] : null
-        ]);
+        return [
+            
+            'id_pais' => $input['idPais'],
+            'id_grupo_internacional' => $input['idGrupoInternacional']
+        ];
     }
 
-  protected function tratarOutput(LotacaoModel $model)
+  protected function tratarOutput(GrupoInternacionalPaisModel $model)
   {
     return [
         'id' => $model->grup_int_pais_id,

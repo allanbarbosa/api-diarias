@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Diarias\GrupoInternacional\Models;
 
+use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
+use Diarias\GrupoInternacionalPais\Models\GrupoInternacionalPaisModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Diarias\GrupoInternacionalPais\Models\GrupoInternacionalPaisModel;
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
 
 class GrupoInternacionalModel extends Model
 {
@@ -15,8 +15,7 @@ class GrupoInternacionalModel extends Model
     protected $primaryKey = 'grup_int_id';
 
     protected $fillable = [
-        'grup_int_codigo',
-        'created_by'
+        'grup_int_codigo'
     ];
     
     public function grupo_internacional_paises()

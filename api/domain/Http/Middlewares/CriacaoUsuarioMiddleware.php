@@ -36,9 +36,6 @@ class CriacaoUsuarioMiddleware
             
             $usuario = $this->servico->all(['login' => $login]);
             
-            if (count($usuario['itens']) == 0) {
-                break;
-            }
         }
         
         $input = [

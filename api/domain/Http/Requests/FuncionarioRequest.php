@@ -21,9 +21,9 @@ class FuncionarioRequest extends FormRequest
             'nome' => ['required'],
             'telefone' => ['required'],
             'email' => ['required'],
-            'empresa' => ['required'],
-            'profissao' => ['required'],
-            'escolaridade' => ['required'],
+            'idEmpresa' => ['required'],
+            'idProfissao' => ['required'],
+            'idEscolaridade' => ['required'],
         ];
     }
 
@@ -34,9 +34,9 @@ class FuncionarioRequest extends FormRequest
             'nome.required' => 'O campo nome é obrigatório',
             'telefone.required' => 'O campo telefone é obrigatório',
             'email.required' => 'O campo email é obrigatório',
-            'empresa.required' => 'O campo empresa é obrigatório',
-            'profissao.required' => 'O campo profissao é obrigatório',
-            'escolaridade.required' => 'O campo escolaridade é obrigatório',
+            'idEmpresa.required' => 'O campo empresa é obrigatório',
+            'idProfissao.required' => 'O campo profissao é obrigatório',
+            'idEscolaridade.required' => 'O campo escolaridade é obrigatório',
         ];
     }
 

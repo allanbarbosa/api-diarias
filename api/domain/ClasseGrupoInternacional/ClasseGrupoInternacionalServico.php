@@ -43,7 +43,7 @@ class ClasseGrupoInternacionalServico
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
 
-        $classeGrupoInternacional = $this->repositorio->update($dados->toArray(), $id);
+        $classeGrupoInternacional = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($classeGrupoInternacional);
     }

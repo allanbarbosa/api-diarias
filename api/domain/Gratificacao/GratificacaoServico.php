@@ -49,14 +49,14 @@ class GratificacaoServico {
     }
 
     protected function tratarInput(array $input) {
-        return new GratificacaoModel([
+        return [
            
-            'grat_nome' => $input['idClasse'],
-            'grat_slug' => isset($input['idClasse']) ? $input['slug'] : Str::slug($input['nome']),
-            'grat_valor_diaria' => $input['idClasse'],
+            'grat_nome' => $input['nome'],
+            'grat_slug' => isset($input['slug']) ? $input['slug'] : Str::slug($input['slug']),
+            'grat_valor_diaria' => $input['valorDiaria'],
             'id_classe' => $input['idClasse']
 
-        ]);
+        ];
     }
 
     protected function tratarOutput(GratificacaoModel $model) {

@@ -59,9 +59,9 @@ class FuncionarioServico
             'func_nome' => $input['nome'],
             'func_telefone' => isset($input['telefone']) ? $input['telefone'] : null,
             'func_email' => $input['email'],
-            'id_empresa' => $input['empresa'],
-            'id_profissao' => $input['profissao'],
-            'id_escolaridade' => $input['escolaridade']
+            'id_empresa' => $input['idEmpresa'],
+            'id_profissao' => $input['idProfissao'],
+            'id_escolaridade' => $input['idEscolaridade']
         ];
     }
 
