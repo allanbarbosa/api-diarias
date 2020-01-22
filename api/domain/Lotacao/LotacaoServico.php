@@ -31,13 +31,13 @@ class LotacaoServico
     {
         $model = $this->tratarInput($input);
 
-        $lotacaoAtual = $this->repositorio->getLotacaoAtualDoVinculo($model->id_vinculo_empregaticio);
+        $lotacaoAtual = $this->repositorio->getLotacaoAtualDoVinculo($model['id_vinculo_empregaticio']);
         if ($lotacaoAtual != null) {
             // desliga lotação anterior:
-            $dataDesligamentoLotacao = date('Y-m-d', strtotime('-1 day', strtotime($model->lota_data_inicio)));
+            $dataDesligamentoLotacao = date('Y-m-d', strtotime('-1 day', strtotime($model['lota_data_inicio'])));
             $this->repositorio->desligarLotacao($lotacaoAtual->lota_id, $dataDesligamentoLotacao);
         }
-        $lotacao = $this->repositorio->save($model->toArray());
+        $lotacao = $this->repositorio->save($model);
 
 
         return $this->tratarOutput($lotacao);
@@ -47,7 +47,7 @@ class LotacaoServico
     {
         $dados = $this->tratarInput($input);
 
-        $lotacao = $this->repositorio->update($dados->toArray(), $id);
+        $lotacao = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($lotacao);
     }
@@ -64,14 +64,8 @@ class LotacaoServico
             'lota_data_inicio' => $input['dataInicio'],
             'lota_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null,
             'id_cargo' => $input['idCargo'],
-            'cargo' => $input['cargo'],
             'id_unidade_organograma' => $input['idUnidadeOrganograma'],
-            'unidade_organograma' => $input['unidadeOrganograma'],
-            'id_vinculo_empregaticio' => $input['idVinculoEmpregaticio'],
-            'vinculo_empregaticio' => $input['vinculoEmpregaticio'],
-            'historico_status' => $input['historicoStatus'],
-            'historico_movimentacoes' => $input['historicoMovimentacoes'],
-            'viagens' => $input['viagens']
+            'id_vinculo_empregaticio' => $input['idVinculoEmpregaticio']
         ];
     }
 
