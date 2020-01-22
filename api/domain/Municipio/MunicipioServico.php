@@ -74,9 +74,10 @@ class MunicipioServico
             'slug' => $municipioModel->muni_slug,
             'porcentagemDiaria' => $municipioModel->muni_porcentagem_diaria,
             'codigoIbge' => $municipioModel->muni_codigo_ibge,
+            'idEstado' => $municipioModel->id_estado,
             'estado' =>
             [
-                'id' => $municipioModel->id_estado,
+                'id' => $municipioModel->estado->esta_id,
                 'nome' => $municipioModel->estado->esta_nome,
             ]
         ];

@@ -7,6 +7,7 @@ use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
 use Diarias\GrupoInternacionalPais\Models\GrupoInternacionalPaisModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Diarias\Pais\Models\PaisModel;
 
 class GrupoInternacionalModel extends Model
 {
@@ -26,6 +27,11 @@ class GrupoInternacionalModel extends Model
     public function classes_x_grupos_internacionais()
     {
         return $this->hasMany(ClasseGrupoInternacionalModel::class, 'id_grupo_internacional');
+    }
+    
+    public function pais()
+    {
+        return $this->belongsToMany(PaisModel::class, 'grupo_internacional_pais', 'id_grupo_internacional', 'id_pais'); 
     }
 
     use SoftDeletes;
