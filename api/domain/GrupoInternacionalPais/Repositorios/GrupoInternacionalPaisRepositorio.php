@@ -78,7 +78,7 @@ class GrupoInternacionalPaisRepositorio
     public function getWhere(array $input)
     {
         $model = $this->model->orderBy('grup_int_pais_id', 'ASC');
-        
+
         if (isset($input['idGrupoInternacional']))
         {
             $model = $model->where('id_grupo_internacional', '=', $input['idGrupoInternacional']);
