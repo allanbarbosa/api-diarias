@@ -30,7 +30,7 @@ class GratificacaoServico {
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
 
-        $gratificacao = $this->repositorio->save($dados->toArray());
+        $gratificacao = $this->repositorio->save($dados);
 
         return $this->tratarOutput($gratificacao);
     }
@@ -39,7 +39,7 @@ class GratificacaoServico {
         $dados = $this->tratarInput($input);
         $dados['updated_by'] = $input['usuario'];
 
-        $gratificacao = $this->repositorio->update($dados->toArray(), $id);
+        $gratificacao = $this->repositorio->update($dados, $id);
 
         return $this->tratarOutput($gratificacao);
     }

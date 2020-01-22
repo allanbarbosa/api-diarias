@@ -6,6 +6,7 @@ namespace Diarias\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Diarias\Empresa\EmpresaServico;
 use Diarias\Http\Requests\EmpresaRequest;
+use Exception;
 
 
 

@@ -5,8 +5,8 @@ namespace Diarias\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use Diarias\Http\Requests\FuncionarioRequest;
 use Diarias\Funcionario\FuncionarioServico;
+use Diarias\Http\Requests\FuncionarioRequest;
 use Exception;
 
 class FuncionarioController extends Controller
@@ -27,7 +27,7 @@ class FuncionarioController extends Controller
         return response()->json($resposta, 200);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         try {
 
