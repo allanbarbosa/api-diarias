@@ -55,10 +55,16 @@ class GrupoInternacionalServico
 
     protected function tratarInput(array $input)
     {
-        return [
-            
-            'grup_int_codigo' => $input['codigo']
+        $dados = [
+            'grup_int_codigo' => $input['codigo'],
+            'grupo_internacional_paises' => []
         ];
+        
+        foreach ($input['grupoInternacionalPaises'] as $pais) {
+            $dados['grupo_internacional_paises'][] = $pais['idPais'];
+        }
+        
+        return $dados;
     }
 
     protected function tratarOutput(GrupoInternacionalModel $grupoInternacionalModel)
@@ -69,6 +75,17 @@ class GrupoInternacionalServico
             'grupoInternacionalPaises' => [],
             'classesXgruposInternacionais' => [],
         ];
+        
+//        foreach ($grupoInternacionalModel->pais as $pais) {
+//            $output['grupoInternacionalPaises'][] = [
+//                'id' => $pais->pivot->grup_int_pais_id,
+//                'idPais' => $pais->pivot->id_pais,
+//                'pais' => [
+//                    'id' => $pais->pais_id,
+//                    'nome' => $pais->pais_nome
+//                ]
+//            ];
+//        }
         foreach ($grupoInternacionalModel->grupo_internacional_paises as $grupo_internacional_pais) {
             $output['grupoInternacionalPaises'][] = [
                 'id' => $grupo_internacional_pais->grup_int_pais_id,

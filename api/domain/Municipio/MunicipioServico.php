@@ -77,7 +77,7 @@ class MunicipioServico
             'idEstado' => $municipioModel->id_estado,
             'estado' =>
             [
-                'id' => $municipioModel->id_estado,
+                'id' => $municipioModel->estado->esta_id,
                 'nome' => $municipioModel->estado->esta_nome,
             ]
         ];

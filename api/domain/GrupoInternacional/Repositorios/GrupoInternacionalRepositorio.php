@@ -40,29 +40,43 @@ class GrupoInternacionalRepositorio
 
     public function save(array $input)
     {
-        foreach ($this->fields as $field) {
-            if (isset($input[$field])) {
-                $this->model->{$field} = $input[$field];
+        return \DB::transaction(function () use ($input) {
+            foreach ($this->fields as $field) {
+                if (isset($input[$field])) {
+                    $this->model->{$field} = $input[$field];
+                }
             }
-        }
 
-        $this->model->save();
-
-        return $this->model;
+            $this->model->save();
+            
+            if (isset($input['grupo_internacional_paises'])) {
+                $this->model->pais()->sync($input['grupo_internacional_paises']);
+            }
+            
+            return $this->model;
+        });
     }
 
     public function update(array $input, int $id)
     {
-        $model = $this->find($id);
+        return \DB::transaction(function () use ($input, $id) {
+            $model = $this->find($id);
 
-        foreach ($this->fields as $field) {
-            if (isset($input[$field])) {
-                $model->{$field} = $input[$field];
+            foreach ($this->fields as $field) {
+                if (isset($input[$field])) {
+                    $model->{$field} = $input[$field];
+                }
             }
-        }
 
-        $model->save();
-        return $model;
+            $model->save();
+            
+            if (isset($input['grupo_internacional_paises'])) {
+                $model->pais()->sync($input['grupo_internacional_paises']);
+            }
+            
+            return $model;
+        });
+        
     }
 
     public function delete(int $id, int $usuario)
