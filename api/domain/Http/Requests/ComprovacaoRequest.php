@@ -17,20 +17,20 @@ class ComprovacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'diarias_utilizadas' => ['required'],
-            'data_hora_saida_efetiva' => ['required'],
-            'data_hora_chegada_efetiva' => ['required'],
-            'atividades_desenvolvidas' => ['required'],
+            'diariasUtilizadas' => ['required'],
+            'dataHoraSaidaEfetiva' => ['required'],
+            'dataHoraChegadaEfetiva' => ['required'],
+            'atividadesDesenvolvidas' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'diarias_utilizadas.required' => 'Campo diarias utilizadas é obrigatório',
-            'data_hora_saida_efetiva.required' => 'Campo data e hora de saida efetiva é obrigatório',
-            'data_hora_chegada_efetiva.required' => 'Campo data e hora de chegada efetiva é obrigatório',
-            'atividades_desenvolvidas.required' => 'Campo atividades desenvolvidas é obrigatório',
+            'diariasUtilizadas.required' => 'Campo diarias utilizadas é obrigatório',
+            'dataHoraSaidaEfetiva.required' => 'Campo data e hora de saida efetiva é obrigatório',
+            'dataHoraChegadaEfetiva.required' => 'Campo data e hora de chegada efetiva é obrigatório',
+            'atividadesDesenvolvidas.required' => 'Campo atividades desenvolvidas é obrigatório',
         ];
     }
 

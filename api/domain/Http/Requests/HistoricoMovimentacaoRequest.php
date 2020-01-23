@@ -17,16 +17,20 @@ class HistoricoMovimentacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_tramitacao' => ['required'],
-            'mov_observacao' => ['required'],
+            'dataTramitacao' => ['required'],
+            'idMovimentacao' => ['required'],
+            'idViagem' => ['required'],
+            'idLotacao' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'data_tramitacao.required' => 'Campo data tramitação é obrigatório',
-            'mov_observacao.required' => 'Campo observação é obrigatório',
+            'dataTramitacao.required' => 'Campo data tramitação é obrigatório',
+            'idMovimentacao.required' => 'Campo movimentação é obrigatório',
+            'idViagem.required' => 'Campo viagem é obrigatório',
+            'idLotacao.required' => 'Campo lotação é obrigatório',
         ];
     }
 

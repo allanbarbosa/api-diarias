@@ -18,7 +18,7 @@ class VinculoEmpregaticioRequest extends FormRequest
     {
         return [
             'matricula' => ['required'],
-            'dataAdmissao' => ['required']
+            'idFuncionario' => ['required']
         ];
     }
 
@@ -26,7 +26,7 @@ class VinculoEmpregaticioRequest extends FormRequest
     {
         return [
             'matricula.required' => 'O campo matrícula é obrigatório',
-            'dataAdmissao' => 'O campo dataAdmissão é obrigatório'
+            'idFuncionario' => 'O campo funcionário é obrigatório'
         ];
     }
 

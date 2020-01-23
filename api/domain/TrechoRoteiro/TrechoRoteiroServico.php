@@ -56,17 +56,17 @@ class TrechoRoteiroServico
     protected function tratarInput(array $input)
     {
         return [
-            'trec_rot_data_hora_saida' => $input['data_hora_saida'],
-            'trec_rot_data_hora_retorno' => $input['data_hora_retorno'],
-            'trec_rot_valor_unitario' => $input['valor_unitario'],
-            'trec_rot_valor_adicional' => isset($input['valor_adicional']) ? $input['valor_adicional'] : null,
-            'trec_rot_qtd_diarias' => $input['qtd_diarias'],
-            'id_tipo_transporte' => $input['tipo_transporte'],
-            'id_viagem' => $input['viagem'],
-            'id_pais_origem' => $input['pais_origem'],
-            'id_municipio_origem' => $input['municipio_origem'],
-            'id_pais_destino' => $input['pais_destino'],
-            'id_municipio_destino' => $input['municipio_destino'],
+            'trec_rot_data_hora_saida' => $input['dataHoraSaida'],
+            'trec_rot_data_hora_retorno' => $input['dataHoraRetorno'],
+            'trec_rot_valor_unitario' => $input['valorUnitario'],
+            'trec_rot_valor_adicional' => isset($input['valorAdicional']) ? $input['valorAdicional'] : null,
+            'trec_rot_qtd_diarias' => $input['qtdDiarias'],
+            'id_tipo_transporte' => $input['idTipoTransporte'],
+            'id_viagem' => $input['idViagem'],
+            'id_pais_origem' => $input['idPaisOrigem'],
+            'id_municipio_origem' => $input['idMunicipioOrigem'],
+            'id_pais_destino' => $input['idPaisDestino'],
+            'id_municipio_destino' => $input['idMunicipioDestino'],
 
         ];
     }
@@ -75,17 +75,44 @@ class TrechoRoteiroServico
     {
         return [
             'id' => $trechoRoteiroModel->trec_rot_id,
-            'data_hora_saida' => $trechoRoteiroModel->trec_rot_data_hora_saida,
-            'data_hora_retorno' => $trechoRoteiroModel->trec_rot_data_hora_retorno,
-            'valor_unitario' => $trechoRoteiroModel->trec_rot_valor_unitario,
-            'valor_adicional' => $trechoRoteiroModel->trec_rot_valor_adicional,
-            'qtd_diarias' => $trechoRoteiroModel->trec_rot_qtd_diarias,
-            'tipo_transporte' => $trechoRoteiroModel->id_tipo_transporte,
-            'viagem' => $trechoRoteiroModel->id_viagem,
-            'pais_origem' => $trechoRoteiroModel->id_pais_origem,
-            'municipio_origem' => $trechoRoteiroModel->id_municipio_origem,
-            'pais_destino' => $trechoRoteiroModel->id_pais_destino,
-            'municipio_destino' => $trechoRoteiroModel->id_municipio_destino,
+            'dataHoraSaida' => $trechoRoteiroModel->trec_rot_data_hora_saida,
+            'dataHoraRetorno' => $trechoRoteiroModel->trec_rot_data_hora_retorno,
+            'valorUnitario' => $trechoRoteiroModel->trec_rot_valor_unitario,
+            'valorAdicional' => $trechoRoteiroModel->trec_rot_valor_adicional,
+            'qtdDiarias' => $trechoRoteiroModel->trec_rot_qtd_diarias,
+            'idTipoTransporte' => $trechoRoteiroModel->id_tipo_transporte,
+            'tipo_transporte' =>
+            [
+                'id' => $trechoRoteiroModel->tipo_transporte->tipo_tra_id,
+                'nome' => $trechoRoteiroModel->tipo_transporte->tipo_tra_nome,
+                'slug' => $trechoRoteiroModel->tipo_transporte->tipo_tra_slug
+            ],
+            'idViagem' => $trechoRoteiroModel->id_viagem,
+            'viagem' =>
+            [
+                'id' => $trechoRoteiroModel->viagem->viag_id,
+                'objetivo' => $trechoRoteiroModel->viagem->viag_objetivo,
+                'justFeriado' => $trechoRoteiroModel->viagem->viag_justificativa_feriado_fds,
+                'justReprog' => $trechoRoteiroModel->viagem->viag_justificativa_reprogramacao,
+                'flagAliCust' => $trechoRoteiroModel->viagem->viag_flag_alimentacao_custeada,
+                'flagAdicDesl' => $trechoRoteiroModel->viagem->viag_flag_adicional_deslocamento,
+                'flagUrgente' => $trechoRoteiroModel->viagem->viag_flag_urgente
+            ],
+            'idPaisOrigem' => $trechoRoteiroModel->id_pais_origem,
+            'idPaisDestino' => $trechoRoteiroModel->id_pais_destino,
+            'pais' =>
+            [
+                'id' => $trechoRoteiroModel->pais->pais_id,
+                'nome' => $trechoRoteiroModel->pais->pais_nome
+            ],
+            'idMunicipioOrigem' => $trechoRoteiroModel->id_municipio_origem,
+            'idMunicipioDestino' => $trechoRoteiroModel->id_municipio_destino,
+            'municipio' =>
+            [
+                'id' => $trechoRoteiroModel->municipio->muni_id,
+                'nome' => $trechoRoteiroModel->municipio->muni_nome,
+                'slug' => $trechoRoteiroModel->municipio->muni_slug,
+            ]
         ];
     }
 }

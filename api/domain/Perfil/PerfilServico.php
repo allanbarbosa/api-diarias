@@ -65,7 +65,7 @@ class PerfilServico
     {
         return [
             'perf_descricao' => $input['descricao'],
-            'perf_slug' => Str::slug($input['descricao']),
+            'perf_slug' => Str::slug($input['slug']),
         ];
     }
 

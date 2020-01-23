@@ -64,8 +64,8 @@ class PagamentoServico
     protected function tratarInput(array $input)
     {
         return [
-            'paga_numero_pagamento' => $input['numero_pagamento'],
-            'id_viagem' => $input['viagem'],
+            'paga_numero_pagamento' => $input['numeroPagamento'],
+            'id_viagem' => $input['idViagem'],
         ];
     }
 
@@ -73,8 +73,18 @@ class PagamentoServico
     {
         return [
             'id' => $pagamentoModel->paga_id,
-            'numero_pagamento' => $pagamentoModel->paga_numero_pagamento,
-            'viagem' => $pagamentoModel->id_viagem,
+            'numeroPagamento' => $pagamentoModel->paga_numero_pagamento,
+            'idViagem' => $pagamentoModel->id_viagem,
+            'viagem' =>
+            [
+                'id' => $pagamentoModel->viagem->viag_id,
+                'objetivo' => $pagamentoModel->viagem->viag_objetivo,
+                'justFeriado' => $pagamentoModel->viagem->viag_justificativa_feriado_fds,
+                'justReprog' => $pagamentoModel->viagem->viag_justificativa_reprogramacao,
+                'flagAliCust' => $pagamentoModel->viagem->viag_flag_alimentacao_custeada,
+                'flagAdicDesl' => $pagamentoModel->viagem->viag_flag_adicional_deslocamento,
+                'flagUrgente' => $pagamentoModel->viagem->viag_flag_urgente,
+            ],
         ];
     }
 }

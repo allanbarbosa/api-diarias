@@ -21,6 +21,7 @@ class ViagemRequest extends FormRequest
             'objetivo' => ['required'],
             'flag_adic_desl' => ['required'],
             'flag_urgente' => ['required'],
+            'idLotacao' => ['required']
         ];
     }
 
@@ -30,6 +31,7 @@ class ViagemRequest extends FormRequest
             'objetivo.required' => 'Campo objetivo da viagem é obrigatório',
             'flag_adic_desl.required' => 'Campo adicional de deslocamento em viagem é obrigatório',
             'flag_urgente.required' => 'Campo viagem urgente é obrigatório',
+            'idLotacao.required' => 'Campo lotação é obrigatório'
         ];
     }
 

@@ -10,6 +10,7 @@ use Diarias\VinculoEmpregaticio\Repositorios\VinculoEmpregaticioRepositorio;
 class VinculoEmpregaticioServico
 {
     protected $repositorio;
+    protected $repositorioLotacao;
 
     public function __construct(
         VinculoEmpregaticioRepositorio $vinculoEmpregaticioRepositorio, 

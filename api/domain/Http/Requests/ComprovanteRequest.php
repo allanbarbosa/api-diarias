@@ -18,7 +18,7 @@ class ComprovanteRequest extends FormRequest
     {
         return [
             'caminho' => ['required'],
-            'nome_arquivo' => ['required'],
+            'nomeArquivo' => ['required'],
         ];
     }
 
@@ -26,7 +26,7 @@ class ComprovanteRequest extends FormRequest
     {
         return [
             'caminho.required' => 'Campo caminho é obrigatório',
-            'nome_arquivo.required' => 'Campo nome do arquivo é obrigatório',
+            'nomeArquivo.required' => 'Campo nome do arquivo é obrigatório',
         ];
     }
 

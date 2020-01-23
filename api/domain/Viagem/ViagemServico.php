@@ -65,12 +65,12 @@ class ViagemServico
     {
         return [
             'viag_objetivo' => $input['objetivo'],
-            'viag_justificativa_feriado_fds' => isset($input['just_feriado']) ? $input['just_feriado'] : null,
-            'viag_justificativa_reprogramacao' => isset($input['just_reprog']) ? $input['just_reprog'] : null,
-            'viag_flag_alimentacao_custeada' => isset($input['flag_ali_cust']) ? $input['flag_ali_cust'] : null,
-            'viag_flag_adicional_deslocamento' => $input['flag_adic_desl'],
-            'viag_flag_urgente' => $input['flag_urgente'],
-            'lota_id' => $input['lotacao'],
+            'viag_justificativa_feriado_fds' => isset($input['justFeriado']) ? $input['justFeriado'] : null,
+            'viag_justificativa_reprogramacao' => isset($input['justReprog']) ? $input['justReprog'] : null,
+            'viag_flag_alimentacao_custeada' => isset($input['flagAliCust']) ? $input['flagAliCust'] : null,
+            'viag_flag_adicional_deslocamento' => $input['flagAdicDesl'],
+            'viag_flag_urgente' => $input['flagUrgente'],
+            'lota_id' => $input['idLotacao'],
             
         ];
     }
@@ -80,13 +80,18 @@ class ViagemServico
         return [
             'id' => $viagemModel->viag_id,
             'objetivo' => $viagemModel->viag_objetivo,
-            'just_feriado' => $viagemModel->viag_justificativa_feriado_fds,
-            'just_reprog' => $viagemModel->viag_justificativa_reprogramacao,
-            'flag_ali_cust' => $viagemModel->viag_flag_alimentacao_custeada,
-            'flag_adic_desl' => $viagemModel->viag_flag_adicional_deslocamento,
-            'flag_urgente' => $viagemModel->viag_flag_urgente,
-            'lotacao' => $viagemModel->lota_id,
-
+            'justFeriado' => $viagemModel->viag_justificativa_feriado_fds,
+            'justReprog' => $viagemModel->viag_justificativa_reprogramacao,
+            'flagAliCust' => $viagemModel->viag_flag_alimentacao_custeada,
+            'flagAdicDesl' => $viagemModel->viag_flag_adicional_deslocamento,
+            'flagUrgente' => $viagemModel->viag_flag_urgente,
+            'idLotacao' => $viagemModel->lota_id,
+            'lotacao' =>
+            [
+                'id' => $viagemModel->lotacao->lota_id,
+                'dataInicio' => $viagemModel->lotacao->lota_data_inicio,
+                'dataFim' => $viagemModel->lotacao->lota_data_fim,
+            ]
         ];
     }
 }

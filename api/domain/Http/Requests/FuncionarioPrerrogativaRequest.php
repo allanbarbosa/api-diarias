@@ -17,16 +17,20 @@ class FuncionarioPrerrogativaRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_inicio' => ['required'],
-            'data_fim' => ['required'],
+            'dataInicio' => ['required'],
+            'dataFim' => ['required'],
+            'idFuncionario' => ['required'],
+            'idPrerrogativa' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'data_inicio.required' => 'Campo data inicio é obrigatório',
-            'data_fim.required' => 'Campo data fim é obrigatório',
+            'dataInicio.required' => 'Campo data inicio é obrigatório',
+            'dataFim.required' => 'Campo data fim é obrigatório',
+            'idFuncionario.required' => 'Campo funcionário é obrigatório',
+            'idPrerrogativa.required' => 'Campo prerrogativa é obrigatório',
         ];
     }
 

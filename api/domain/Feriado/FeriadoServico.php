@@ -62,9 +62,9 @@ class FeriadoServico
     protected function tratarInput(array $input)
     {
         return [
-            'feri_dia' => $input['feriado_dia'],
-            'feri_mes' => $input['feriado_mes'],
-            'feri_nome' => $input['feriado_nome'],
+            'feri_dia' => $input['feriadoDia'],
+            'feri_mes' => $input['feriadoMes'],
+            'feri_nome' => $input['feriadoNome'],
         ];
     }
 
@@ -72,9 +72,9 @@ class FeriadoServico
     {
         return [
             'id' => $feriadoModel->feri_id,
-            'feriado_dia' => $feriadoModel->feri_dia,
-            'feriado_mes' => $feriadoModel->feri_mes,
-            'feriado_nome' => $feriadoModel->feri_nome,
+            'feriadoDia' => $feriadoModel->feri_dia,
+            'feriadoMes' => $feriadoModel->feri_mes,
+            'feriadoNome' => $feriadoModel->feri_nome,
         ];
     }
 }

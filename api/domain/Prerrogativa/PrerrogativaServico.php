@@ -67,7 +67,7 @@ class PrerrogativaServico
     {
         return [
             'prer_descricao' => $input['descricao'],
-            'prer_slug' => Str::slug($input['descricao']),
+            'prer_slug' => Str::slug($input['slug']),
         ];
     }
 

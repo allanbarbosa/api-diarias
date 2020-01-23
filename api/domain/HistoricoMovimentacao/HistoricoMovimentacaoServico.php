@@ -56,11 +56,11 @@ class HistoricoMovimentacaoServico
     protected function tratarInput(array $input)
     {
         return [
-            'hist_mov_data_tramitacao' => $input['data_tramitacao'],
-            'hist_mov_observacao' => $input['mov_observacao'],
-            'id_movimentacao' => $input['movimentacao'],
-            'id_viagem' => $input['viagem'],
-            'id_lotacao' => $input['lotacao']
+            'hist_mov_data_tramitacao' => $input['dataTramitacao'],
+            'hist_mov_observacao' => isset($input['movObservacao']) ? $input['movObservacao'] : null,
+            'id_movimentacao' => $input['idMovimentacao'],
+            'id_viagem' => $input['idViagem'],
+            'id_lotacao' => $input['idLotacao']
         ];
     }
 
@@ -68,11 +68,33 @@ class HistoricoMovimentacaoServico
     {
         return [
             'id' => $historicoMovimentacaoModel->hist_mov_id,
-            'data_tramitacao' => $historicoMovimentacaoModel->hist_mov_data_tramitacao,
-            'mov_observacao' => $historicoMovimentacaoModel->hist_mov_observacao,
-            'movimentacao' => $historicoMovimentacaoModel->id_movimentacao,
-            'viagem' => $historicoMovimentacaoModel->id_viagem,
-            'lotacao' => $historicoMovimentacaoModel->id_lotacao
+            'dataTramitacao' => $historicoMovimentacaoModel->hist_mov_data_tramitacao,
+            'movObservacao' => $historicoMovimentacaoModel->hist_mov_observacao,
+            'idMovimentacao' => $historicoMovimentacaoModel->id_movimentacao,
+            'movimentacao' =>
+            [
+                'id' => $historicoMovimentacaoModel->movimentacao->movi_id,
+                'nome' => $historicoMovimentacaoModel->movimentacao->movi_nome,
+                'slug' => $historicoMovimentacaoModel->movimentacao->movi_slug,
+            ],
+            'idViagem' => $historicoMovimentacaoModel->id_viagem,
+            'viagem' =>
+            [
+                'id' => $historicoMovimentacaoModel->viagem->viag_id,
+                'objetivo' => $historicoMovimentacaoModel->viagem->viag_objetivo,
+                'justFeriado' => $historicoMovimentacaoModel->viagem->viag_justificativa_feriado_fds,
+                'justReprog' => $historicoMovimentacaoModel->viagem->viag_justificativa_reprogramacao,
+                'flagAliCust' => $historicoMovimentacaoModel->viagem->viag_flag_alimentacao_custeada,
+                'flagAdicDesl' => $historicoMovimentacaoModel->viagem->viag_flag_adicional_deslocamento,
+                'flagUrgente' => $historicoMovimentacaoModel->viagem->viag_flag_urgente,
+            ],
+            'idLotacao' => $historicoMovimentacaoModel->id_lotacao,
+            'lotacao' =>
+            [
+                'id' => $historicoMovimentacaoModel->lotacao->lota_id,
+                'dataInicio' => $historicoMovimentacaoModel->lotacao->lota_data_inicio,
+                'dataFim' => $historicoMovimentacaoModel->lotacao->lota_data_fim,
+            ]
         ];
     }
 }

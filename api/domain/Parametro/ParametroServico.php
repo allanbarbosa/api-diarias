@@ -62,9 +62,9 @@ class ParametroServico
     protected function tratarInput(array $input)
     {
         return [
-            'para_max_diarias_mes' => $input['max_diarias_mes'],
-            'para_max_diarias_ano' => $input['max_diarias_ano'],
-            'para_max_diarias_consecutivas' => $input['max_diarias_consecutivas'],
+            'para_max_diarias_mes' => $input['maxDiariasMes'],
+            'para_max_diarias_ano' => $input['maxDiariasAno'],
+            'para_max_diarias_consecutivas' => $input['maxDiariasConsecutivas'],
         ];
     }
 
@@ -72,9 +72,9 @@ class ParametroServico
     {
         return [
             'id' => $parametroModel->para_id,
-            'max_diarias_mes' => $parametroModel->para_max_diarias_mes,
-            'max_diarias_ano' => $parametroModel->para_max_diarias_ano,
-            'max_diarias_consecutivas' => $parametroModel->para_max_diarias_consecutivas,
+            'maxDiariasMes' => $parametroModel->para_max_diarias_mes,
+            'maxDiariasAno' => $parametroModel->para_max_diarias_ano,
+            'maxDiariasConsecutivas' => $parametroModel->para_max_diarias_consecutivas,
         ];
     }
 }

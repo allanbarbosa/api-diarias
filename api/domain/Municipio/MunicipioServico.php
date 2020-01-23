@@ -58,10 +58,10 @@ class MunicipioServico
         return [
 
             'muni_nome' => $input['nome'],
-            'muni_slug' => Str::slug($input['nome']),
+            'muni_slug' => Str::slug($input['slug']),
             'muni_porcentagem_diaria' => $input['porcentagemDiaria'],
             'muni_codigo_ibge' => $input['codigoIbge'],
-            'id_estado' => $input['estado']
+            'id_estado' => $input['idEstado']
             
         ];
     }
@@ -74,6 +74,7 @@ class MunicipioServico
             'slug' => $municipioModel->muni_slug,
             'porcentagemDiaria' => $municipioModel->muni_porcentagem_diaria,
             'codigoIbge' => $municipioModel->muni_codigo_ibge,
+            'idEstado' => $municipioModel->id_estado,
             'estado' =>
             [
                 'id' => $municipioModel->id_estado,

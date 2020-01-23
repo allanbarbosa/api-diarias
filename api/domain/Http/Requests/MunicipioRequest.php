@@ -18,7 +18,10 @@ class MunicipioRequest extends FormRequest
     {
         return [
             'nome' => ['required'],
-            'porcentagemDiaria' => ['required']
+            'slug' => ['required'],
+            'porcentagemDiaria' => ['required'],
+            'codigoIbge' => ['required'],
+            'idEstado' => ['required']
         ];
     }
 
@@ -26,7 +29,10 @@ class MunicipioRequest extends FormRequest
     {
         return [
             'nome.required' => 'O campo nome é obrigatório',
-            'porcentagemDiaria.required' => 'O campo porcentagemDiaria é obrigatório'
+            'slug.required' => 'O campo slug é obrigatório',
+            'porcentagemDiaria.required' => 'O campo porcentagemDiaria é obrigatório',
+            'codigoIbge.required' => 'O campo código IBGE é obrigatório',
+            'idEstado.required' => 'O campo estado é obrigatório'
         ];
     }
 

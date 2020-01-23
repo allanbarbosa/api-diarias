@@ -17,14 +17,16 @@ class PagamentoRequest extends FormRequest
     public function rules()
     {
         return [
-            'numero_pagamento' => ['required'],
+            'numeroPagamento' => ['required'],
+            'idViagem' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'numero_pagamento.required' => 'Campo número do pagamento é obrigatório',
+            'numeroPagamento.required' => 'Campo número do pagamento é obrigatório',
+            'idViagem.required' => 'Campo viagem é obrigatório',
         ];
     }
 

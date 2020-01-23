@@ -56,10 +56,10 @@ class ClasseServico
 
     protected function tratarInput(array $input)
     {
-        return new ClasseModel([
+        return [
             
             'clas_nome' => $input['nome']
-        ]);
+        ];
     }
 
     protected function tratarOutput(ClasseModel $model)

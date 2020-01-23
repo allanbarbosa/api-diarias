@@ -17,20 +17,24 @@ class TrechoRoteiroRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_hora_saida' => ['required'],
-            'data_hora_retorno' => ['required'],
-            'valor_unitario' => ['required'],
-            'qtd_diarias' => ['required'],
+            'dataHoraSaida' => ['required'],
+            'dataHoraRetorno' => ['required'],
+            'valorUnitario' => ['required'],
+            'qtdDiarias' => ['required'],
+            'idTipoTransporte' => ['required'],
+            'idViagem' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'data_hora_saida.required' => 'Campo data hora saída é obrigatório',
-            'data_hora_retorno.required' => 'Campo data hora retorno é obrigatório',
-            'valor_unitario.required' => 'Campo valor unitário é obrigatório',
-            'qtd_diarias.required' => 'Campo quantidade de diarias é obrigatório',
+            'dataHoraSaida.required' => 'Campo data hora saída é obrigatório',
+            'dataHoraRetorno.required' => 'Campo data hora retorno é obrigatório',
+            'valorUnitario.required' => 'Campo valor unitário é obrigatório',
+            'qtdDiarias.required' => 'Campo quantidade de diarias é obrigatório',
+            'idTipoTransporte.required' => 'Campo tipo de transporte é obrigatório',
+            'idViagem.required' => 'Campo viagem é obrigatório',
         ];
     }
 

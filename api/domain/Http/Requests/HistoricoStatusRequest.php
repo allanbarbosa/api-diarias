@@ -17,20 +17,20 @@ class HistoricoStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'data_tramitacao' => ['required'],
-            'viagem' => ['required'],
-            'status' => ['required'],
-            'lotacao' => ['required'],
+            'dataTramitacao' => ['required'],
+            'idViagem' => ['required'],
+            'idStatus' => ['required'],
+            'idLotacao' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'data_tramitacao.required' => 'Campo data da tramitação é obrigatório',
-            'viagem.required' => 'Campo viagem é obrigatório',
-            'status.required' => 'Campo status é obrigatório',
-            'lotacao.required' => 'Campo lotação é obrigatório',
+            'dataTramitacao.required' => 'Campo data da tramitação é obrigatório',
+            'idViagem.required' => 'Campo viagem é obrigatório',
+            'idStatus.required' => 'Campo status é obrigatório',
+            'idLotacao.required' => 'Campo lotação é obrigatório',
         ];
     }
 

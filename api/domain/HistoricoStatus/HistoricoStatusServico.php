@@ -64,11 +64,11 @@ class HistoricoStatusServico
     protected function tratarInput(array $input)
     {
         return [
-            'hist_sta_data_tramitacao' => $input['data_tramitacao'],
-            'hist_sta_observacao' => isset($input['sta_observacao']) ? $input['sta_observacao'] : null,
-            'id_viagem' => $input['viagem'],
-            'id_status' => $input['status'],
-            'id_lotacao' => $input['lotacao']
+            'hist_sta_data_tramitacao' => $input['dataTramitacao'],
+            'hist_sta_observacao' => isset($input['staObservacao']) ? $input['staObservacao'] : null,
+            'id_viagem' => $input['idViagem'],
+            'id_status' => $input['idStatus'],
+            'id_lotacao' => $input['idLotacao']
         ];
     }
 
@@ -76,11 +76,33 @@ class HistoricoStatusServico
     {
         return [
             'id' => $historicoStatusModel->hist_sta_id,
-            'data_tramitacao' => $historicoStatusModel->hist_sta_data_tramitacao,
-            'sta_observacao' => $historicoStatusModel->hist_sta_observacao,
-            'viagem' => $historicoStatusModel->id_viagem,
-            'status' => $historicoStatusModel->id_status,
-            'lotacao' => $historicoStatusModel->id_lotacao,
+            'dataTramitacao' => $historicoStatusModel->hist_sta_data_tramitacao,
+            'staObservacao' => $historicoStatusModel->hist_sta_observacao,
+            'idViagem' => $historicoStatusModel->id_viagem,
+            'viagem' =>
+            [
+                'id' => $historicoStatusModel->viagem->viag_id,
+                'objetivo' => $historicoStatusModel->viagem->viag_objetivo,
+                'justFeriado' => $historicoStatusModel->viagem->viag_justificativa_feriado_fds,
+                'justReprog' => $historicoStatusModel->viagem->viag_justificativa_reprogramacao,
+                'flagAliCust' => $historicoStatusModel->viagem->viag_flag_alimentacao_custeada,
+                'flagAdicDesl' => $historicoStatusModel->viagem->viag_flag_adicional_deslocamento,
+                'flagUrgente' => $historicoStatusModel->status->viagem->viag_flag_urgente,
+            ],
+            'idStatus' => $historicoStatusModel->id_status,
+            'status' =>
+            [
+                'id' => $historicoStatusModel->status->stat_id,
+                'nome' => $historicoStatusModel->status->stat_nome,
+                'slug' => $historicoStatusModel->status->stat_slug,
+            ],
+            'idLotacao' => $historicoStatusModel->id_lotacao,
+            'lotacao' =>
+            [
+                'id' => $historicoStatusModel->lotacao->lota_id,
+                'dataInicio' => $historicoStatusModel->lotacao->lota_data_inicio,
+                'dataFim' => $historicoStatusModel->lotacao->lota_data_fim,
+            ]
         ];
     }
 }

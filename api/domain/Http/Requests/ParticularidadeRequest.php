@@ -18,6 +18,7 @@ class ParticularidadeRequest extends FormRequest
     {
         return [
             'descricao' => ['required'],
+            'slug' => ['required']
         ];
     }
 
@@ -25,6 +26,7 @@ class ParticularidadeRequest extends FormRequest
     {
         return [
             'descricao.required' => 'Campo descrição é obrigatório',
+            'slug.required' => 'Campo slug é obrigatório',
         ];
     }
 

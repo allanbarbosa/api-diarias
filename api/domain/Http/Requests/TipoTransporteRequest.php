@@ -18,6 +18,7 @@ class TipoTransporteRequest extends FormRequest
     {
         return [
             'nome' => ['required'],
+            'slug' => ['required']
         ];
     }
 
@@ -25,6 +26,7 @@ class TipoTransporteRequest extends FormRequest
     {
         return [
             'nome.required' => 'Campo tipo de transporte é obrigatório',
+            'slug.required' => 'Campo slug é obrigatório'
         ];
     }
 

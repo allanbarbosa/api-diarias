@@ -17,18 +17,18 @@ class ParametroRequest extends FormRequest
     public function rules()
     {
         return [
-            'max_diarias_mes' => ['required'],
-            'max_diarias_ano' => ['required'],
-            'max_diarias_consecutivas' => ['required'],
+            'maxDiariasMes' => ['required'],
+            'maxDiariasAno' => ['required'],
+            'maxDiariasConsecutivas' => ['required']
         ];
     }
 
     public function messages()
     {
         return [
-            'max_diarias_mes.required' => 'Campo diarias mês é obrigatório',
-            'max_diarias_ano.required' => 'Campo diarias ano é obrigatório',
-            'max_diarias_consecutivas.required' => 'Campo diarias consecutivas é obrigatório',
+            'maxDiariasMes.required' => 'Campo diarias mês é obrigatório',
+            'maxDiariasAno.required' => 'Campo diarias ano é obrigatório',
+            'maxDiariasConsecutivas.required' => 'Campo diarias consecutivas é obrigatório'
         ];
     }
 

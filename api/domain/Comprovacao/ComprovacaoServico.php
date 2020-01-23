@@ -65,14 +65,14 @@ class ComprovacaoServico
     protected function tratarInput(array $input)
     {
         return [
-            'comp_diarias_utilizadas' => $input['diarias_utilizadas'],
-            'comp_data_hora_saida_efetiva' => $input['data_hora_saida_efetiva'],
-            'comp_data_hora_chegada_efetiva' => $input['data_hora_chegada_efetiva'],
-            'comp_atividades_desenvolvidas' => $input['atividades_desenvolvidas'],
-            'comp_saldo_receber' => isset($input['saldo_receber']) ? $input['saldo_receber'] : null,
-            'comp_saldo_restituir' => isset($input['saldo_restituir']) ? $input['saldo_restituir'] : null,
-            'comp_valor_total' => isset($input['valor_total']) ? $input['valor_total'] : null,
-            'id_trecho' => $input['trecho'],
+            'comp_diarias_utilizadas' => $input['diariasUtilizadas'],
+            'comp_data_hora_saida_efetiva' => $input['dataHoraSaidaEfetiva'],
+            'comp_data_hora_chegada_efetiva' => $input['dataHoraChegadaEfetiva'],
+            'comp_atividades_desenvolvidas' => $input['atividadesDesenvolvidas'],
+            'comp_saldo_receber' => isset($input['saldoReceber']) ? $input['saldoReceber'] : null,
+            'comp_saldo_restituir' => isset($input['saldoRestituir']) ? $input['saldoRestituir'] : null,
+            'comp_valor_total' => isset($input['valorTotal']) ? $input['valorTotal'] : null,
+            'id_trecho' => $input['idTrecho'],
         ];
     }
 
@@ -80,14 +80,23 @@ class ComprovacaoServico
     {
         return [
             'id' => $comprovacaoModel->compo_id,
-            'diarias_utilizadas' => $comprovacaoModel->comp_diarias_utilizadas,
-            'data_hora_saida_efetiva' => $comprovacaoModel->comp_data_hora_saida_efetiva,
-            'data_hora_chegada_efetiva' => $comprovacaoModel->comp_data_hora_chegada_efetiva,
-            'atividades_desenvolvidas' => $comprovacaoModel->comp_atividades_desenvolvidas,
-            'saldo_receber' => $comprovacaoModel->comp_saldo_receber,
-            'saldo_restituir' => $comprovacaoModel->comp_saldo_restituir,
-            'valor_total' => $comprovacaoModel->comp_valor_total,
-            'trecho' => $comprovacaoModel->id_trecho,
+            'diariasUtilizadas' => $comprovacaoModel->comp_diarias_utilizadas,
+            'dataHoraSaidaEfetiva' => $comprovacaoModel->comp_data_hora_saida_efetiva,
+            'dataHoraChegadaEfetiva' => $comprovacaoModel->comp_data_hora_chegada_efetiva,
+            'atividadesDesenvolvidas' => $comprovacaoModel->comp_atividades_desenvolvidas,
+            'saldoReceber' => $comprovacaoModel->comp_saldo_receber,
+            'saldoRestituir' => $comprovacaoModel->comp_saldo_restituir,
+            'valorTotal' => $comprovacaoModel->comp_valor_total,
+            'idTrecho' => $comprovacaoModel->id_trecho,
+            'trecho_roteiro' =>
+            [
+            'id' => $comprovacaoModel->trecho_roteiro->trec_rot_id,
+            'dataHoraSaida' => $comprovacaoModel->trecho_roteiro->trec_rot_data_hora_saida,
+            'dataHoraRetorno' => $comprovacaoModel->trecho_roteiro->trec_rot_data_hora_retorno,
+            'valorUnitario' => $comprovacaoModel->trecho_roteiro->trec_rot_valor_unitario,
+            'valorAdicional' => $comprovacaoModel->trecho_roteiro->trec_rot_valor_adicional,
+            'qtdDiarias' => $comprovacaoModel->trecho_roteiro->trec_rot_qtd_diarias
+            ]
             
         ];
     }

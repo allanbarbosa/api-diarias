@@ -17,14 +17,20 @@ class LotacaoRequest extends FormRequest
   public function rules()
   {
     return [
-      'dataInicio' => ['required']
+      'dataInicio' => ['required'],
+      'idCargo' => ['required'],
+      'idUnidadeOrganograma' => ['required'],
+      'idVinculoEmpregaticio' => ['required']
     ];
   }
 
   public function messages()
   {
     return [
-      'dataInicio.required' => 'O campo data início é obrigatório'
+      'dataInicio.required' => 'O campo data início é obrigatório',
+      'idCargo.required' => 'O campo cargo é obrigatório',
+      'idUnidadeOrganograma.required' => 'O campo unidade organograma é obrigatório',
+      'idVinculoEmpregaticio.required' => 'O campo vínculo empregatício é obrigatório'
     ];
   }
 

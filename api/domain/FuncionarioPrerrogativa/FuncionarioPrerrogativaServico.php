@@ -64,10 +64,10 @@ class FuncionarioPrerrogativaServico
     protected function tratarInput(array $input)
     {
         return [
-            'func_pre_data_inicio' => $input['data_inicio'],
-            'func_pre_data_fim' => $input['data_fim'],
-            'id_funcionario' => $input['funcionario'],
-            'id_prerrogativa' => $input['prerrogativa'],
+            'func_pre_data_inicio' => $input['dataInicio'],
+            'func_pre_data_fim' => $input['dataFim'],
+            'id_funcionario' => $input['idFuncionario'],
+            'id_prerrogativa' => $input['idPrerrogativa'],
         ];
     }
 
@@ -75,10 +75,24 @@ class FuncionarioPrerrogativaServico
     {
         return [
             'id' => $funcionarioPrerrogativaModel->func_pre_id,
-            'data_inicio' => $funcionarioPrerrogativaModel->func_pre_data_inicio,
-            'data_fim' => $funcionarioPrerrogativaModel->func_pre_data_fim,
-            'funcionario' => $funcionarioPrerrogativaModel->id_funcionario,
-            'prerrogativa' => $funcionarioPrerrogativaModel->id_prerrogativa,
+            'dataInicio' => $funcionarioPrerrogativaModel->func_pre_data_inicio,
+            'dataFim' => $funcionarioPrerrogativaModel->func_pre_data_fim,
+            'idFuncionario' => $funcionarioPrerrogativaModel->id_funcionario,
+            'funcionario' =>
+            [
+                'id' => $funcionarioPrerrogativaModel->funcionario->func_id,
+                'cpf' => $funcionarioPrerrogativaModel->funcionario->func_cpf,
+                'nome' => $funcionarioPrerrogativaModel->funcionario->func_nome,
+                'telefone' => $funcionarioPrerrogativaModel->funcionario->func_telefone,
+                'email' => $funcionarioPrerrogativaModel->funcionario->func_email,
+            ],
+            'idPrerrogativa' => $funcionarioPrerrogativaModel->id_prerrogativa,
+            'prerrogativa' =>
+            [
+                'id' => $funcionarioPrerrogativaModel->prerrogativa->prer_id,
+                'descricao' => $funcionarioPrerrogativaModel->prerrogativa->prer_descricao,
+                'slug' => $funcionarioPrerrogativaModel->prerrogativa->prer_slug,
+            ]
         ];
     }
 }

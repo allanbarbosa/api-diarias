@@ -24,7 +24,7 @@ class PaisRequest extends FormRequest
     public function messages()
     {
         return [
-          'nome.required' => 'Campo nome é obrigatório'
+          'nome.required' => 'Campo país é obrigatório'
         ];
     }
 

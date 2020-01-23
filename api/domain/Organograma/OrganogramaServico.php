@@ -83,7 +83,7 @@ class OrganogramaServico
             'orga_id' => $input['id'],
             'orga_codigo' => $input['codigo'],
             'orga_data_inicio' => $input['dataInicio'],
-            'orga_data_fim' => $input['dataFim']
+            'orga_data_fim' => isset($input['dataFim']) ? $input['dataFim'] : null
         ];
     }
     

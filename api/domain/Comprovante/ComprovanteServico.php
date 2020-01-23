@@ -66,9 +66,9 @@ class ComprovanteServico
     {
         return [
             'compe_caminho' => $input['caminho'],
-            'compe_nome_arquivo' => $input['nome_arquivo'],
-            'id_comprovacao' => $input['comprovacao'],
-            'id_tipo_comprovante' => $input['tipo_comprovante'],
+            'compe_nome_arquivo' => $input['nomeArquivo'],
+            'id_comprovacao' => $input['idComprovacao'],
+            'id_tipo_comprovante' => $input['idTipoComprovante'],
         ];
     }
 
@@ -77,9 +77,26 @@ class ComprovanteServico
         return [
             'id' => $comprovanteModel->compe_id,
             'caminho' => $comprovanteModel->compe_caminho,
-            'nome_arquivo' => $comprovanteModel->compe_nome_arquivo,
-            'comprovacao' => $comprovanteModel->id_comprovacao,
-            'tipo_comprovante' => $comprovanteModel->id_tipo_comprovante,
+            'nomeArquivo' => $comprovanteModel->compe_nome_arquivo,
+            'idComprovacao' => $comprovanteModel->id_comprovacao,
+            'comprovacao' => 
+            [
+                'id' => $comprovanteModel->comprovacao->compo_id,
+                'diariasUtilizadas' => $comprovanteModel->comprovacao->comp_diarias_utilizadas,
+                'dataHoraSaidaEfetiva' => $comprovanteModel->comprovacao->comp_data_hora_saida_efetiva,
+                'dataHoraChegadaEfetiva' => $comprovanteModel->comprovacao->comp_data_hora_chegada_efetiva,
+                'atividadesDesenvolvidas' => $comprovanteModel->comprovacao->comp_atividades_desenvolvidas,
+                'saldoReceber' => $comprovanteModel->comprovacao->comp_saldo_receber,
+                'saldoRestituir' => $comprovanteModel->comprovacao->comp_saldo_restituir,
+                'valorTotal' => $comprovanteModel->comprovacao->comp_valor_total
+            ],
+            'idTipoComprovante' => $comprovanteModel->id_tipo_comprovante,
+            'tipo_comprovante' =>
+            [
+                'id' => $comprovanteModel->tipo_comprovante->tipo_com_id,
+                'nome' => $comprovanteModel->tipo_comprovante->tipo_com_nome,
+                'slug' => $comprovanteModel->tipo_comprovante->tipo_com_slug
+            ]
         ];
     }
 }

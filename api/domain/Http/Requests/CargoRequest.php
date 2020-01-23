@@ -18,6 +18,7 @@ class CargoRequest extends FormRequest
     {
         return [
             'nome' => ['required'],
+            'slug' => ['required'],
             'idGratificacao' => ['required'],
         ];
     }
@@ -26,6 +27,7 @@ class CargoRequest extends FormRequest
     {
         return [
             'nome.required' => 'O campo nome é obrigatório',
+            'slug.required' => 'O campo slug é obrigatório',
             'idGratificacao.required' => 'O campo idGratificação é obrigatório'
         ];
     }

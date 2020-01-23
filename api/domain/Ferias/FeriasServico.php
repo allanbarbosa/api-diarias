@@ -64,9 +64,9 @@ class FeriasServico
     protected function tratarInput(array $input)
     {
         return [
-            'feri_data_inicio' => $input['data_inicio'],
-            'feri_data_fim' => $input['data_fim'],
-            'id_funcionario' => $input['funcionario'],
+            'feri_data_inicio' => $input['dataInicio'],
+            'feri_data_fim' => $input['dataFim'],
+            'id_funcionario' => $input['idFuncionario'],
         ];
     }
 
@@ -74,9 +74,17 @@ class FeriasServico
     {
         return [
             'id' => $feriasModel->feri_id,
-            'data_inicio' => $feriasModel->feri_data_inicio,
-            'data_fim' => $feriasModel->feri_data_fim,
-            'funcionario' => $feriasModel->id_funcionario,
+            'dataInicio' => $feriasModel->feri_data_inicio,
+            'dataFim' => $feriasModel->feri_data_fim,
+            'idFuncionario' => $feriasModel->id_funcionario,
+            'funcionario' =>
+            [
+                'id' => $feriasModel->funcionario->func_id,
+                'cpf' => $feriasModel->funcionario->func_cpf,
+                'nome' => $feriasModel->funcionario->func_nome,
+                'telefone' => $feriasModel->funcionario->func_telefone,
+                'email' => $feriasModel->funcionario->func_email,
+            ]
         ];
     }
 }

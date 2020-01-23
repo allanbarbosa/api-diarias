@@ -17,7 +17,8 @@ class PapelFluxogramaRequest extends FormRequest
     public function rules()
     {
         return[
-            'descricao' => ['required'],  
+            'descricao' => ['required'],
+            'slug' => ['required'],  
         ];
     }
 
@@ -25,6 +26,7 @@ class PapelFluxogramaRequest extends FormRequest
     {
         return [
             'descricao.required' => 'Campo Descrição é obrigatório ',
+            'slug.required' => 'Campo slug é obrigatório ',
         ];
     }
 

@@ -20,7 +20,6 @@ class OrganogramaRequest extends FormRequest
         return [
             'codigo' => ['required'],
             'dataInicio' => ['required'],
-            'dataFim' => ['required'],
         ];
     }
 
@@ -29,7 +28,6 @@ class OrganogramaRequest extends FormRequest
         return [
             'codigo.request' => 'Campo código é obrigatório',
             'dataInicio.request' => 'Campo data início é obrigatório',
-            'dataFinal.request' => 'Campo data fim é obrigatório',
         ];
     }
 
