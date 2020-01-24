@@ -34,7 +34,7 @@ class ClasseServico
         $dados = $this->tratarInput($input);
         $dados['created_by'] = $input['usuario'];
 
-        $classe = $this->repositorio->save($dados->toArray());
+        $classe = $this->repositorio->save($dados);
 
         return $this->tratarOutput($classe);
     }
@@ -44,7 +44,7 @@ class ClasseServico
         $dados = $this->tratarInput($input);
         $dados['update_by'] = $input['usuario'];
 
-        $classe = $this->repositorio->update($dados->toArray(), $id);
+        $classe = $this->repositorio->update($dados, $id);
         
         return $this->tratarOutput($classe);
     }
