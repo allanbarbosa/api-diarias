@@ -17,21 +17,21 @@ class ClasseRequest extends FormRequest
     public function rules()
     {
         return[
-            'nome' => ['required'],
+            'nome' => ['required']
         ];
     }
 
     public function messages()
     {
         return [
-            'nome.required' => 'Campo nome é obrigatório',
+            'nome.required' => 'Campo nome é obrigatório'
         ];
     }    
 
-    protected function faileValidation(validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
-            response()->json(['mensagem' => $validator->erros()->first()], 422)
+            response()->json(['mensagem' => $validator->errors()->first()], 422)
         );
     }
 }

@@ -64,6 +64,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('movimentacao', '\Diarias\Http\Controllers\MovimentacaoController');
     Route::resource('historico-status', '\Diarias\Http\Controllers\HistoricoStatusController');
     Route::resource('pagamento', '\Diarias\Http\Controllers\PagamentoController');
+    Route::get('buscar-funcionario-por-cpf/{cpf}', '\Diarias\Http\Controllers\BuscaFuncionarioPorCpfController@show');
 
 
 });
