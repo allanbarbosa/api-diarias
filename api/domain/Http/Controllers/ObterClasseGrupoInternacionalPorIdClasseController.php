@@ -15,6 +15,7 @@ class ObterClasseGrupoInternacionalPorIdClasseController extends Controller
     public function __construct(ObterClasseGrupoInternacionalPorIdClasseServico $obterClasseGrupoInternacionalPorIdClasseServico)
     {
         $this->servico = $obterClasseGrupoInternacionalPorIdClasseServico;
+
     }
 
     public function show(int $idClasse)

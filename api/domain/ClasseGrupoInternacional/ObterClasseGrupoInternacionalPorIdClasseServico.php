@@ -3,69 +3,59 @@ declare(strict_types=1);
 
 namespace Diarias\ClasseGrupoInternacional;
 
-use Diarias\ClasseGrupoInternacional\Models\ClasseGrupoInternacionalModel;
-use Diarias\ClasseGrupoInternacional\Repositorios\ObterClasseGrupoInternacionalPorIdClasseRepositorio;
+use Diarias\Classe\Models\ClasseModel;
+use Diarias\Classe\Repositorios\ClasseRepositorio;
 
 
 class ObterClasseGrupoInternacionalPorIdClasseServico
 {
     protected $repositorio;
 
-    public function __construct(ObterClasseGrupoInternacionalPorIdClasseRepositorio $obterClasseGrupoInternacionalPorIdClasseRepositorio)
+    public function __construct(ClasseRepositorio $classeRepositorio)
     {
-        $this->repositorio = $obterClasseGrupoInternacionalPorIdClasseRepositorio;
+        $this->repositorio = $classeRepositorio;
     }
 
     public function find(int $idClasse)
     {
-        $obterClasseGrupoInternacionalPorIdClasse = $this->repositorio->find($idClasse);
+        $classe = $this->repositorio->find($idClasse);
 
-        return $this->tratarOutput($obterClasseGrupoInternacionalPorIdClasse);
+        return $this->tratarOutput($classe);
     }
 
-
-    protected function tratarInput(array $input)
-    {
-        return [
-            
-           'id_classe' => $input['idClasse'],
-           
-        ];
-    }
-
-    protected function tratarOutput(ClasseGrupoInternacionalModel $classeGrupoInternacionalModel)
+    protected function tratarOutput(ClasseModel $classeModel)
     {
         $output = [
-            
-            'classe' =>
-            [
-                'id' => $classeGrupoInternacionalModel->classe->clas_id,
-                'nome' => $classeGrupoInternacionalModel->classe->clas_nome,
-                'gratificacoes' => []
-            ],
-            'classeGrupoInternacional' => 
-            [
-                'id' => $classeGrupoInternacionalModel->clas_gru_internacional_id,
-                'valor' => $classeGrupoInternacionalModel->clas_gru_internacional_valor,
-            ],
-            'idGrupoInternacional' => $classeGrupoInternacionalModel->id_grupo_internacional,
-            'grupoInternacional' =>
-            [
-                'id' => $classeGrupoInternacionalModel->grupo_internacional->grup_int_id,
-                'codigo' => $classeGrupoInternacionalModel->grupo_internacional->grup_int_codigo
-            ]
+            'id' => $classeModel->clas_id,
+            'nome' => $classeModel->clas_nome,
+            'gratificacao' => [],
+            'grupoPaises' => [],
         ];
-        
-        $gratificacoes = $classeGrupoInternacionalModel->classe->gratificacoes;
 
-        foreach ($gratificacoes as $gratificacao) {
-            $output['classe']['gratificacoes'][] = [
-                'id' => $gratificacao->grat_id,
-                'nome' => $gratificacao->grat_nome,
-                'slug' => $gratificacao->grat_slug,
-                'valor' => $gratificacao->grat_valor_diaria
-            ];
+        $gratificacoes = $classeModel->gratificacoes;
+
+        foreach ($gratificacoes as $key => $gratificacao) {
+            $output['gratificacao'][] = $gratificacao->grat_nome;
         }
+
+        $classeGrupos = $classeModel->classeGrupoInternacional;
+
+        foreach ($classeGrupos as $key => $grupo) {
+            $output['grupoPaises'][$key] = [
+                'id' => $grupo->clas_gru_internacional_id,
+                'valor' => $grupo->clas_gru_internacional_valor,
+                'descricao' => $grupo->grupo_internacional->grup_int_codigo,
+                'paises' => [],
+            ];
+
+            $paises = $grupo->grupo_internacional->pais;
+
+            foreach ($paises as $pais) {
+                $output['grupoPaises'][$key]['paises'][] = $pais->pais_nome;
+            }
+        }
+
         return $output;
+
     }
 }
