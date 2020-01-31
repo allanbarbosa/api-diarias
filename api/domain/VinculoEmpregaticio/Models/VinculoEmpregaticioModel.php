@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Diarias\VinculoEmpregaticio\Models;
 
 use Diarias\Funcionario\Models\FuncionarioModel;
+use Diarias\Lotacao\Models\LotacaoModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -24,6 +25,11 @@ class VinculoEmpregaticioModel extends Model
     public function funcionario()
     {
         return $this->belongsTo(FuncionarioModel::class, 'id_funcionario');
+    }
+
+    public function lotacao()
+    {
+        return $this->hasMany(LotacaoModel::class, 'id_vinculo_empregaticio');
     }
 
 }
