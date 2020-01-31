@@ -29,7 +29,6 @@ class ObterClasseGrupoInternacionalPorIdClasseServico
             'id' => $classeModel->clas_id,
             'nome' => $classeModel->clas_nome,
             'gratificacao' => [],
-            'grupoPaises' => [],
         ];
 
         $gratificacoes = $classeModel->gratificacoes;
@@ -37,11 +36,15 @@ class ObterClasseGrupoInternacionalPorIdClasseServico
         foreach ($gratificacoes as $key => $gratificacao) {
             $output['gratificacao'][] = $gratificacao->grat_nome;
         }
-
+        
         $classeGrupos = $classeModel->classeGrupoInternacional;
-
+        
         foreach ($classeGrupos as $key => $grupo) {
-            $output['grupoPaises'][$key] = [
+            if (!isset($output[$grupo->grupo_internacional->grup_int_codigo])) {
+                $output[$grupo->grupo_internacional->grup_int_codigo] = [];
+            }
+
+            $output[$grupo->grupo_internacional->grup_int_codigo] = [
                 'id' => $grupo->clas_gru_internacional_id,
                 'valor' => $grupo->clas_gru_internacional_valor,
                 'descricao' => $grupo->grupo_internacional->grup_int_codigo,
@@ -51,7 +54,7 @@ class ObterClasseGrupoInternacionalPorIdClasseServico
             $paises = $grupo->grupo_internacional->pais;
 
             foreach ($paises as $pais) {
-                $output['grupoPaises'][$key]['paises'][] = $pais->pais_nome;
+                $output[$grupo->grupo_internacional->grup_int_codigo]['paises'][] = $pais->pais_nome;
             }
         }
 

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Diarias\VinculoEmpregaticio\Models;
 
+use Diarias\Funcionario\Models\FuncionarioModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Diarias\Funcionario\Models\FuncionarioModel;
 
 class VinculoEmpregaticioModel extends Model
 {
@@ -25,4 +25,5 @@ class VinculoEmpregaticioModel extends Model
     {
         return $this->belongsTo(FuncionarioModel::class, 'id_funcionario');
     }
+
 }

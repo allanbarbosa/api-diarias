@@ -66,6 +66,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::resource('pagamento', '\Diarias\Http\Controllers\PagamentoController');
     Route::get('buscar-funcionario-por-cpf/{cpf}', '\Diarias\Http\Controllers\BuscaFuncionarioPorCpfController@show');
     Route::get('classe-grupo-internacional-por-id-classe/{idClasse}', '\Diarias\Http\Controllers\ObterClasseGrupoInternacionalPorIdClasseController@show');
+    Route::get('obter-lotacao-por-matricula/{matricula}', '\Diarias\Http\Controllers\ObterLotacaoPorMatriculaController@show');
 
 
 });
