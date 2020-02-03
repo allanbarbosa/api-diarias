@@ -25,39 +25,53 @@ class ObterClasseGrupoInternacionalPorIdClasseServico
 
     protected function tratarOutput(ClasseModel $classeModel)
     {
-        $output = [
-            'id' => $classeModel->clas_id,
-            'nome' => $classeModel->clas_nome,
-            'gratificacao' => [],
-        ];
+       
+        $classeGrupos = $classeModel->classeGrupoInternacional;
+
+        $output = [];
 
         $gratificacoes = $classeModel->gratificacoes;
-
-        foreach ($gratificacoes as $key => $gratificacao) {
-            $output['gratificacao'][] = $gratificacao->grat_nome;
-        }
+        $dadosGratificacao = [];
         
-        $classeGrupos = $classeModel->classeGrupoInternacional;
+        foreach ($gratificacoes as $key => $gratificacao) {
+            $dadosGratificacao[] = [
+                'id' => $gratificacao->grat_id,
+                'nome' => $gratificacao->grat_nome,
+                'slug' => $gratificacao->grat_slug,
+                'valorDiaria' => $gratificacao->grat_valor_diaria,
+                'idClasse' => $classeModel->clas_id
+            ];
+        }
         
         foreach ($classeGrupos as $key => $grupo) {
-            if (!isset($output[$grupo->grupo_internacional->grup_int_codigo])) {
-                $output[$grupo->grupo_internacional->grup_int_codigo] = [];
-            }
-
-            $output[$grupo->grupo_internacional->grup_int_codigo] = [
+            
+            $output[$key] = [
                 'id' => $grupo->clas_gru_internacional_id,
                 'valor' => $grupo->clas_gru_internacional_valor,
-                'descricao' => $grupo->grupo_internacional->grup_int_codigo,
-                'paises' => [],
+                'idClasse' => $classeModel->clas_id,
+                'classe' => [
+                    'id' => $classeModel->clas_id,
+                    'nome' => $classeModel->clas_nome,
+                    'gratificacoes' => $dadosGratificacao,
+                ],
+                'idGrupoInternacional' => $grupo->clas_gru_internacional_id,
+                'grupoInternacional' => [],
+                'paises' => []
             ];
-
+                        
+            $output[$key]['grupoInternacional'][] = [
+                'id' => $grupo->grupo_internacional->grup_int_id,
+                'codigo' => $grupo->grupo_internacional->grup_int_codigo,
+            ];
+            
             $paises = $grupo->grupo_internacional->pais;
-
+            
             foreach ($paises as $pais) {
-                $output[$grupo->grupo_internacional->grup_int_codigo]['paises'][] = $pais->pais_nome;
+                $output[$key]['paises'][] = $pais->pais_nome;
             }
         }
-
+        
+        
         return $output;
 
     }
