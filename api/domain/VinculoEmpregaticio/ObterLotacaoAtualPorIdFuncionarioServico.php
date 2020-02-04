@@ -20,15 +20,15 @@ class ObterLotacaoAtualPorIdFuncionarioServico
 
     public function find(int $idFuncionario)
     {
-        $obterLotacaoAtualPorIdFuncionario = $this->repositorio->find($idFuncionario);
+        $obterLotacaoAtualPorIdFuncionario = $this->repositorio->getWhere(['id_funcionario' => $idFuncionario]);
        
-        return $this->tratarOutput($obterLotacaoAtualPorIdFuncionario);
+        return $this->tratarOutput($obterLotacaoAtualPorIdFuncionario[0]);
     }
 
     protected function tratarOutput(VinculoEmpregaticioModel $model)
     {   
-        $lotacao = $model->lotacao()->whereNull('lota_data_fim')->orderBy('lota_id', 'DESC')->first();
-        
+        $lotacao = $model->lotacao()->whereNull('lota_data_fim')->orderBy('created_at', 'DESC')->first();
+        // orderBy('lota_id', 'DESC')->->first()
         if (!$lotacao) {
             throw new \Exception("Funcionário sem lotação");
         }
