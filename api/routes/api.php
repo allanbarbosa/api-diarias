@@ -67,6 +67,7 @@ Route::group(['middleware' => 'token.validation'], function () {
     Route::get('buscar-funcionario-por-cpf/{cpf}', '\Diarias\Http\Controllers\BuscaFuncionarioPorCpfController@show');
     Route::get('classe-grupo-internacional-por-id-classe/{idClasse}', '\Diarias\Http\Controllers\ObterClasseGrupoInternacionalPorIdClasseController@show');
     Route::get('obter-lotacao-por-matricula/{matricula}', '\Diarias\Http\Controllers\ObterLotacaoPorMatriculaController@show');
+    Route::get('obter-lotacao-atual-por-id-funcionario/{idFuncionario}', '\Diarias\Http\Controllers\ObterLotacaoAtualPorIdFuncionarioController@show');
 
 
 });

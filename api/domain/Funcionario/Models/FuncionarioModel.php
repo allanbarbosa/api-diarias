@@ -6,6 +6,7 @@ namespace Diarias\Funcionario\Models;
 use Diarias\Empresa\Models\EmpresaModel;
 use Diarias\Escolaridade\Models\EscolaridadeModel;
 use Diarias\Profissao\Models\ProfissaoModel;
+use Diarias\VinculoEmpregaticio\Models\VinculoEmpregaticioModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -38,5 +39,10 @@ class FuncionarioModel extends Model
     public function escolaridade()
     {
         return $this->belongsTo(EscolaridadeModel::class, 'id_escolaridade');
+    }
+
+    public function vinculo_empregaticio()
+    {
+        return $this->hasMany(VinculoEmpregaticioModel::class, 'id_vinculo_empregaticio');
     }
 }
