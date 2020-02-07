@@ -38,8 +38,8 @@ class ObterVinculosEmpregaticiosPorCpfServico
             
         $output = [
             'id' => $model->vinc_emp_id,
-            'dataAdmissao' => date('d/m/Y', strtotime($model->vinc_emp_data_admissao)),
-            'dataDesligamento' => (!is_null($model->vinc_emp_data_desligamento)) ? date('d/m/Y', strtotime($model->vinc_emp_data_desligamento)) : null,
+            'dataAdmissao' => date('Y-m-d', strtotime($model->vinc_emp_data_admissao)),
+            'dataDesligamento' => (!is_null($model->vinc_emp_data_desligamento)) ? date('Y-m-d', strtotime($model->vinc_emp_data_desligamento)) : null,
             'matricula' => $model->vinc_emp_matricula,
             'idFuncionario' => $model->id_funcionario,
             'funcionario' => [],
@@ -62,8 +62,8 @@ class ObterVinculosEmpregaticiosPorCpfServico
         foreach ($lotacoes as $lotacao) {
             $output['lotacao'][] = [
                 'id' => $lotacao->lota_id,
-                'dataInicio' => date('d/m/Y', strtotime($lotacao->lota_data_inicio)),
-                'dataFim' => (!is_null($lotacao->lota_data_fim)) ? date('d/m/Y', strtotime($lotacao->lota_data_fim)) : null
+                'dataInicio' => date('Y-m-d', strtotime($lotacao->lota_data_inicio)),
+                'dataFim' => (!is_null($lotacao->lota_data_fim)) ? date('Y-m-d', strtotime($lotacao->lota_data_fim)) : null
             ];
         }
                 
